@@ -22,3 +22,9 @@ st.write(""" Hey there! I'm Aashay, a data wizard by day and an adventurous spir
     with my compass pointing towards icy mountain peaks and the soothing waves of beaches, [surfing](#).
     I also love [painting](#) and [photography](#)
     """)
+
+from streamlit_text_rating.st_text_rater import st_text_rater
+
+st.title(" ")
+for text in ["Do you like my page?"]:
+    response = st_text_rater(text=text)
