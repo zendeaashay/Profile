@@ -24,7 +24,7 @@ def create_folium_map(gdf, value_column):
         data=gdf,
         columns=['neighborhood', value_column],
         key_on='feature.properties.neighborhood',
-        fill_color='GnBu',
+        fill_color='YlOrBr',
         fill_opacity=0.7,
         line_opacity=0.2,
         legend_name=value_column
