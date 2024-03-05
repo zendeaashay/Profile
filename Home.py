@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import altair as alt
-from st_on_hover_tabs import on_hover_tabs
 
 df = pd.read_csv('amz.csv')
 
@@ -24,16 +23,7 @@ st.write(""" Hey there! I'm Aashay, a data wizard by day and an adventurous spir
     I also love [painting](#) and [photography](#)
     """)
 
-st.markdown('<style>' + open('./style.css').read() + '</style>', unsafe_allow_html=True)
+from streamlit_star_rating import st_star_rating
 
-with st.sidebar:
-    selected_tab = on_hover_tabs(tabName=['Home', 'Analytics', 'About'],
-                                 iconName=['house', 'bar_chart', 'person'],
-                                 default_choice=0)
-    
-if selected_tab == 'Home.py':
-    st.header('Home Page')
-    st.write('Welcome to my world of adventures and analytics!')
-    
-elif selected_tab == 'Resume.py':
-    st.header('View and Download my Resume')
+st.write("Please rate your experience with this page:")
+stars = st_star_rating(label = "Please rate you experience", maxValue = 5, defaultValue = 3, key = "rating", dark_theme = True )
