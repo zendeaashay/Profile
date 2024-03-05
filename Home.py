@@ -28,3 +28,27 @@ from streamlit_star_rating import st_star_rating
 
 st.write("Please rate your experience with this page:")
 stars = st_star_rating(label = " ", maxValue = 5, defaultValue = 3, key = "rating", dark_theme = True )
+
+from st_on_hover_tabs import on_hover_tabs
+import streamlit as st
+st.markdown('<style>' + open('./style.css').read() + '</style>', unsafe_allow_html=True)
+
+
+with st.sidebar:
+    tabs = on_hover_tabs(tabName=['Home', 'AI Chat', 'Project Boston', 'Resume', 'Tableau Dashboard'], 
+                         iconName=['Home', 'AI Chat', 'Project Boston', 'Resume', 'Tableau Dashboard'], default_choice=0)
+
+if tabs =='Home.py':
+    st.write('Name of option is {}'.format(tabs))
+
+elif tabs == 'AI Chat.py':
+    st.write('Name of option is {}'.format(tabs))
+
+elif tabs == 'Project Boston.py':
+    st.write('Name of option is {}'.format(tabs))
+    
+elif tabs == 'Resume.py':
+    st.write('Name of option is {}'.format(tabs))
+    
+elif tabs == 'Tableau Dashboard.py':
+    st.write('Name of option is {}'.format(tabs))
