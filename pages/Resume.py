@@ -24,7 +24,7 @@ def show_resume():
 show_resume()
 
 import json
-import streamlit as st
+from streamlit_timeline import timeline
 
 
 def show_timeline():
