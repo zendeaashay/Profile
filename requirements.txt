@@ -1,4 +1,4 @@
 pandas
 altair
 streamlit_pdf_viewer
-streamlit_star_rating
+streamlit-on-Hover-tabs
