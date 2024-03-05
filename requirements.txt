@@ -10,6 +10,5 @@ pandas
 matplotlib
 folium
 mapclassify
-pydeck
-pyproj
+
 shapely

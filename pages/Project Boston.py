@@ -1,11 +1,11 @@
 import streamlit as st
 import geopandas as gpd
 import pandas as pd
-import pydeck as pdk
-import pyproj
 from shapely import wkt
+import folium
 
 def load_data():
+    # Assuming 'Boston_Neighborhoods.shp' and 'Survey_responses.csv' are correct paths
     neighborhoods = gpd.read_file("Boston_Neighborhoods.shp")
     survey = pd.read_csv("Survey_responses.csv")
     merged_df = pd.read_csv('merg_padl.csv')
@@ -14,6 +14,22 @@ def load_data():
     merged_gdf = gpd.GeoDataFrame(merged_df, geometry='geometry')
     merged_gdf.crs = "EPSG:4326"  # assuming the CRS is WGS84
     return neighborhoods, survey, merged_gdf
+
+def create_folium_map(gdf, value_column):
+    # Initialize a Folium map at a central point
+    m = folium.Map(location=[42.3601, -71.0589], zoom_start=12)
+    # Add neighborhoods as GeoJson
+    folium.GeoJson(
+        gdf,
+        name="geometry",
+        style_function=lambda x: {
+            'fillColor': 'green' if x['properties'][value_column] > 0 else 'white',
+            'color': 'black',
+            'weight': 2,
+            'fillOpacity': 0.5
+        }
+    ).add_to(m)
+    return m
 
 def app():
     st.title('Boston Neighborhood Analysis')
@@ -26,29 +42,10 @@ def app():
         ('fatalities', 'bike_stations_count', 'robbery', 'drug', 'assault', 'SHOOTING')
     )
 
-    # Convert GeoDataFrame to pydeck data format
-    neighborhoods_pydeck = neighborhoods.to_crs(pyproj.CRS.from_epsg(4326))
-
-    # Define the initial view state
-    view_state = pdk.ViewState(
-        latitude=neighborhoods_pydeck.geometry.centroid.y.mean(), 
-        longitude=neighborhoods_pydeck.geometry.centroid.x.mean(), 
-        zoom=11, 
-        bearing=0, 
-        pitch=45
-    )
-
-    # Create a heatmap layer
-    heatmap_layer = pdk.Layer(
-        "HeatmapLayer",
-        data=merged_gdf,
-        get_position=["lon", "lat"],
-        get_weight=option,
-        radius_pixels=50,
-    )
-
-    # Render the map
-    st.pydeck_chart(pdk.Deck(layers=[heatmap_layer], initial_view_state=view_state))
+    # Create the map with the selected option
+    folium_map = create_folium_map(merged_gdf, option)
+    # Streamlit cannot render folium map directly, so we need to use components
+    folium_static(folium_map)
 
     # Optionally, display other data
     st.header('Survey Responses Overview')
@@ -56,6 +53,9 @@ def app():
 
     st.header('Aggregated Data Overview')
     st.write(merged_gdf.head())
+
+# Add this line to make the folium map render in the Streamlit app
+from streamlit_folium import folium_static
 
 if __name__ == "__main__":
     app()
