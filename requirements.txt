@@ -1,4 +1,4 @@
 pandas
 altair
 streamlit_pdf_viewer
-streamlit_text_rating
+streamlit_star_rating

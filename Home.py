@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import altair as alt
+from streamlit_star_rating import st_star_rating
+pip install st-star-rating
 
 df = pd.read_csv('amz.csv')
 
@@ -25,6 +27,4 @@ st.write(""" Hey there! I'm Aashay, a data wizard by day and an adventurous spir
 
 from streamlit_text_rating.st_text_rater import st_text_rater
 
-st.title(" ")
-for text in ["Do you like my page?"]:
-    response = st_text_rater(text=text)
+stars = st_star_rating(label = "Please rate you experience", maxValue = 5, defaultValue = 1, key = "rating", dark_theme = True )
