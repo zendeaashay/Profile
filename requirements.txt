@@ -12,3 +12,4 @@ folium
 mapclassify
 streamlit_folium
 shapely
+branca
