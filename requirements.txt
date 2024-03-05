@@ -7,3 +7,4 @@ streamlit-chat
 streamlit-timeline
 geopandas
 pandas
+matplotlib
