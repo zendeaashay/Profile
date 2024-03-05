@@ -5,8 +5,7 @@ from shapely import wkt
 import folium
 from streamlit_folium import folium_static
 from branca.colormap import linear
-import folium.colormap as cm
-linear = cm.LinearColormap(['green', 'yellow', 'red'], vmin=min_value, vmax=max_value)
+
 
 def load_data():
     neighborhoods = gpd.read_file("Boston_Neighborhoods.shp")
