@@ -5,3 +5,5 @@ streamlit-on-Hover-tabs
 st-star-rating
 streamlit-chat
 streamlit-timeline
+geopandas
+pandas

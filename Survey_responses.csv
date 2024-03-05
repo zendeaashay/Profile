@@ -1,0 +1,63 @@
+Timestamp,Total score,What is your name?,What range does your age lie in?,What is your gender?,Which college do you study in?,Which area do you reside in?,How much rent do you pay per month? ( in $ ),How satisfied are you with the current cost of your accommodation? ,What mode of transportation do you primarily use to commute to your college? ,How satisfied are you with the public transportation options available in your area,How much do you spend on transportation daily?
+2023/12/02 11:28:17 PM EST,0.00 / 0,Umesh,20-30,Male,,Dorchester,2000 - 4000,2,Bus,5,0 - 10
+2023/12/02 11:31:02 PM EST,0.00 / 0,Sai,20-30,Male,NEU,Brighton ,1000 - 2000,4,Train,4,0 - 10
+2023/12/02 11:32:16 PM EST,0.00 / 0,Ariv,20-30,Male,BU,Dorchester ,1000 - 2000,4,Bus,4,0 - 10
+2023/12/02 11:36:43 PM EST,0.00 / 0,Swarna ,30-40,Female,BC,Downtown,2000 - 4000,5,Walk,4,20-Oct
+2023/12/02 11:37:16 PM EST,0.00 / 0,Nikhil,30-40,Male,Harvard,Mission hill ,4000 - 8000,5,Train,4,0 - 10
+2023/12/02 11:38:05 PM EST,0.00 / 0,Tanisha,30-40,Female,NEU,Jamaica Plain,2000 - 4000,4,Bus,4,0 - 10
+2023/12/02 11:38:35 PM EST,0.00 / 0,Vishal,20-30,Male,NEU,East Boston,2000 - 4000,4,Train,4,20-Oct
+2023/12/02 11:39:05 PM EST,0.00 / 0,Aaron ,30-40,Male,BU,Chinatown,4000 - 8000,5,Train,5,20-Oct
+2023/12/02 11:39:35 PM EST,0.00 / 0,Adam,20-Oct,Male,BC,Fenway,4000 - 8000,4,Bus,5,20-Oct
+2023/12/02 11:40:08 PM EST,0.00 / 0,Brody ,20-30,Male,Harvard,Fenway,4000 - 8000,4,Bus,4,20-Oct
+2023/12/02 11:40:42 PM EST,0.00 / 0,Koushik,20-30,Male,MIT,Brighton,2000 - 4000,4,Walk,4,0 - 10
+2023/12/02 11:41:26 PM EST,0.00 / 0,Sharanya,20-30,Female,BU,Allston,4000 - 8000,4,Personal vehicle,4,0 - 10
+2023/12/02 11:41:57 PM EST,0.00 / 0,Riya,20-30,Female,BU,Allston,2000 - 4000,5,Personal vehicle,4,20-Oct
+2023/12/02 11:42:41 PM EST,0.00 / 0,Ananya,20-Oct,Female,Harvard,Longwood,4000 - 8000,4,Train,4,20-Oct
+2023/12/02 11:43:30 PM EST,0.00 / 0,Raphaël ,20-30,Male,Harvard,Allston,4000 - 8000,4,Train,4,20-Oct
+2023/12/02 11:45:00 PM EST,0.00 / 0,Nive ,20-30,Female,BC,Longwood,4000 - 8000,3,Walk,5,0 - 10
+2023/12/02 11:45:38 PM EST,0.00 / 0,Pooja,20-30,Female,MIT,Chinatown,4000 - 8000,4,Personal vehicle,3,0 - 10
+2023/12/02 11:46:16 PM EST,0.00 / 0,Tanishka Jain,20-30,Female,BU,Dorchester,2000 - 4000,4,Train,4,20-Oct
+2023/12/02 11:47:50 PM EST,0.00 / 0,Andrew tate ,30-40,Male,Harvard,Mission Hill,> 8000,5,Personal vehicle,4,20-Oct
+2023/12/02 11:55:40 PM EST,0.00 / 0,Tristan,30-40,Male,MIT,Allston,4000 - 8000,4,Bike,4,20-Oct
+2023/12/02 11:56:35 PM EST,0.00 / 0,Trisha ,30-40,Female,BU,Dorchester,4000 - 8000,4,Train,4,0 - 10
+2023/12/02 11:56:59 PM EST,0.00 / 0,Poornima,30-40,Female,Harvard,Allston,2000 - 4000,4,Train,4,20 - 30
+2023/12/02 11:57:20 PM EST,0.00 / 0,Vrnda ,20-30,Female,Harvard,Chinatown ,4000 - 8000,3,Train,3,0 - 10
+2023/12/02 11:57:54 PM EST,0.00 / 0,Pranav ,20-30,Male,MIT,East Boston,2000 - 4000,4,Train,4,0 - 10
+2023/12/02 11:58:21 PM EST,0.00 / 0,Ali ,20-Oct,Male,BU,Longwood,2000 - 4000,4,Walk,3,0 - 10
+2023/12/02 11:58:49 PM EST,0.00 / 0,Ray Zimson,20-30,Male,NEU,Brighton,2000 - 4000,3,Train,4,20-Oct
+2023/12/03 12:30:56 AM EST,0.00 / 0,Emily Johnson,20-30,Female,NEU,Allston,1000 - 2000,3,Train,3,0 - 10
+2023/12/03 12:31:34 AM EST,0.00 / 0,Brandon Davis,20-30,Male,BU,Back Bay,2000 - 4000,4,Train,4,20-Oct
+2023/12/03 12:32:19 AM EST,0.00 / 0,Sarah Smith,20-30,Female,Harvard,Back Bay,4000 - 8000,4,Personal vehicle,5,20 - 30
+2023/12/03 12:33:48 AM EST,0.00 / 0,Kevin Taylor,20-Oct,Male,NEU,Brighton,1000 - 2000,3,Bus,3,0 - 10
+2023/12/03 12:34:24 AM EST,0.00 / 0,Lauren Miller,20-Oct,Female,NEU,,1000 - 2000,1,Bus,1,0 - 10
+2023/12/03 12:35:00 AM EST,0.00 / 0,Lauren Miller,20-Oct,Female,BC,Charlestown ,2000 - 4000,4,Bike,4,20-Oct
+2023/12/03 12:35:36 AM EST,0.00 / 0,Alex Thompson,20-30,Male,BU,Back Bay,1000 - 2000,1,Bus,1,0 - 10
+2023/12/03 12:37:24 AM EST,0.00 / 0,Jessica Martinez,20-Oct,Female,Harvard,Chinatown,2000 - 4000,4,Personal vehicle,3,20-Oct
+2023/12/03 12:37:48 AM EST,0.00 / 0,Ryan Turner,20-Oct,Male,NEU,,> 8000,5,Train,5,20 - 30
+2023/12/03 12:38:14 AM EST,0.00 / 0,Megan Harris,20-30,Male,Harvard,,4000 - 8000,3,Train,4,20-Oct
+2023/12/03 12:38:52 AM EST,0.00 / 0,Tyler Clark,20-Oct,Male,MIT,Dorchester ,1000 - 2000,3,Bus,4,20 - 30
+2023/12/03 12:39:16 AM EST,0.00 / 0,Taylor Robinson,20-Oct,Male,BC,Roxbury ,2000 - 4000,2,Personal vehicle,2,20 - 30
+2023/12/03 12:39:42 AM EST,0.00 / 0,Justin White ,20-30,Male,UMass,Roxbury ,4000 - 8000,4,Bus,4,20 - 30
+2023/12/03 12:40:03 AM EST,0.00 / 0,Samantha Lee,20-Oct,Female,NEU,Dorchester ,1000 - 2000,2,Train,2,20 - 30
+2023/12/03 12:40:41 AM EST,0.00 / 0,Rohit Patel,20-30,Male,NEU,South Boston ,2000 - 4000,2,Walk,3,0 - 10
+2023/12/03 12:41:34 AM EST,0.00 / 0,Nisha Sharma,20-30,Female,NEU,Roxbury Crossing ,2000 - 4000,5,Bus,5,0 - 10
+2023/12/03 12:41:58 AM EST,0.00 / 0,Rahul Gupta,20-Oct,Male,NEU,Dorchester ,2000 - 4000,5,Bus,5,0 - 10
+2023/12/03 12:42:26 AM EST,0.00 / 0,Anjali Singh,20-Oct,Female,BU,South Boston ,4000 - 8000,2,Train,2,0 - 10
+2023/12/03 12:42:46 AM EST,0.00 / 0,Akash Kapoor,20-Oct,Male,NEU,Roxbury ,2000 - 4000,3,Personal vehicle,2,0 - 10
+2023/12/03 12:43:21 AM EST,0.00 / 0,Priya Reddy,20-Oct,Female,NEU,East Boston,4000 - 8000,2,Train,4,20-Oct
+2023/12/03 12:43:49 AM EST,0.00 / 0,Rajiv Verma,20-Oct,Male,NEU,Fenway ,1000 - 2000,5,Walk,5,0 - 10
+2023/12/03 12:44:16 AM EST,0.00 / 0,Ayesha Khan,20-Oct,Female,NEU,Mission Main,2000 - 4000,5,Walk,5,0 - 10
+2023/12/03 12:44:54 AM EST,0.00 / 0,Siddharth Kumar ,20-30,Male,NEU,Mattapan,1000 - 2000,4,Personal vehicle,3,0 - 10
+2023/12/03 12:45:31 AM EST,0.00 / 0,Pooja Sharma,20-Oct,Female,NEU,Jamaica Plain,4000 - 8000,2,Bus,2,0 - 10
+2023/12/03 12:46:04 AM EST,0.00 / 0,Arjun Mehta,20-Oct,Male,NEU,Longwood,2000 - 4000,2,Bus,2,0 - 10
+2023/12/03 12:46:38 AM EST,0.00 / 0,Shreyas Das,20-30,Male,NEU,North End,2000 - 4000,1,Bus,1,0 - 10
+2023/12/03 12:47:07 AM EST,0.00 / 0,Vivek Rajan,20-Oct,Male,NEU,Harbor Islands,1000 - 2000,1,Bus,1,0 - 10
+2023/12/03 12:47:35 AM EST,0.00 / 0,Ananya Kapoor,20-30,Female,NEU,Roxbury ,2000 - 4000,5,Bus,5,20 - 30
+2023/12/03 12:48:03 AM EST,0.00 / 0,Vikram Singh,20-30,Male,BU,Longwood ,2000 - 4000,4,Bus,2,0 - 10
+2023/12/03 12:54:33 AM EST,0.00 / 0,Niyati,20-30,Female,NEU,Mission hill,2000 - 4000,4,Walk,5,0 - 10
+2023/12/03 1:01:51 AM EST,0.00 / 0,Sai Alekhya ,20-30,Female,NEU,Jamaica plain,500,5,Bus,3,0 - 10
+2023/12/03 1:25:46 AM EST,0.00 / 0,Nayana,20-30,Female,NEU,Brookline,2000 - 4000,4,Train,4,0 - 10
+2023/12/03 4:54:31 AM EST,0.00 / 0,Monica Reddy,20-30,Female,NEU,Roxbury,1000 - 2000,4,Bus,2,20-Oct
+2023/12/03 9:02:47 AM EST,0.00 / 0,Anita,20-30,Female,NEU,Malden,1000 - 2000,2,Train,3,0 - 10
+2023/12/03 10:50:19 AM EST,0.00 / 0,,20-30,Female,NEU,medford,2000 - 4000,2,Train,5,0 - 10
+2023/12/03 11:59:12 AM EST,0.00 / 0,Pratap,20-30,Male,NEU,Lma ,1000 - 2000,1,Walk,3,0 - 10
