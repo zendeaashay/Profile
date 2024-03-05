@@ -4,5 +4,5 @@ streamlit_pdf_viewer
 streamlit-on-Hover-tabs
 st-star-rating
 streamlit-chat
-streamlit.components.v1
+streamlit-embedcode
 streamlit-timeline

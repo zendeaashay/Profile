@@ -1,11 +1,12 @@
 import streamlit as st
-from streamlit.components.v1 import html
+from streamlit_embedcode import embed_code
 
 # Page Configuration
 st.set_page_config(page_title='Tableau Dashboard', layout='wide')
 
-# Tableau Embed Code
-tableau_embed_code = """
+# Your Tableau dashboard URL
+tableau_dashboard_url = """
+
 <div class='tableauPlaceholder' id='viz1709650280011' style='position: relative'>
     <noscript><a href='#'>
         <img alt='Amazon Net GMV across Time (USD$ Millions)' 
@@ -38,5 +39,5 @@ tableau_embed_code = """
 </script>
 """
 
-# Using the `html` function to render the embed code in the Streamlit app
-html(tableau_embed_code, height=887)
+# Embed the Tableau Dashboard using the embed_code function
+embed_code(tableau_dashboard_url, height=800)
