@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import altair as alt
 from streamlit_star_rating import st_star_rating
-pip install st-star-rating
 
 df = pd.read_csv('amz.csv')
 
