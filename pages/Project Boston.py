@@ -2,6 +2,7 @@ import streamlit as st
 import geopandas as gpd
 import pandas as pd
 import pydeck as pdk
+import pyproj
 
 def load_data():
     neighborhoods = gpd.read_file("Boston_Neighborhoods.shp")
