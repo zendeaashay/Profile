@@ -23,7 +23,6 @@ def create_folium_map(gdf, value_column):
         gdf,
         name="geometry",
         style_function=lambda x: {
-            'color': 'black',
             'weight': 2,
             'fillOpacity': 0.5
         }
