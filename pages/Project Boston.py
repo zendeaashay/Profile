@@ -10,7 +10,7 @@ def load_data():
     survey['What range does your age lie in?'] = survey['What range does your age lie in?'].replace('20-Oct', '10 - 20')
 
     # Read the merged_df.csv file
-    merged_df = pd.read_csv('/mnt/data/merged_df.csv')
+    merged_df = pd.read_csv('merged_df.csv')
     
     return neighborhoods, survey, merged_df
 
