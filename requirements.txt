@@ -10,5 +10,5 @@ pandas
 matplotlib
 folium
 mapclassify
-
+streamlit_folium
 shapely
