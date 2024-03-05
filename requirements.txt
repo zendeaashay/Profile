@@ -8,3 +8,5 @@ streamlit-timeline
 geopandas
 pandas
 matplotlib
+folium
+mapclassify
