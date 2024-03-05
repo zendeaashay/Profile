@@ -1,8 +1,15 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Mar  5 10:13:45 2024
+import json
+import streamlit as st
 
-@author: aashayzende
-"""
 
+def show_timeline():
+    st.title("My Professional Timeline")
+    
+    with open('timeline_data.json', "r") as f:
+        timeline_data = json.load(f)
+
+    
+    timeline(timeline_data, height=800)
+
+
+show_timeline()
