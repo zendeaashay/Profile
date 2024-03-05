@@ -5,3 +5,4 @@ streamlit-on-Hover-tabs
 st-star-rating
 streamlit-chat
 streamlit.components
+streamlit-timeline
