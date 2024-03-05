@@ -3,3 +3,4 @@ altair
 streamlit_pdf_viewer
 streamlit-on-Hover-tabs
 st-star-rating
+streamlit-chat
