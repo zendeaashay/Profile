@@ -11,3 +11,4 @@ matplotlib
 folium
 mapclassify
 pydeck
+pyproj
