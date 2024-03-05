@@ -12,3 +12,4 @@ folium
 mapclassify
 pydeck
 pyproj
+shapely
