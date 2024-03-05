@@ -5,7 +5,8 @@ from shapely import wkt
 import folium
 from streamlit_folium import folium_static
 from branca.colormap import linear
-
+import folium.colormap as cm
+linear = cm.LinearColormap(['green', 'yellow', 'red'], vmin=min_value, vmax=max_value)
 
 def load_data():
     neighborhoods = gpd.read_file("Boston_Neighborhoods.shp")
@@ -24,7 +25,7 @@ def create_folium_map(gdf, value_column):
         data=gdf,
         columns=['neighborhood', value_column],
         key_on='feature.properties.neighborhood',
-        fill_color='red',
+        fill_color='GnBu',
         fill_opacity=0.7,
         line_opacity=0.2,
         legend_name=value_column
