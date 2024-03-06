@@ -13,3 +13,4 @@ mapclassify
 streamlit_folium
 shapely
 branca
+tableauserverclient
