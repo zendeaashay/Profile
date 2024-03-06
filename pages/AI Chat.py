@@ -2,8 +2,7 @@ from openai import OpenAI
 import streamlit as st
 
 st.title("AshGPT")
-openai_api = "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"
-openai.api_key = st.secrets["openai_api"]
+openai.api_key = st.secrets["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"]
 
 if "openai_model" not in st.session_state:
     st.session_state["openai_model"] = "gpt-3.5-turbo"
