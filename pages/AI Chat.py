@@ -1,38 +1,39 @@
+from openai import OpenAI
 import streamlit as st
-from streamlit_chat import message
 
-# Setup the page configuration
-st.set_page_config(page_title='Welcome to my page!', 
-                   page_icon="🏂",
-                   layout='wide',
-                   initial_sidebar_state="expanded")
+st.title("AshGPT")
 
-# Define the initial state if it doesn't exist
-if 'chat_history' not in st.session_state:
-    st.session_state.chat_history = []
+openai.api_key = st.secrets["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"]
+client = OpenAI(api_key=st.secrets["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"])
 
-# Function to handle user input
-def handle_user_input():
-    if 'user_input' in st.session_state and st.session_state.user_input:
-        user_message = st.session_state.user_input
-        st.session_state.chat_history.append({'message': user_message, 'is_user': True})
-        # Here you should add the response generation logic
-        bot_response = "This is a placeholder response."
-        st.session_state.chat_history.append({'message': bot_response, 'is_user': False})
-        # Clear the input box by resetting the value
-        st.session_state.user_input = ""
+if "openai_model" not in st.session_state:
+    st.session_state["openai_model"] = "gpt-3.5-turbo"
 
-# Function to clear the chat history
-def clear_chat():
-    st.session_state.chat_history = []
+# initializing chat history
+if "messages" not in st.session_state:
+    st.session_state.messages = []
 
-# User input text box
-user_input = st.text_input("Type your message here...", key="user_input", on_change=handle_user_input)
+for message in st.session_state.messages:
+    with st.chat_message(message["role"]):
+        st.markdown(message["content"])
 
-# Display chat messages
-for chat in st.session_state.chat_history:
-    message(chat['message'], is_user=chat['is_user'])
+if prompt:
+    with st.chat_message("user"):
+        st.markdown(prompt)
+        st.session_state.messages.append({"role": "user", "content": prompt})
 
-# Button to clear chat history
-if st.button('Clear Chat'):
-    clear_chat()
+    with st.chat_message("assistant"):
+        message_placeholder = st.empty()
+        full_response = ""
+        for response in openai.ChatCompletion.create(
+            model=st.session_state["openai_model"],
+            messages=[
+                {"role": m["role"], "content": m["content"]}
+                for m in st.session_state.messages
+            ],
+            stream=True,
+        )
+        full_response += response.choices[0].delta.get("content", "")
+        message_placeholder.markdown(full_response + " ")
+        message_placeholder.markdown(full_response)
+    st.session_state.messages.append({"role": "assistant", "content": full_response})
