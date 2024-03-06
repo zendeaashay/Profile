@@ -6,6 +6,36 @@ import folium
 from streamlit_folium import folium_static
 from branca.colormap import linear
 
+def app():
+    st.title('Boston Neighborhood Analysis')
+    
+    # Description of the Project
+    st.header('Project Description')
+    st.write('Here you can describe what the project is about, the goals, and any other relevant information.')
+
+    # Steps Taken in the Project
+    st.header('Project Steps')
+    st.write('List the steps taken during the project, like data collection, analysis, and findings.')
+
+    # Including PDF and presentation
+    st.header('Project Materials')
+    st.write('You can view more details about the project in the following materials:')
+    
+    # PDF
+    with open("Project Group5 Final Report.pdf", "rb") as pdf_file:
+        PDFbyte = pdf_file.read()
+        st.download_button(label="Download Project Report",
+                           data=PDFbyte,
+                           file_name="Project Group5 Final Report.pdf",
+                           mime='application/octet-stream')
+        
+    # Presentation
+    with open("Presentation Group 5.pptx", "rb") as pptx_file:
+        PPTXbyte = pptx_file.read()
+        st.download_button(label="Download Presentation",
+                           data=PPTXbyte,
+                           file_name="Presentation Group 5.pptx",
+                           mime='application/vnd.openxmlformats-officedocument.presentationml.presentation')
 
 def load_data():
     neighborhoods = gpd.read_file("Boston_Neighborhoods.shp")
