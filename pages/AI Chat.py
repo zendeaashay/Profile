@@ -3,7 +3,7 @@ import streamlit as st
 
 st.title("AshGPT")
 
-openai.api_key = st.secrets["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"]
+openai.api_key = st.secrets["openai"]["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"]
 client = OpenAI(api_key=st.secrets["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"])
 
 if "openai_model" not in st.session_state:
