@@ -24,37 +24,7 @@ st.write(""" Hey there! I'm Aashay, a data wizard by day and an adventurous spir
     I also love [painting](#) and [photography](#)
     """)
 
-from st_on_hover_tabs import on_hover_tabs
 
-st.markdown('<style>' + open('./style.css').read() + '</style>', unsafe_allow_html=True)
-
-
-with st.sidebar:
-    tabs = on_hover_tabs(tabName=['Home', 'AI Chat', 'Project Boston', 'Resume', 'Tableau Dashboard'], 
-                         iconName=['Home', 'AI Chat', 'Project Boston', 'Resume', 'Tableau Dashboard'], 
-                         default_choice=0)
-
-# Conditional rendering based on the selected tab
-if tabs =='Home':
-    # Include the content for Home tab
-    st.write('This is the Home tab content.')
-
-elif tabs == 'AI Chat':
-    # Include the content for AI Chat tab
-    st.write('This is the AI Chat tab content.')
-
-elif tabs == 'Project Boston':
-    # Include the content for Project Boston tab
-    st.write('This is the Project Boston tab content.')
-    
-elif tabs == 'Resume':
-    # Include the content for Resume tab
-    st.write('This is the Resume tab content.')
-    
-elif tabs == 'Tableau Dashboard':
-    # Include the content for Tableau Dashboard tab
-    st.write('This is the Tableau Dashboard tab content.')
-    
 from streamlit_star_rating import st_star_rating
 
 st.write("Please rate your experience with this page:")
