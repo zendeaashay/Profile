@@ -16,7 +16,7 @@ dashboard_selection = st.selectbox(
 )
 
 # Get the HTML for the selected dashboard
-dashboard_html = get_tableau_dashboard_html(dashboard_selection)
+dashboard_html1 = get_tableau_dashboard_html(dashboard_selection)
 
 # Render the selected dashboard
-st.markdown(dashboard_html, unsafe_allow_html=True)
+st.markdown(dashboard_html1, unsafe_allow_html=True)
