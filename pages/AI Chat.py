@@ -15,6 +15,7 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
+prompt = st.chat_input("What is up?")
 if prompt:
     with st.chat_message("user"):
         st.markdown(prompt)
@@ -34,4 +35,4 @@ if prompt:
             full_response += response.choices[0].delta.get("content", "")
             message_placeholder.markdown(full_response + " ")
         message_placeholder.markdown(full_response)
-    st.session_state.messages.append({"role": "assistant", "content": full_response})
+    st.session_state.messages.append({"role": "assistant", "content": full_response}) 
