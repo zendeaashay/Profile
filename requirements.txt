@@ -15,4 +15,4 @@ shapely
 branca
 tableauserverclient
 plotly
-openai
+openai==0.28
