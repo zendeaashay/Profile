@@ -58,4 +58,4 @@ elif tabs == 'Tableau Dashboard':
 from streamlit_star_rating import st_star_rating
 
 st.write("Please rate your experience with this page:")
-stars = st_star_rating(label = " ", maxValue = 5, defaultValue = 3, key = "rating", dark_theme = True )
+stars = st_star_rating(label = " ", maxValue = 5, defaultValue = 5, key = "rating", dark_theme = True )
