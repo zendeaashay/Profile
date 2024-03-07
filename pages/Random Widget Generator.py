@@ -6,6 +6,8 @@ Created on Thu Mar  7 00:09:55 2024
 @author: aashayzende
 """
 from streamlit_faker import get_streamlit_faker
+st.header('Hey there!')
+st.write('This page generates random words and maps everytime you change the slider (seed) number')
 st_faker = get_streamlit_faker()
 st_faker.subheader()
 st_faker.markdown()
