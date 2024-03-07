@@ -16,4 +16,4 @@ branca
 tableauserverclient
 plotly
 openai
-openai migrate
+streamlit-faker
