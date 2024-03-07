@@ -1,7 +1,7 @@
 import openai
 from openai import OpenAI
 import streamlit as st
-openai migrate
+
 st.title("AshGPT")
 openai.api_key = st.secrets["openai_api"]
 
