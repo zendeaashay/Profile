@@ -3,7 +3,7 @@ altair
 streamlit_pdf_viewer
 streamlit-on-Hover-tabs
 st-star-rating
-streamlit-chat
+Streamlit-extras
 streamlit-timeline
 geopandas
 pandas
@@ -16,3 +16,4 @@ branca
 tableauserverclient
 plotly
 openai
+openai migrate
