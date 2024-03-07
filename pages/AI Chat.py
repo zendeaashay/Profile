@@ -1,8 +1,15 @@
 import openai
+from openai import OpenAI
 import streamlit as st
-
+openai migrate
 st.title("AshGPT")
 openai.api_key = st.secrets["openai_api"]
+
+
+from streamlit_lottie import st_lottie
+
+with st.echo():
+    st_lottie("Animation - 1709789955127.json")
 
 if "openai_model" not in st.session_state:
     st.session_state["openai_model"] = "gpt-3.5-turbo"
