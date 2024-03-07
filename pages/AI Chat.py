@@ -7,9 +7,12 @@ openai.api_key = st.secrets["openai_api"]
 
 
 from streamlit_lottie import st_lottie
-
-with st.echo():
-    st.lottie("Animation - 1709789955127.json")
+import requests
+def load_lottieurl(url: str):
+    r = requests.get(url)
+    if r.status_code != 200:
+        return None
+    return r.json()
 
 if "openai_model" not in st.session_state:
     st.session_state["openai_model"] = "gpt-3.5-turbo"
