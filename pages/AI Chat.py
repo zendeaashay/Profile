@@ -14,6 +14,12 @@ def load_lottieurl(url: str):
         return None
     return r.json()
 
+lottie_animation_url = 'Animation - 1709789955127.json'
+lottie_animation_json = load_lottieurl(lottie_animation_url)
+
+if lottie_animation_json:
+    st_lottie(lottie_animation_json)
+
 if "openai_model" not in st.session_state:
     st.session_state["openai_model"] = "gpt-3.5-turbo"
 
