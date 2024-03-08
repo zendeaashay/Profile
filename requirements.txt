@@ -21,3 +21,4 @@ streamlit_lottie
 llama-index
 nltk
 PyPDF2
+langchain
