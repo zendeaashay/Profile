@@ -16,10 +16,21 @@ def load_data():
     merged_gdf.crs = "EPSG:4326"
     return neighborhoods, survey, merged_gdf
 
-# Generate folium map here
 def create_folium_map(gdf, value_column):
-    # Your map creation code
-    pass
+    m = folium.Map(location=[42.3601, -71.0589], zoom_start=12)
+    folium.Choropleth(
+        geo_data=gdf,
+        name='choropleth',
+        data=gdf,
+        columns=['neighborhood', value_column],
+        key_on='feature.properties.neighborhood',
+        fill_color='YlOrBr',
+        fill_opacity=0.7,
+        line_opacity=0.2,
+        legend_name=value_column
+    ).add_to(m)
+    folium.LayerControl().add_to(m)
+    return m
 
 # Main app function
 def app():
@@ -40,8 +51,8 @@ def app():
     # Functionality for selecting data to be displayed on the map
     neighborhoods, survey, merged_gdf = load_data()
     option = st.selectbox(
-        'Choose a value to plot on the map:',
-        ('fatalities', 'bike_stations_count', 'robbery', 'drug', 'assault', 'SHOOTING')
+       'Choose a value to plot on the map:',
+       ('fatalities', 'bike_stations_count', 'robbery', 'drug', 'assault', 'SHOOTING')
     )
     folium_map = create_folium_map(merged_gdf, option)
     folium_static(folium_map)
