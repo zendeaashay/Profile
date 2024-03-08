@@ -11,31 +11,57 @@ def app():
     
     # Description of the Project
     st.header('Project Description')
-    st.write('Here you can describe what the project is about, the goals, and any other relevant information.')
+    st.write('''
+        The Boston Neighborhood Analysis project was undertaken as part of the Data Wrangling for Business 
+        subject during my MS in Business Analytics. Our team aimed to analyze various aspects of Boston's 
+        neighborhoods, such as property values, crime rates, and infrastructure, to understand the factors 
+        that contribute to their livability and economic status. 
+    ''')
 
     # Steps Taken in the Project
     st.header('Project Steps')
-    st.write('List the steps taken during the project, like data collection, analysis, and findings.')
+    st.write('''
+        The project involved several key steps:
+        - **Data Collection**: We gathered datasets related to property assessments, crime records, 
+          transportation, and demographic surveys.
+        - **Data Preprocessing and Cleaning**: Our initial step was to clean the datasets, where we handled 
+          missing values, standardized categories, and filtered necessary columns. This ensured the quality 
+          and consistency of our data for analysis.
+        - **Exploratory Data Analysis (EDA)**: We conducted a thorough EDA to uncover trends and patterns 
+          within the data, which helped guide our further analysis.
+        - **Geospatial Analysis**: Utilizing GeoPandas, we created visualizations to map the neighborhoods 
+          and understand the spatial distribution of various factors.
+        - **Predictive Modeling**: We employed an ExtraTreesRegressor to predict property values based on 
+          features like location, property size, and amenities.
+        - **Heatmap Visualization**: The final step was to create interactive heatmaps using folium to 
+          visualize complex data such as crime rates and property values, allowing for an intuitive understanding 
+          of the neighborhood dynamics.
+    ''')
 
     # Including PDF and presentation
     st.header('Project Materials')
-    st.write('You can view more details about the project in the following materials:')
+    st.write('''
+        Dive deeper into our project through the following materials:
+    ''')
     
     # PDF
+    st.write('**Project Report**')
     with open("Project Group5 Final Report.pdf", "rb") as pdf_file:
         PDFbyte = pdf_file.read()
-        st.download_button(label="Download Project Report",
-                           data=PDFbyte,
-                           file_name="Project Group5 Final Report.pdf",
-                           mime='application/octet-stream')
-        
+    st.download_button(label="Download Project Report",
+                       data=PDFbyte,
+                       file_name="Project_Group5_Final_Report.pdf",
+                       mime='application/pdf')
+    
     # Presentation
+    st.write('**Presentation Slides**')
     with open("Presentation Group 5.pptx", "rb") as pptx_file:
         PPTXbyte = pptx_file.read()
-        st.download_button(label="Download Presentation",
-                           data=PPTXbyte,
-                           file_name="Presentation Group 5.pptx",
-                           mime='application/vnd.openxmlformats-officedocument.presentationml.presentation')
+    st.download_button(label="Download Presentation",
+                       data=PPTXbyte,
+                       file_name="Presentation_Group_5.pptx",
+                       mime='application/vnd.openxmlformats-officedocument.presentationml.presentation')
+
 
 def load_data():
     neighborhoods = gpd.read_file("Boston_Neighborhoods.shp")
