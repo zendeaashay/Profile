@@ -20,5 +20,5 @@ openai
 langchain
 PyPDF2
 Requests
-faiss-gpu
+faiss-cpu
 pymongo
