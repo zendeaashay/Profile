@@ -1,7 +1,6 @@
 pandas
 altair
 streamlit_pdf_viewer
-streamlit-on-Hover-tabs
 st-star-rating
 Streamlit-extras
 streamlit-timeline
@@ -21,4 +20,3 @@ streamlit_lottie
 llama-index
 nltk
 PyPDF2
-langchain

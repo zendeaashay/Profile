@@ -1,20 +1,19 @@
 from llama_index import VectorStoreIndex, ServiceContext, Document
 from llama_index.llms import OpenAI
 import openai
-from llama_index import SimpleDirectoryReader
 import streamlit as st
 import requests
+from streamlit_lottie import st_lottie
 import PyPDF2
-import os
 
-# Function to load and display a lottie animation
+# Function to load and display a Lottie animation
 def load_lottieurl(url: str):
     r = requests.get(url)
     if r.status_code != 200:
         return None
     return r.json()
 
-# Function to read PDF and extract the text
+# Function to read PDF and extract text
 def extract_text_from_pdf(pdf_path):
     with open(pdf_path, "rb") as file:
         reader = PyPDF2.PdfReader(file)
@@ -23,17 +22,33 @@ def extract_text_from_pdf(pdf_path):
             text += page.extract_text() + "\n"
         return text
 
-# Function to initialize the chatbot messages
+# Initialize the app and chat history
 def init_chatbot():
     st.session_state["openai_model"] = "gpt-3.5-turbo"
     st.session_state.messages = []
-    st.session_state.resume_text = extract_text_from_pdf("Aashay Zende - Resume.pdf")
+
+    # Load resume text from the PDF and set it as a part of session state
+    st.session_state.resume_text = extract_text_from_pdf("./data/Aashay Zende - Resume.pdf")
+
+# Function to load and index data
+@st.cache_resource(show_spinner=False)
+def load_data():
+    with open("path/to/your/resume.pdf", "rb") as file:
+        reader = PdfReader(file)
+        text = ""
+        for page in reader.pages:
+            text += page.extract_text() + "\n"
+        doc = Document(content=text)
+        # Proceed with creating the ServiceContext and VectorStoreIndex
+        service_context = ServiceContext.from_defaults(...)
+        index = VectorStoreIndex.from_documents([doc], service_context=service_context)
+        return index
 
 # Initialize the chatbot if it's the first time
 if "messages" not in st.session_state:
     init_chatbot()
 
-# Display the lottie animation at the top of the page
+# Display the Lottie animation at the top of the page
 lottie_animation_url = 'https://lottie.host/4333fb5c-1feb-490c-ba53-ffc21d1a2d1a/tPyaLx2aD3.json'
 lottie_animation_json = load_lottieurl(lottie_animation_url)
 if lottie_animation_json:
@@ -42,6 +57,10 @@ if lottie_animation_json:
 # Display the chatbot UI
 st.title("AshGPT Chatbot")
 openai.api_key = st.secrets["openai_api"]
+
+# Load and index data
+index = load_data()
+chat_engine = index.as_chat_engine(chat_mode="condense_question", verbose=True)
 
 # Display previous chat messages
 for message in st.session_state.messages:
@@ -58,15 +77,7 @@ if prompt:
     with st.chat_message("assistant"):
         message_placeholder = st.empty()
 
-        # Respond with resume text if the user asks about professional experience
-        if "professional experience" in prompt.lower():
-            full_response = st.session_state.resume_text
-        else:
-            # Use LLM to generate a response for other questions
-            full_response = openai.Completion.create(
-                model=st.session_state["openai_model"],
-                messages=[{"role": m["role"], "content": m["content"]} for m in st.session_state.messages]
-            )["choices"][0]["message"]["content"]
-
-        message_placeholder.markdown(full_response)
-        st.session_state.messages.append({"role": "assistant", "content": full_response})
+        # Generate response using the chat engine
+        response = chat_engine.chat(prompt)
+        message_placeholder.markdown(response.response)
+        st.session_state.messages.append({"role": "assistant", "content": response.response})
