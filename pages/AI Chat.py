@@ -9,7 +9,7 @@ from langchain.prompts import load_prompt
 
 # Title for your AI resume chatbox
 st.title("AshGPT")
-
+openai_api = "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"
 # Load OpenAI API key
 openai.api_key = st.secrets["openai_api"]
 
