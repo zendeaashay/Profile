@@ -8,20 +8,6 @@ st.title("AshGPT")
 openai.api_key = st.secrets["openai_api"]
 
 
-from streamlit_lottie import st_lottie
-import requests
-def load_lottieurl(url: str):
-    r = requests.get(url)
-    if r.status_code != 200:
-        return None
-    return r.json()
-
-lottie_animation_url = 'https://lottie.host/4333fb5c-1feb-490c-ba53-ffc21d1a2d1a/tPyaLx2aD3.json'
-lottie_animation_json = load_lottieurl(lottie_animation_url)
-
-if lottie_animation_json:
-    st_lottie(lottie_animation_json)
-
 if "openai_model" not in st.session_state:
     st.session_state["openai_model"] = "gpt-3.5-turbo"
 

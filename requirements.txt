@@ -19,4 +19,3 @@ streamlit-faker
 streamlit_lottie
 llama-index
 nltk
-PyPDF2
