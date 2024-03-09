@@ -3,6 +3,7 @@ from llama_index.llms import OpenAI
 import openai
 from llama_index import SimpleDirectoryReader
 import streamlit as st
+from llama_index.core import VectorStoreIndex,SimpleDirectoryReader,ServiceContext
 
 st.title("AshGPT")
 openai.api_key = st.secrets["openai_api"]
