@@ -14,7 +14,7 @@ shapely
 branca
 tableauserverclient
 plotly
-openai
+openai==0.28
 streamlit-faker
 streamlit_lottie
 llama-index
