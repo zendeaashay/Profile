@@ -33,8 +33,8 @@ def init_chatbot():
 # Function to load and index data
 @st.cache_resource(show_spinner=False)
 def load_data():
-    with open("path/to/your/resume.pdf", "rb") as file:
-        reader = PdfReader(file)
+    with open("Aashay Zende - Resume.pdf", "rb") as file:
+        reader = PyPDF2.PdfReader(file)
         text = ""
         for page in reader.pages:
             text += page.extract_text() + "\n"
