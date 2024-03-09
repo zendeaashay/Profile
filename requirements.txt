@@ -17,5 +17,6 @@ plotly
 openai==0.28
 streamlit-faker
 streamlit_lottie
-llama-index
+llama-index==0.5.6
 nltk
+langchain==0.0.148
