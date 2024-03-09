@@ -18,5 +18,6 @@ openai==0.28
 streamlit-faker
 streamlit_lottie
 llama-index
+llama_index.core
 nltk
 langchain==0.0.148
