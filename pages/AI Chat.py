@@ -1,44 +1,64 @@
-
-
-import openai
 import streamlit as st
-from llama_index.core import VectorStoreIndex,SimpleDirectoryReader,ServiceContext
+import openai
+from langchain.embeddings.openai import OpenAIEmbeddings
+from langchain.llms import OpenAI
+from langchain.chains import ConversationalRetrievalChain
+from langchain.document_loaders.csv_loader import CSVLoader
+from langchain.vectorstores import FAISS
+from langchain.prompts import load_prompt
 
+# Title for your AI resume chatbox
 st.title("AshGPT")
+
+# Load OpenAI API key
 openai.api_key = st.secrets["openai_api"]
 
-
-if "openai_model" not in st.session_state:
-    st.session_state["openai_model"] = "gpt-3.5-turbo"
-
-# initializing chat history
+# Initializing chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
+# Display previous messages
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-prompt = st.chat_input("What is up?")
+# Load and index resume data
+@st.cache_resource(show_spinner=False)
+def load_data():
+    # Path to your CSV file
+    data_source = "Aashay_Zende_Info.csv"
+    
+    # Load resume data from CSV
+    loader = CSVLoader(file_path=data_source, encoding="utf-8")
+    data = loader.load()
+    
+    # Create embeddings for your resume data
+    embeddings = OpenAIEmbeddings()
+    vectors = FAISS.from_documents(data, embeddings)
+    
+    # Create a retriever for the indexed data
+    retriever = vectors.as_retriever()
+    
+    # Initialize the conversational retrieval chain
+    chain = ConversationalRetrievalChain.from_llm(
+        llm=OpenAI(model="gpt-3.5-turbo", openai_api_key=openai.api_key),
+        retriever=retriever,
+        return_source_documents=True,
+        verbose=True,
+        combine_docs_chain_kwargs={"prompt": "You are a chatbot knowledgeable about Aashay Zende's resume."}
+    )
+    return chain
+
+chain = load_data()
+
+# Handle user input
+prompt = st.chat_input("Ask me anything about my professional experience!")
 if prompt:
     with st.chat_message("user"):
         st.markdown(prompt)
         st.session_state.messages.append({"role": "user", "content": prompt})
 
     with st.chat_message("assistant"):
-        message_placeholder = st.empty()
-        full_response = ""
-        for response in openai.ChatCompletion.create(
-            model=st.session_state["openai_model"],
-            messages=[
-                {"role": m["role"], "content": m["content"]}
-                for m in st.session_state.messages
-            ],
-            stream=True,
-        ):
-            full_response += response.choices[0].delta.get("content", "")
-            message_placeholder.markdown(full_response + " ")
-        message_placeholder.markdown(full_response)
-    st.session_state.messages.append({"role": "assistant", "content": full_response}) 
-    
- 
+        response = chain({"question": prompt})["answer"]
+        st.markdown(response)
+        st.session_state.messages.append({"role": "assistant", "content": response})
