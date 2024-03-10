@@ -17,8 +17,3 @@ plotly
 streamlit-faker
 streamlit_lottie
 openai
-langchain
-PyPDF2
-Requests
-faiss-cpu
-pymongo
