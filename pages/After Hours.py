@@ -14,7 +14,7 @@ def check_password():
             st.session_state["password_correct"] = False
 
     # Return True if the password is validated.
-    if st.session_state.get("password_correct", True):
+    if st.session_state.get("password_correct", False):
         return True
 
     # Show input for password.
@@ -25,9 +25,9 @@ def check_password():
         st.error("😕 Password incorrect")
     return False
 
+
 if not check_password():
     st.stop()  # Do not continue if check_password is not True.
-
 
 # Main Streamlit app starts here
 st.write("Here goes your normal Streamlit app...")
