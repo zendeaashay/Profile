@@ -13,7 +13,7 @@ alt.themes.enable("dark")
 
 st.header('Home Page')
 st.write('Welcome to my world of adventures and analytics!')
-st.image('image.jpeg',width=500 caption='Exploring the Himalayas with my furry friends!')
+st.image('image.jpeg',width=500, caption='Exploring the Himalayas with my furry friends!')
 st.subheader('Aashay Zende')
 st.caption('Data Wizard | Adventurer | Photographer | Surfer')
 st.write(""" Hey there! I'm Aashay, a data wizard by day and an adventurous spirit by... well, also by day (and sometimes night).
