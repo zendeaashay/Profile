@@ -17,3 +17,4 @@ plotly
 streamlit-faker
 streamlit_lottie
 openai==0.28
+Mac
