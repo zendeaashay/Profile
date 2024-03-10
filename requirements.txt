@@ -16,4 +16,4 @@ tableauserverclient
 plotly
 streamlit-faker
 streamlit_lottie
-openai
+openai==0.28
