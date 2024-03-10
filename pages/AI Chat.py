@@ -1,11 +1,10 @@
-     
 import openai
 import streamlit as st
 
-st.title('🦜🔗 Quickstart App')
+st.title('AshGPT')
+st.title("Aashay's AI Chatbox! Go ahead and ask something...")
 
-st.title("Jarvis")
-#connect openai key
+# Connect OpenAI key
 openai.api_key = st.secrets["openai_api"]
 
 if "openai_model" not in st.session_state:
@@ -13,17 +12,23 @@ if "openai_model" not in st.session_state:
     
 if "messages" not in st.session_state:
     st.session_state.messages = []
-    
+
+# Define the prompt instruction
+prompt_instruction = "You are an AI chatbox and your job is to tell about art."
+
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
 if prompt := st.chat_input("What is up?"):
+    # Prepend the prompt instruction to the user's input
+    full_prompt = f"{prompt_instruction} {prompt}"
+    
     st.session_state.messages.append({"role": "user", "content": prompt})
     # Display user message in chat message container
     with st.chat_message("user"):
         st.markdown(prompt)
-    # Display assitant message in chat message container
+    # Display assistant message in chat message container
     with st.chat_message("assistant"):
         message_placeholder = st.empty()
         full_response = ""
@@ -31,13 +36,12 @@ if prompt := st.chat_input("What is up?"):
         for response in openai.ChatCompletion.create(
             model=st.session_state["openai_model"],
             messages=[
-                {"role": m["role"], "content": m["content"]}
-                for m in st.session_state.messages
+                {"role": "user", "content": full_prompt},  # Use full_prompt here
+                {"role": "assistant", "content": full_response}
             ],
-            #will provide lively writing
             stream=True,
         ):
-            #get content in response
+            # Get content in response
             full_response += response.choices[0].delta.get("content", "")
             # Add a blinking cursor to simulate typing
             message_placeholder.markdown(full_response + "▌")
