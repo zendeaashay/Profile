@@ -15,8 +15,7 @@ with open('homestyle.css') as f:
 st.title("Aashay's Zende")
 st.markdown("""
     <div class="bio">
-        <h2>Aashay Zende</h2>
-        <p>Data Wizard | Adventurer | Photographer | Surfer</p>
+        <h3>Data Wizard | Adventurer | Photographer | Surfer</h3>
         <p>Hey there! I'm Aashay, a data wizard by day and an adventurous spirit by... 
         well, also by day (and sometimes night). Currently weaving my magic with numbers 
         and analytics at the prestigious D'Amore McKim School of Business, 
