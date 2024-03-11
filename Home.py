@@ -3,7 +3,13 @@ import pandas as pd
 import altair as alt
 
 
-df = pd.read_csv('amz.csv')
+hide_default_format = """
+       <style>
+       #MainMenu {visibility: hidden; }
+       footer {visibility: hidden;}
+       </style>
+       """
+st.markdown(hide_default_format, unsafe_allow_html=True)
 
 st.set_page_config( page_title='Welcome to my page!', 
                    page_icon="🏂",
