@@ -12,8 +12,7 @@ with open('homestyle.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
 # Home page content
-st.title("Aashay's Journey")
-st.image('image.jpeg', caption='Exploring the Himalayas with my furry friends!')
+st.title("Aashay's Zende")
 st.markdown("""
     <div class="bio">
         <h2>Aashay Zende</h2>
@@ -29,6 +28,7 @@ st.markdown("""
         moments through the lens of my camera.</p>
     </div>
 """, unsafe_allow_html=True)
+st.image('image.jpeg', caption='Exploring the Himalayas with my furry friends!')
 
 import openai
 import streamlit as st
