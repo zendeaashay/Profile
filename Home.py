@@ -1,11 +1,8 @@
 import streamlit as st
-import pandas as pd
 import altair as alt
-from streamlit.components.v1 import html
+import openai
 
-
-# Set Streamlit page configuration
-st.set_page_config(page_title="Welcome to my ", page_icon="🌟", layout="wide")
+st.set_page_config(page_title="Welcome to my Page!", page_icon="🌟", layout="wide")
 # Enable Altair dark theme for charts
 alt.themes.enable("dark")
 
@@ -21,9 +18,14 @@ if 'show_rating' not in st.session_state:
 with open('homestyle.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
-# Home page content
-st.title("Aashay's Zende")
-st.markdown("""
+# Toggle between 'About Me' and 'AshGPT'
+page = st.radio("Choose a page:", ("About Me", "AshGPT"), horizontal=True)
+
+if page == "About Me":
+    # Your code for the 'About Me' section
+    # ... (your existing code) ...
+    st.title("Aashay Zende")
+    st.markdown("""
     <div class="bio">
         <h3>Data Wizard | Adventurer | Photographer | Surfer</h3>
         <p>Hey there! I'm Aashay, a data wizard by day and an adventurous spirit by... 
@@ -35,29 +37,22 @@ st.markdown("""
         soothing waves of beaches. When I'm not surfing the waves or the web, 
         I love painting landscapes that capture the essence of my travels and framing 
         moments through the lens of my camera.</p>
-    </div>
-""", unsafe_allow_html=True)
-st.image('image.jpeg', caption='Exploring the Himalayas with my furry friends!')
+        </div>
+    """, unsafe_allow_html=True)
+    st.image('image.jpeg', caption='Exploring the Himalayas with my furry friends!')
 
+elif page == "AshGPT":
 
-
-import openai
-import streamlit as st
-
-st.title('AshGPT')
-st.title("Aashay's AI Chatbox! Go ahead and ask something...")
-
-# Connect OpenAI key
-openai.api_key = st.secrets["openai_api"]
-
-if "openai_model" not in st.session_state:
-    st.session_state["openai_model"] = "gpt-3.5-turbo"
+    st.title('AshGPT')
+    st.title("Introducing AshGPT, your digital concierge to Aashay Zende's career narrative. Equipped to provide insights into his professional timeline and technical know-how, I stand ready to field your queries. From his analytical acumen to leadership qualities, ask about Aashay's professional journey or solicit assistance with a wide array of topics—be it solving a math problem, understanding scientific concepts, diving into history, or crafting a compelling email. Let's start the conversation.")
+    openai.api_key = st.secrets["openai_api"]
+    if "openai_model" not in st.session_state:
+       st.session_state["openai_model"] = "gpt-3.5-turbo"
     
-if "messages" not in st.session_state:
-    st.session_state.messages = []
+    if "messages" not in st.session_state:
+       st.session_state.messages = []
 
-# Define the prompt instruction
-prompt_instruction = """You are an AI chatbox and your job is to tell users about an individual called Aashay Zende who has created you and you have to tell users about my resume and professional background. Following is Aashay Zende's information 'Aashay Zende has a rich educational and professional background, blending technical acumen with strategic business analysis. He pursued his Master of Science in Business Analytics from Northeastern University in Boston, Massachusetts, from September 2023 to December 2024, earning a CGPA of 3.2, and holds a Bachelor of Technology in Automobile Engineering from Manipal Institute of Technology in India, with a GPA of 7.2, completed between August 2018 and July 2022. His coursework spanned various subjects, including Data Analysis, Information Visuals and Dashboards, Marketing Analytics, Engineering Economics, Financial Management, and Numerical Simulation. Aashay also earned certifications through Coursera in Introduction to Business Analytics with R from the University of Illinois at Urbana-Champaign and in Foundations: Data Data Everywhere from Google​​.
+    prompt_instruction = """You are an AI chatbox and your job is to tell users about an individual called Aashay Zende who has created you and you have to tell users about my resume and professional background. Following is Aashay Zende's information 'Aashay Zende has a rich educational and professional background, blending technical acumen with strategic business analysis. He pursued his Master of Science in Business Analytics from Northeastern University in Boston, Massachusetts, from September 2023 to December 2024, earning a CGPA of 3.2, and holds a Bachelor of Technology in Automobile Engineering from Manipal Institute of Technology in India, with a GPA of 7.2, completed between August 2018 and July 2022. His coursework spanned various subjects, including Data Analysis, Information Visuals and Dashboards, Marketing Analytics, Engineering Economics, Financial Management, and Numerical Simulation. Aashay also earned certifications through Coursera in Introduction to Business Analytics with R from the University of Illinois at Urbana-Champaign and in Foundations: Data Data Everywhere from Google​​.
 
 Aashay's skill set is extensive, encompassing statistical techniques like SVM, regression models, decision tree, KNN, cluster analysis, NLP, K-means, and Naive Bayes. He is proficient in database programming and various tools, including Tableau, PowerBI, Python, SQL, R, MySQL, Google Analytics, and Microsoft Excel functions​​.
 
@@ -103,38 +98,38 @@ Aashay Zende - Resume.pdf
 PDF
 '."""
 
-for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
-        st.markdown(message["content"])
+    for message in st.session_state.messages:
+        with st.chat_message(message["role"]):
+           st.markdown(message["content"])
 
-if prompt := st.chat_input("What is up?"):
+    if prompt := st.chat_input("What is up?"):
     # Prepend the prompt instruction to the user's input
-    full_prompt = f"{prompt_instruction} {prompt}"
+        full_prompt = f"{prompt_instruction} {prompt}"
     
-    st.session_state.messages.append({"role": "user", "content": prompt})
+        st.session_state.messages.append({"role": "user", "content": prompt})
     # Display user message in chat message container
-    with st.chat_message("user"):
-        st.markdown(prompt)
+        with st.chat_message("user"):
+           st.markdown(prompt)
     # Display assistant message in chat message container
-    with st.chat_message("assistant"):
-        message_placeholder = st.empty()
-        full_response = ""
+        with st.chat_message("assistant"):
+           message_placeholder = st.empty()
+           full_response = ""
         # Simulate stream of response with milliseconds delay
-        for response in openai.ChatCompletion.create(
-            model=st.session_state["openai_model"],
-            messages=[
-                {"role": "user", "content": full_prompt},  # Use full_prompt here
-                {"role": "assistant", "content": full_response}
-            ],
-            stream=True,
-        ):
+           for response in openai.ChatCompletion.create(
+              model=st.session_state["openai_model"],
+              messages=[
+                 {"role": "user", "content": full_prompt},  # Use full_prompt here
+                 {"role": "assistant", "content": full_response}
+              ],
+              stream=True,
+           ):
             # Get content in response
-            full_response += response.choices[0].delta.get("content", "")
+               full_response += response.choices[0].delta.get("content", "")
             # Add a blinking cursor to simulate typing
-            message_placeholder.markdown(full_response + "▌")
-        message_placeholder.markdown(full_response)
+               message_placeholder.markdown(full_response + "▌")
+           message_placeholder.markdown(full_response)
     # Add assistant response to chat history
-    st.session_state.messages.append({"role": "assistant", "content": full_response})
+        st.session_state.messages.append({"role": "assistant", "content": full_response})
 
 from streamlit_star_rating import st_star_rating
 
@@ -143,10 +138,8 @@ st.button('Show/Hide', on_click=toggle_rating)
 
 # Show the star rating if the toggle is set to show it
 if st.session_state.show_rating:
-    # Use the star rating component from a third-party library
-    from streamlit_star_rating import st_star_rating
 
     # Create a container for the star rating
-    with st.container():
+  with st.container():
         st.write("Please rate your experience with this page:")
         stars = st_star_rating(label="", maxValue=5, defaultValue=5, key="rating", dark_theme=True)
