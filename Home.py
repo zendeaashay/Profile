@@ -139,7 +139,7 @@ if prompt := st.chat_input("What is up?"):
 from streamlit_star_rating import st_star_rating
 
 # Add a button to toggle the star rating visibility
-st.button('Show/Hide Star Rating', on_click=toggle_rating)
+st.button('Show/Hide', on_click=toggle_rating)
 
 # Show the star rating if the toggle is set to show it
 if st.session_state.show_rating:
