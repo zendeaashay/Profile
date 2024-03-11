@@ -2,6 +2,8 @@ import streamlit as st
 import altair as alt
 import openai
 
+
+st.set_page_config(page_title="Welcome to my Page!", page_icon="🌟", layout="wide")
 hide_default_format = """
        <style>
        #MainMenu {visibility: hidden; }
@@ -9,7 +11,6 @@ hide_default_format = """
        </style>
        """
 st.markdown(hide_default_format, unsafe_allow_html=True)
-st.set_page_config(page_title="Welcome to my Page!", page_icon="🌟", layout="wide")
 # Enable Altair dark theme for charts
 alt.themes.enable("dark")
 
