@@ -1,28 +1,34 @@
 import streamlit as st
 import pandas as pd
 import altair as alt
+from streamlit.components.v1 import html
 
 
-df = pd.read_csv('amz.csv')
+# Set Streamlit page configuration
+st.set_page_config(page_title="Aashay's Journey", page_icon="🌟", layout="wide")
 
-st.set_page_config( page_title='Welcome to my page!', 
-                   page_icon="🏂",
-                   layout='wide',
-                   initial_sidebar_state="expanded")
-alt.themes.enable("dark")
+# Custom CSS
+with open('homestyle.css') as f:
+    st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
-st.header('Home Page')
-st.write('Welcome to my world of adventures and analytics!')
-st.image('image.jpeg',width=500, caption='Exploring the Himalayas with my furry friends!')
-st.subheader('Aashay Zende')
-st.caption('Data Wizard | Adventurer | Photographer | Surfer')
-st.write(""" Hey there! I'm Aashay, a data wizard by day and an adventurous spirit by... well, also by day (and sometimes night).
-    Currently weaving my magic with numbers and analytics at the prestigious DAmore McKim School of Business,
-    Northeastern University, I'm on a quest to make sense of the world, one dataset at a time.
-    Born and raised in the bustling city of Mumbai, India, I've always been a bit of a nomad at heart,
-    with my compass pointing towards icy mountain peaks and the soothing waves of beaches, [surfing](#).
-    I also love [painting](#) and [photography](#)
-    """)
+# Home page content
+st.title("Aashay's Journey")
+st.image('image.jpeg', caption='Exploring the Himalayas with my furry friends!')
+st.markdown("""
+    <div class="bio">
+        <h2>Aashay Zende</h2>
+        <p>Data Wizard | Adventurer | Photographer | Surfer</p>
+        <p>Hey there! I'm Aashay, a data wizard by day and an adventurous spirit by... 
+        well, also by day (and sometimes night). Currently weaving my magic with numbers 
+        and analytics at the prestigious D'Amore McKim School of Business, 
+        Northeastern University, I'm on a quest to make sense of the world, one dataset at a time.</p>
+        <p>Born and raised in the bustling city of Mumbai, India, I've always been a bit 
+        of a nomad at heart, with my compass pointing towards icy mountain peaks and the 
+        soothing waves of beaches. When I'm not surfing the waves or the web, 
+        I love painting landscapes that capture the essence of my travels and framing 
+        moments through the lens of my camera.</p>
+    </div>
+""", unsafe_allow_html=True)
 
 import openai
 import streamlit as st
