@@ -5,8 +5,18 @@ from streamlit.components.v1 import html
 
 
 # Set Streamlit page configuration
-st.set_page_config(page_title="Aashay's Journey", page_icon="🌟", layout="wide")
+st.set_page_config(page_title="Welcome to my ", page_icon="🌟", layout="wide")
+# Enable Altair dark theme for charts
+alt.themes.enable("dark")
 
+# Define a function to toggle the visibility of the star rating
+def toggle_rating():
+    st.session_state.show_rating = not st.session_state.show_rating
+
+# Initialize the session state variable
+if 'show_rating' not in st.session_state:
+    st.session_state.show_rating = True
+    
 # Custom CSS
 with open('homestyle.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
@@ -28,6 +38,8 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 st.image('image.jpeg', caption='Exploring the Himalayas with my furry friends!')
+
+
 
 import openai
 import streamlit as st
@@ -126,5 +138,15 @@ if prompt := st.chat_input("What is up?"):
 
 from streamlit_star_rating import st_star_rating
 
-st.write("Please rate your experience with this page:")
-stars = st_star_rating(label = " ", maxValue = 5, defaultValue = 5, key = "rating", dark_theme = True )
+# Add a button to toggle the star rating visibility
+st.button('Show/Hide Star Rating', on_click=toggle_rating)
+
+# Show the star rating if the toggle is set to show it
+if st.session_state.show_rating:
+    # Use the star rating component from a third-party library
+    from streamlit_star_rating import st_star_rating
+
+    # Create a container for the star rating
+    with st.container():
+        st.write("Please rate your experience with this page:")
+        stars = st_star_rating(label="", maxValue=5, defaultValue=5, key="rating", dark_theme=True)
