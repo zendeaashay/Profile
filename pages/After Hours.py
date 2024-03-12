@@ -53,7 +53,7 @@ interests = {
 experiences = {
     'Trekking': [
         "Your experience description for Trekking...",
-        ['photos/trek/Image.jpeg', 'photos/trek/20220110_095542.jpg', 'photos/trek/P1380367.JPG', 'photos/trek/P1380563.JPG']
+        'photos/trek/Image.jpeg', 'photos/trek/20220110_095542.jpg', 'photos/trek/P1380367.JPG', 'photos/trek/P1380563.JPG'
     ],
     'Hyperloop Project': "Your experience description for Hyperloop Project...",
     'Surfing': "Your experience description for Surfing...",
