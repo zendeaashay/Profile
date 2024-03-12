@@ -67,6 +67,13 @@ for index, (interest, icon) in enumerate(interests.items()):
     with cols[index]:
         if st.button(interest):
             st.session_state['selected_option'] = interest
+        # Center the image and the caption
+        st.markdown(f"""
+        <div class="image-container">
+            <p class="image-caption">{interest}</p>
+            <img class="interest-image" src="{icon}" alt="{interest}">
+        </div>
+        """, unsafe_allow_html=True)
         # Make all images the same size
         st.image(icon, use_column_width=True)
 
