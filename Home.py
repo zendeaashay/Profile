@@ -26,6 +26,7 @@ st.sidebar.markdown("""
     }
 </style>
 """, unsafe_allow_html=True)
+
     
 # Define a function to toggle the visibility of the star rating
 def toggle_rating():
