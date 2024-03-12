@@ -70,3 +70,4 @@ if selected_option:
     <div style="background-color: rgba(255, 255, 255, 0.8); margin: 10px 0; padding: 20px; border-radius: 10px;">
         <p>{experiences[selected_option]}</p>
     </div>
+    """, unsafe_allow_html=True)
