@@ -22,7 +22,7 @@ with open('homestyle.css') as f:
 custom_css = """
 /* Scale down the entire star rating container */
 div.stars-rating {
-    transform: scale(0.75); /* Adjust the scale factor as needed */
+    transform: scale(0.25); /* Adjust the scale factor as needed */
     transform-origin: top left; /* Keeps the component aligned to the top left */
 }
 """
