@@ -68,7 +68,7 @@ for index, (interest, icon) in enumerate(interests.items()):
         if st.button(interest):
             st.session_state['selected_option'] = interest
         # Make all images the same size
-        st.image(icon, use_column_width=False)
+        st.image(icon, use_column_width=True)
 
 # Display the content based on the selected option
 selected_option = st.session_state['selected_option']
