@@ -18,3 +18,4 @@ streamlit-faker
 streamlit_lottie
 openai==0.28
 Mac
+streamlit.components.v1
