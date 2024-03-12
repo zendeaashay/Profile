@@ -20,4 +20,4 @@ streamlit_lottie
 openai==0.28
 Mac
 streamlit==1.27.1
-streamlit.components.v1
+streamlit.components
