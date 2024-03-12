@@ -39,32 +39,34 @@ interests = {
     'Photography': 'photos/photo/21.jpg'
 }
 
+# Define experiences for each interest
+experiences = {
+    'Trekking': "Your experience description for Trekking...",
+    'Hyperloop Project': "Your experience description for Hyperloop Project...",
+    'Surfing': "Your experience description for Surfing...",
+    'Photography': "Your experience description for Photography..."
+}
+
 # Track the current selected option
 if 'selected_option' not in st.session_state:
-    st.session_state['selected_option'] = None
+    st.session_state['selected_option'] = 'Trekking'  # Set a default selection
 
-# Create a horizontal line of buttons with icons
+# Create a horizontal line of buttons with images
 cols = st.columns(len(interests))
 for index, (interest, icon) in enumerate(interests.items()):
     with cols[index]:
-        # You can use an image as a button by wrapping st.image in st.button
         if st.button(interest):
             st.session_state['selected_option'] = interest
-        st.image(icon, width=100, caption=interest)
+        # Make all images the same size
+        st.image(icon, use_column_width=True, caption=interest)
 
 # Display the content based on the selected option
 selected_option = st.session_state['selected_option']
-if selected_option == 'Trekking':
-    st.subheader("Trekking")
-    # Content for Trekking...
+if selected_option:
+    st.subheader(selected_option)
 
-elif selected_option == 'Hyperloop Project':
-    st.subheader("Hyperloop Project")
-    # Content for Hyperloop Project...
-
-elif selected_option == 'Surfing':
-    st.subheader("Surfing")
-    # Content for Surfing...
-
-elif selected_option == 'Photography':
-    st.subheader("Photography")
+    # Display a container with the experience paragraph
+    st.markdown(f"""
+    <div style="background-color: rgba(255, 255, 255, 0.8); margin: 10px 0; padding: 20px; border-radius: 10px;">
+        <p>{experiences[selected_option]}</p>
+    </div>
