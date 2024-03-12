@@ -43,7 +43,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 # Define the options for your interests and their corresponding images or icons
 interests = {
-    'Trekking': 'image.jpeg',
+    'Trekking': 'image.jpg',
     'Hyperloop Project': 'photos/hyp/3.png',
     'Surfing': 'photos/surf/1 DSC_0055.JPG',
     'Photography': 'photos/photo/21.jpg'
