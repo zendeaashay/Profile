@@ -30,7 +30,17 @@ if not check_password():
     st.stop()  # Do not continue if check_password is not True.
 
 st.title("After Hours")
-
+# Custom styling for images to ensure they all display the same size
+st.markdown("""
+    <style>
+    .interest-image {
+        height: 150px; /* or any other fixed height */
+        width: auto;
+        object-fit: cover; /* this will ensure the aspect ratio is maintained */
+        border-radius: 5px;
+    }
+    </style>
+""", unsafe_allow_html=True)
 # Define the options for your interests and their corresponding images or icons
 interests = {
     'Trekking': 'photos/trek/Image.jpeg',
