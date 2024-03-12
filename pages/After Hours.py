@@ -33,10 +33,10 @@ st.title("After Hours")
 
 # Define the options for your interests and their corresponding images or icons
 interests = {
-    'Trekking': 'trekking_icon.png',
-    'Hyperloop Project': 'hyperloop_icon.png',
-    'Surfing': 'surfing_icon.png',
-    'Photography': 'photography_icon.png'
+    'Trekking': 'photos/trek/Image.jpeg',
+    'Hyperloop Project': 'photos/hyp/3.png',
+    'Surfing': 'photos/surf/1 DSC_0055.JPG',
+    'Photography': 'photos/photo/21.jpg'
 }
 
 # Track the current selected option
