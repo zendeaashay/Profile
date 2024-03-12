@@ -27,15 +27,14 @@ with open('homestyle.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
 # Toggle between 'About Me' and 'AshGPT'
-page = st.radio("Choose a page:", ("About Me", "AshGPT"), horizontal=True)
+page = st.radio("Explore my very own AshGPT next!", ("Welcome", "AshGPT"), horizontal=True)
 
-if page == "About Me":
-    # Your code for the 'About Me' section
-    # ... (your existing code) ...
+if page == "Welcome!":
+    
     st.title("Aashay Zende")
     st.markdown("""
     <div class="bio">
-        <h3>Data Wizard | Adventurer | Photographer | Surfer</h3>
+        <h3>Data Analyst | Soccer Player | Formula 1 Fanatic | Photographer | Surfer</h3>
         <p>Welcome to my digital portfolio, a curated showcase of my professional journey and the milestones I've achieved along the way. My name is Aashay Zende, and I am a seasoned Data and Business Analyst with a penchant for transforming complex data into strategic insights.
 
 With a robust educational foundation in Business Analytics and a track record of impactful roles in the analytics field, I have honed my ability to sift through data noise and identify patterns that drive business decisions. My career has been characterized by a consistent pursuit of excellence, leading cross-functional teams in data-driven initiatives, and delivering solutions that enhance operational effectiveness.
@@ -44,7 +43,7 @@ On this page, you will discover the essence of my professional philosophy: a ble
 
 Beyond the spreadsheets and data models, I embody a spirit of adventure that propels me to explore new horizons, both professionally and personally. This site is not only a testament to my professional pursuits but also a gateway to the diverse interests that enrich my analytical expertise.
 
-For an interactive experience, click on the "AshGPT" option at the top of the page. Engage with the chatbot I've created to answer your queries—whether you're interested in discussing potential collaborations, delving into my project portfolio, or simply wish to have a conversation about the latest trends in data analytics.
+For an interactive experience, click on the 'AshGPT' option at the top of the page. Engage with the chatbot I've created to answer your queries—whether you're interested in discussing potential collaborations, delving into my project portfolio, or simply wish to have a conversation about the latest trends in data analytics.
 
 Embark on this digital narrative and uncover the professional paths I've navigated. Let's connect the dots together. </p>
         </div>
@@ -56,7 +55,7 @@ elif page == "AshGPT":
     <div class="bio">
         <h1>AshGPT</h1>
         <h3>Your Digital Concierge</h3>
-        <p>Introducing AshGPT, your digital concierge to Aashay Zende's career narrative. Equipped to provide insights into his professional timeline and technical know-how, I stand ready to field your queries. From his analytical acumen to leadership qualities, ask about Aashay's professional journey or solicit assistance with a wide array of topics—be it solving a math problem, understanding scientific concepts, diving into history, or crafting a compelling email. Let's start the conversation.</p>
+        <p>Introducing AshGPT, your digital concierge to Aashay's career narrative. Equipped to provide insights into his professional timeline and technical know-how, I stand ready to field your queries. From his analytical acumen to leadership qualities, ask about Aashay's professional journey or solicit assistance with a wide array of topics—be it solving a math problem, understanding scientific concepts, diving into history, or crafting a compelling email. Let's start the conversation.</p>
     </div>
     """, unsafe_allow_html=True)
     openai.api_key = st.secrets["openai_api"]
