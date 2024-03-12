@@ -71,27 +71,82 @@ for index, (interest, icon) in enumerate(interests.items()):
         st.image(icon, width=100, caption=interest)
 
 # Display the content based on the selected option
-selected_option = st.session_state['selected_option']
+selected_option = st.session_state.get('selected_option')
+
 if selected_option:
     st.subheader(selected_option)
     
-    # Display the experience description or slideshow if Trekking is selected
+    # If Trekking is selected, display its description and slideshow
     if selected_option == 'Trekking':
         trek_description, trek_images = experiences[selected_option]
-        st.markdown(f"""
-        <div style="background-color: rgba(0, 0, 0, 0.8); margin: 10px 0; padding: 20px; border-radius: 10px;">
-            <p style="color: white;">{trek_description}</p>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        # Add buttons to navigate through the Trekking images
-        if trek_images:
-            col1, col2, col3 = st.columns([1, 10, 1])
-            with col1:
-                if st.button('Previous'):
-                    st.session_state['image_index'] = (st.session_state['image_index'] - 1) % len(trek_images)
-            with col2:
-                st.image(trek_images[st.session_state['image_index']], use_column_width=True)
-            with col3:
-                if st.button('Next'):
-                    st.session_state['image_index'] = (st.session_state['image_index'] + 1) % len(trek_images)
+        st.markdown(trek_description, unsafe_allow_html=True)
+
+        # Create a string of img tags for the slideshow
+        img_tags = "".join([f'<img src="{img}" style="width:100%">' for img in trek_images])
+
+        # Create the HTML for the slideshow
+        slideshow_html = f"""
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+/* Slideshow container */
+.slideshow-container {{
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}}
+
+/* Hide the images by default */
+.mySlides {{
+  display: none;
+}}
+
+/* Fading animation */
+.fade {{
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}}
+
+@-webkit-keyframes fade {{
+  from {{opacity: .4}} 
+  to {{opacity: 1}}
+}}
+
+@keyframes fade {{
+  from {{opacity: .4}} 
+  to {{opacity: 1}}
+}}
+</style>
+</head>
+<body>
+
+<div class="slideshow-container">
+  {img_tags}
+</div>
+
+<script>
+var slideIndex = 0;
+carousel();
+
+function carousel() {{
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {{
+    x[i].style.display = "none"; 
+  }}
+  slideIndex++;
+  if (slideIndex > x.length) {{slideIndex = 1}} 
+  x[slideIndex-1].style.display = "block";
+  setTimeout(carousel, 2000); // Change image every 2 seconds
+}}
+</script>
+
+</body>
+</html>
+"""
+        # Use the HTML in the Streamlit component
+        components.html(slideshow_html, height=600)
