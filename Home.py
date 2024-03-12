@@ -36,7 +36,7 @@ On this page, you will discover the essence of my professional philosophy: a ble
 
 Beyond the spreadsheets and data models, I embody a spirit of adventure that propels me to explore new horizons, both professionally and personally. This site is not only a testament to my professional pursuits but also a gateway to the diverse interests that enrich my analytical expertise.
 
-For an interactive experience, click on the 'AshGPT' option at the top of the page. Engage with the chatbot I've created to answer your queries—whether you're interested in discussing potential collaborations, delving into my project portfolio, or simply wish to have a conversation about the latest trends in data analytics.
+For an interactive experience, click on the 'AshGPT' option at the top of the page. Engage with the chatbot I've created to answer your queries—whether you're interested in discussing potential collaborations, delving into my project portfolio, or simply wish to have a conversation about any topic you want.
 
 Embark on this digital narrative and uncover the professional paths I've navigated. Let's connect the dots together. </p>
         </div>

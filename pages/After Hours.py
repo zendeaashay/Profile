@@ -29,6 +29,23 @@ def check_password():
 if not check_password():
     st.stop()  # Do not continue if check_password is not True.
 
-# Main Streamlit app starts here
-st.write("Here goes your normal Streamlit app...")
-st.button("Click me")
+st.title("After Hours")
+
+# Define the options for your interests
+options = ['Trekking', 'Hyperloop Project', 'Surfing', 'Photography']
+selected_option = st.selectbox("Select Interest", options)
+
+# Display the content based on the selected option
+if selected_option == 'Trekking':
+    st.subheader("Trekking")
+
+
+elif selected_option == 'Hyperloop Project':
+    st.subheader("Hyperloop Project")
+
+elif selected_option == 'Surfing':
+    st.subheader("Surfing")
+
+elif selected_option == 'Photography':
+    st.subheader("Photography")
+
