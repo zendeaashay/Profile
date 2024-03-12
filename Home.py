@@ -139,6 +139,7 @@ PDF
         
 from streamlit_star_rating import st_star_rating
 # Define a function to toggle the visibility of the star rating
+# Define a function to toggle the visibility of the star rating
 def toggle_rating():
     st.session_state.show_rating = not st.session_state.show_rating
 
@@ -146,40 +147,39 @@ def toggle_rating():
 if 'show_rating' not in st.session_state:
     st.session_state.show_rating = True
 
-# Custom CSS to style the container
+# Add custom CSS to create the rating box at the bottom right
 st.markdown("""
 <style>
-    .rating-container {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background-color: #333333; /* Dark grey background */
-        color: #ffffff;
-        padding: 20px;
-        border-radius: 10px;
-        width: auto;
-    }
-    /* You might need to adjust this based on your sidebar/content layout */
-    @media (min-width: 640px) {
-        .rating-container {
-            margin-right: calc((100vw - 640px) / 2);
-        }
-    }
+.rating-box {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background-color: #333; /* Dark grey background */
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 0.5rem;
+    z-index: 9999;
+}
 </style>
 """, unsafe_allow_html=True)
 
-# Add a button to toggle the star rating visibility
-if st.button('Show/Hide Rating', key="toggle_rating"):
+# Use the button to toggle the visibility of the rating
+if st.button('Show/Hide Rating'):
     toggle_rating()
 
 # Show the star rating if the toggle is set to show it
 if st.session_state.show_rating:
-    # Use custom HTML for the container and place the star rating component inside it
-    st.markdown(f"""
-    <div class="rating-container">
-        <p>Please rate your experience with this page:</p>
-        <div>
-            {st_star_rating(label="", maxValue=5, defaultValue=5, key="rating", dark_theme=True)}
+    # Place the rating in the bottom right box
+    st.markdown("""
+    <div class="rating-box">
+        <p style="margin-bottom: 0.5rem; color: #fff;">Please rate your experience with this page:</p>
+        <div style="display: flex; justify-content: center; align-items: center;">
+            <script src="https://kit.fontawesome.com/your_kit.js" crossorigin="anonymous"></script>
+            <i class="fa-solid fa-star" style="color: gold;"></i>
+            <i class="fa-regular fa-star" style="color: gold;"></i>
+            <i class="fa-regular fa-star" style="color: gold;"></i>
+            <i class="fa-regular fa-star" style="color: gold;"></i>
+            <i class="fa-regular fa-star" style="color: gold;"></i>
         </div>
     </div>
     """, unsafe_allow_html=True)
