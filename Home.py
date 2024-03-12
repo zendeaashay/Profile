@@ -18,6 +18,16 @@ alt.themes.enable("dark")
 with open('homestyle.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
     
+# Custom CSS to make the star rating smaller
+custom_css = """
+/* Scale down the entire star rating container */
+div.stars-rating {
+    transform: scale(0.75); /* Adjust the scale factor as needed */
+    transform-origin: top left; /* Keeps the component aligned to the top left */
+}
+"""
+
+    
 # Define a function to toggle the visibility of the star rating
 def toggle_rating():
     st.session_state.show_rating = not st.session_state.show_rating
