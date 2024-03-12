@@ -30,7 +30,6 @@ with open('homestyle.css') as f:
 page = st.radio("Explore my very own AshGPT next!", ("Welcome", "AshGPT"), horizontal=True)
 
 if page == "Welcome!":
-    
     st.title("Aashay Zende")
     st.markdown("""
     <div class="bio">
