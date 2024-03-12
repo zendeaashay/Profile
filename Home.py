@@ -27,7 +27,7 @@ with open('homestyle.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
 # Toggle between 'About Me' and 'AshGPT'
-page = st.radio("Explore my very own AshGPT next!", ("Welcome", "AshGPT"), horizontal=True)
+page = st.radio("Explore my very own AshGPT next!", ("Welcome!", "AshGPT"), horizontal=True)
 
 if page == "Welcome!":
     st.title("Aashay Zende")
