@@ -139,7 +139,6 @@ PDF
         
 from streamlit_star_rating import st_star_rating
 # Define a function to toggle the visibility of the star rating
-# Define a function to toggle the visibility of the star rating
 def toggle_rating():
     st.session_state.show_rating = not st.session_state.show_rating
 
@@ -147,39 +146,13 @@ def toggle_rating():
 if 'show_rating' not in st.session_state:
     st.session_state.show_rating = True
 
-# Add custom CSS to create the rating box at the bottom right
-st.markdown("""
-<style>
-.rating-box {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    background-color: #333; /* Dark grey background */
-    padding: 1rem;
-    margin: 1rem;
-    border-radius: 0.5rem;
-    z-index: 9999;
-}
-</style>
-""", unsafe_allow_html=True)
-
-# Use the button to toggle the visibility of the rating
-if st.button('Show/Hide Rating'):
-    toggle_rating()
+# Add a button to toggle the star rating visibility
+st.button('Show/Hide', on_click=toggle_rating)
 
 # Show the star rating if the toggle is set to show it
 if st.session_state.show_rating:
-    # Place the rating in the bottom right box
-    st.markdown("""
-    <div class="rating-box">
-        <p style="margin-bottom: 0.5rem; color: #fff;">Please rate your experience with this page:</p>
-        <div style="display: flex; justify-content: center; align-items: center;">
-            <script src="https://kit.fontawesome.com/your_kit.js" crossorigin="anonymous"></script>
-            <i class="fa-solid fa-star" style="color: gold;"></i>
-            <i class="fa-regular fa-star" style="color: gold;"></i>
-            <i class="fa-regular fa-star" style="color: gold;"></i>
-            <i class="fa-regular fa-star" style="color: gold;"></i>
-            <i class="fa-regular fa-star" style="color: gold;"></i>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+
+    # Create a container for the star rating
+  with st.container():
+        st.write("Please rate your experience with this page:")
+        stars = st_star_rating(label="", maxValue=5, defaultValue=5, key="rating", dark_theme=True)
