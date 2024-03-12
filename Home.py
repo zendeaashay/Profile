@@ -52,9 +52,13 @@ Embark on this digital narrative and uncover the professional paths I've navigat
     st.image('image.jpeg', caption='Exploring the Himalayas with my furry friends!')
 
 elif page == "AshGPT":
-
-    st.title('AshGPT')
-    st.title("Introducing AshGPT, your digital concierge to Aashay Zende's career narrative. Equipped to provide insights into his professional timeline and technical know-how, I stand ready to field your queries. From his analytical acumen to leadership qualities, ask about Aashay's professional journey or solicit assistance with a wide array of topics—be it solving a math problem, understanding scientific concepts, diving into history, or crafting a compelling email. Let's start the conversation.")
+    st.markdown("""
+    <div class="bio">
+        <h1>AshGPT</h1>
+        <h3>Your Digital Concierge</h3>
+        <p>Introducing AshGPT, your digital concierge to Aashay Zende's career narrative. Equipped to provide insights into his professional timeline and technical know-how, I stand ready to field your queries. From his analytical acumen to leadership qualities, ask about Aashay's professional journey or solicit assistance with a wide array of topics—be it solving a math problem, understanding scientific concepts, diving into history, or crafting a compelling email. Let's start the conversation.</p>
+    </div>
+    """, unsafe_allow_html=True)
     openai.api_key = st.secrets["openai_api"]
     if "openai_model" not in st.session_state:
        st.session_state["openai_model"] = "gpt-3.5-turbo"
