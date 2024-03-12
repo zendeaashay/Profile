@@ -70,14 +70,23 @@ for index, (interest, icon) in enumerate(interests.items()):
         # Make all images the same size
         st.image(icon, use_column_width=True)
 
-# Display the content based on the selected option
+# Display a container with the experience paragraph
 selected_option = st.session_state['selected_option']
 if selected_option:
-    st.subheader(selected_option)
-
-    # Display a container with the experience paragraph
     st.markdown(f"""
-    <div style="background-color: rgba(255, 255, 255, 0.8); margin: 10px 0; padding: 20px; border-radius: 10px;">
+    <div class="bio">
+        <h4>{selected_option}</h4>
         <p>{experiences[selected_option]}</p>
     </div>
     """, unsafe_allow_html=True)
+
+    # Adjust the column layout to ensure images maintain the same aspect ratio
+    cols = st.columns(4)
+    with cols[0]:
+        st.image(interests['Trekking'], use_column_width=True)
+    with cols[1]:
+        st.image(interests['Hyperloop Project'], use_column_width=True)
+    with cols[2]:
+        st.image(interests['Surfing'], use_column_width=True)
+    with cols[3]:
+        st.image(interests['Photography'], use_column_width=True)
