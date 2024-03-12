@@ -33,7 +33,7 @@ if page == "Welcome!":
     st.title("Aashay Zende")
     st.markdown("""
     <div class="bio">
-        <h3>Data Analyst | Soccer Player | Formula 1 Fanatic | Photographer | Surfer</h3>
+        <h4>Data Analyst | Soccer Player and ManUtd Supporter | Formula 1 Fanatic | Photographer | Surfer</h4>
         <p>Welcome to my digital portfolio, a curated showcase of my professional journey and the milestones I've achieved along the way. My name is Aashay Zende, and I am a seasoned Data and Business Analyst with a penchant for transforming complex data into strategic insights.
 
 With a robust educational foundation in Business Analytics and a track record of impactful roles in the analytics field, I have honed my ability to sift through data noise and identify patterns that drive business decisions. My career has been characterized by a consistent pursuit of excellence, leading cross-functional teams in data-driven initiatives, and delivering solutions that enhance operational effectiveness.
