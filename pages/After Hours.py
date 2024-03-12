@@ -51,7 +51,7 @@ interests = {
 
 # Define experiences for each interest
 experiences = {
-    'Trekking': ["Your experience description for Trekking...",'photos/trek/Image.jpeg', 'photos/trek/20220110_095542.jpg', 'photos/trek/P1380367.JPG', 'photos/trek/P1380563.JPG'],
+    'Trekking': ["Your experience description for Trekking...", ['photos/trek/Image.jpeg', 'photos/trek/20220110_095542.jpg', 'photos/trek/P1380367.JPG', 'photos/trek/P1380563.JPG']],,
     'Hyperloop Project': "Your experience description for Hyperloop Project...",
     'Surfing': "Your experience description for Surfing...",
     'Photography': "Your experience description for Photography..."
@@ -75,21 +75,22 @@ selected_option = st.session_state['selected_option']
 if selected_option:
     st.subheader(selected_option)
 
-    # If Trekking is selected, create a slideshow of images within the 'experiences' container
-    if selected_option == 'Trekking' and 'slideshow' in experiences[selected_option]:
-        # Description
+    # Display the experience description or slideshow if Trekking is selected
+    if selected_option == 'Trekking':
+        trek_description, trek_images = experiences[selected_option]
         st.markdown(f"""
         <div style="background-color: rgba(0, 0, 0, 0.8); margin: 10px 0; padding: 20px; border-radius: 10px;">
-            <p style="color: white;">{experiences[selected_option][0]}</p>
+            <p style="color: white;">{trek_description}</p>
         </div>
         """, unsafe_allow_html=True)
+        
+        # Add a slider to navigate through the Trekking images if any
+        if trek_images:
+            image_index = st.slider('Browse Trekking Photos', 0, len(trek_images) - 1, 0)
+            st.image(trek_images[image_index], use_column_width=True)
 
-        # Slideshow
-        trek_images = experiences[selected_option][1]
-        image_index = st.slider('Browse Trekking Photos', 0, len(trek_images) - 1, 0)
-        st.image(trek_images[image_index], use_column_width=True)
     else:
-        # Other interests without slideshow can be displayed here
+        # Display the experience description for interests other than Trekking
         st.markdown(f"""
         <div style="background-color: rgba(0, 0, 0, 0.8); margin: 10px 0; padding: 20px; border-radius: 10px;">
             <p style="color: white;">{experiences[selected_option]}</p>
