@@ -19,17 +19,6 @@ with open('homestyle.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
     
 
-    
-# Define a function to toggle the visibility of the star rating
-def toggle_rating():
-    st.session_state.show_rating = not st.session_state.show_rating
-
-# Initialize the session state variable for star rating visibility
-if 'show_rating' not in st.session_state:
-    st.session_state.show_rating = True
-
-# Place the star rating system in the sidebar
-
 
 # Toggle between 'About Me' and 'AshGPT'
 page = st.radio("Explore my very own AshGPT next!", ("Welcome!", "AshGPT"), horizontal=True)
@@ -149,14 +138,48 @@ PDF
         st.session_state.messages.append({"role": "assistant", "content": full_response})
         
 from streamlit_star_rating import st_star_rating
+# Define a function to toggle the visibility of the star rating
+def toggle_rating():
+    st.session_state.show_rating = not st.session_state.show_rating
+
+# Initialize the session state variable
+if 'show_rating' not in st.session_state:
+    st.session_state.show_rating = True
+
+# Custom CSS to style the container
+st.markdown("""
+<style>
+    .rating-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #333333; /* Dark grey background */
+        color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        width: auto;
+    }
+    /* You might need to adjust this based on your sidebar/content layout */
+    @media (min-width: 640px) {
+        .rating-container {
+            margin-right: calc((100vw - 640px) / 2);
+        }
+    }
+</style>
+""", unsafe_allow_html=True)
 
 # Add a button to toggle the star rating visibility
-st.button('Show/Hide', on_click=toggle_rating)
+if st.button('Show/Hide Rating', key="toggle_rating"):
+    toggle_rating()
 
 # Show the star rating if the toggle is set to show it
 if st.session_state.show_rating:
-
-    # Create a container for the star rating
-  with st.container():
-        st.write("Please rate your experience with this page:")
-        stars = st_star_rating(label="", maxValue=5, defaultValue=5, key="rating", dark_theme=True)
+    # Use custom HTML for the container and place the star rating component inside it
+    st.markdown(f"""
+    <div class="rating-container">
+        <p>Please rate your experience with this page:</p>
+        <div>
+            {st_star_rating(label="", maxValue=5, defaultValue=5, key="rating", dark_theme=True)}
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
