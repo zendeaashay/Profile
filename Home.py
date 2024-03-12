@@ -1,7 +1,7 @@
 import streamlit as st
 import altair as alt
 import openai
-
+from streamlit_star_rating import st_star_rating
 
 st.set_page_config(page_title="Welcome to my Page!", page_icon="🌟", layout="wide")
 hide_default_format = """
