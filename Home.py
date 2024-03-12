@@ -18,14 +18,6 @@ alt.themes.enable("dark")
 with open('homestyle.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
     
-st.sidebar.markdown("""
-<style>
-    /* Reduce the font size of sidebar text to make the star rating appear smaller */
-    .sidebar .css-1d391kg, .sidebar .css-1h7mbrp {
-        font-size: 0.8rem;
-    }
-</style>
-""", unsafe_allow_html=True)
 
     
 # Define a function to toggle the visibility of the star rating
@@ -37,16 +29,6 @@ if 'show_rating' not in st.session_state:
     st.session_state.show_rating = True
 
 # Place the star rating system in the sidebar
-with st.sidebar:
-    st.write("## Rate Your Experience")
-    # Add a button to toggle the star rating visibility
-    if st.button('Show/Hide Rating'):
-        toggle_rating()
-
-    # Show the star rating if the toggle is set to show it
-    if st.session_state.show_rating:
-        st.write("Please rate your experience with this page:")
-        stars = st_star_rating(label="", maxValue=5, defaultValue=5, key="rating", dark_theme=True)
 
 
 # Toggle between 'About Me' and 'AshGPT'
@@ -165,3 +147,16 @@ PDF
            message_placeholder.markdown(full_response)
     # Add assistant response to chat history
         st.session_state.messages.append({"role": "assistant", "content": full_response})
+        
+from streamlit_star_rating import st_star_rating
+
+# Add a button to toggle the star rating visibility
+st.button('Show/Hide', on_click=toggle_rating)
+
+# Show the star rating if the toggle is set to show it
+if st.session_state.show_rating:
+
+    # Create a container for the star rating
+  with st.container():
+        st.write("Please rate your experience with this page:")
+        stars = st_star_rating(label="", maxValue=5, defaultValue=5, key="rating", dark_theme=True)
