@@ -1,6 +1,6 @@
 import hmac
 import streamlit as st
-
+import streamlit.components.v1 as components
 
 def check_password():
     """Returns `True` if the user had the correct password."""
