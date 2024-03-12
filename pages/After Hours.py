@@ -33,20 +33,11 @@ st.title("After Hours")
 # Custom styling for images to ensure they all display the same size
 st.markdown("""
     <style>
-    .image-container {
-        text-align: center;
-    }
-    .image-caption {
-        display: block;
-        margin: auto;
-    }
     .interest-image {
         height: 150px; /* or any other fixed height */
         width: auto;
-        object-fit: cover;
+        object-fit: cover; /* this will ensure the aspect ratio is maintained */
         border-radius: 5px;
-        display: block;
-        margin: auto;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -76,13 +67,8 @@ for index, (interest, icon) in enumerate(interests.items()):
     with cols[index]:
         if st.button(interest):
             st.session_state['selected_option'] = interest
-        # Center the image and the caption
-        st.markdown(f"""
-        <div class="image-container">
-            <p class="image-caption">{interest}</p>
-            <img class="interest-image" src="{icon}" alt="{interest}">
-        </div>
-        """, unsafe_allow_html=True)
+        # Make all images the same size
+        st.image(icon, use_column_width=True)
 
 # Display the content based on the selected option
 selected_option = st.session_state['selected_option']
