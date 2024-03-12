@@ -51,7 +51,10 @@ interests = {
 
 # Define experiences for each interest
 experiences = {
-    'Trekking': "Your experience description for Trekking...",
+    'Trekking': [
+        "Your experience description for Trekking...",
+        ['photos/trek/Image.jpeg', 'photos/trek/20220110_095542.jpg', 'photos/trek/P1380367.JPG', 'photos/trek/P1380563.JPG']
+    ],
     'Hyperloop Project': "Your experience description for Hyperloop Project...",
     'Surfing': "Your experience description for Surfing...",
     'Photography': "Your experience description for Photography..."
@@ -59,26 +62,39 @@ experiences = {
 
 # Track the current selected option
 if 'selected_option' not in st.session_state:
-    st.session_state['selected_option'] = 'Trekking'  # Set a default selection
+    st.session_state['selected_option'] = None
 
-# Create a horizontal line of buttons with images
+# Create a horizontal line of buttons with the representative icon for each interest
 cols = st.columns(len(interests))
 for index, (interest, icon) in enumerate(interests.items()):
     with cols[index]:
         if st.button(interest):
             st.session_state['selected_option'] = interest
-        # Make all images the same size
-        st.image(icon, use_column_width=True)
+        # Show only the representative icon here, not the slideshow
+        st.image(icon, width=100, caption=interest)
 
 # Display the content based on the selected option
 selected_option = st.session_state['selected_option']
 if selected_option:
     st.subheader(selected_option)
 
-    # Display a container with the experience paragraph
-    st.markdown(f"""
-    <div style="background-color: rgba(0, 0, 0, 0.8); margin: 10px 0; padding: 20px; border-radius: 10px;">
-        <p>{experiences[selected_option]}</p>
-    </div>
-    """, unsafe_allow_html=True)
-    
+    # If Trekking is selected, create a slideshow of images within the 'experiences' container
+    if selected_option == 'Trekking' and 'slideshow' in experiences[selected_option]:
+        # Description
+        st.markdown(f"""
+        <div style="background-color: rgba(0, 0, 0, 0.8); margin: 10px 0; padding: 20px; border-radius: 10px;">
+            <p style="color: white;">{experiences[selected_option][0]}</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+        # Slideshow
+        trek_images = experiences[selected_option][1]
+        image_index = st.slider('Browse Trekking Photos', 0, len(trek_images) - 1, 0)
+        st.image(trek_images[image_index], use_column_width=True)
+    else:
+        # Other interests without slideshow can be displayed here
+        st.markdown(f"""
+        <div style="background-color: rgba(0, 0, 0, 0.8); margin: 10px 0; padding: 20px; border-radius: 10px;">
+            <p style="color: white;">{experiences[selected_option]}</p>
+        </div>
+        """, unsafe_allow_html=True)
