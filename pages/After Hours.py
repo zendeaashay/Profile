@@ -1,7 +1,45 @@
 
 import streamlit as st
 
+# Function to convert Google Drive sharing URL to direct link
+def get_gdrive_directlink(file_id):
+    return f"https://drive.google.com/uc?id={file_id}&export=media"
 
+file_ids = [
+"1A4bWe6W-KhMRCzN1j67UWFoAvcBtKUph",
+"1A79xAbZOyCrNOtJVYEBplBvYcprYz1Qs",
+"1A96k1lanzdjy339Py94vaJvo-2vBDeQn",
+"1AMq-rMp3JefrX7twoxQW8MUtlzd3IzDo",
+"1ARkqiEbMhomxQJniTG3b1-KFquWg0cx4",
+"1AaSD3XQaAfDu5Ni4_bkT6pveThFWDOrX",
+"1AezdfeOOjmaX056W6Ttoxj9drLInYZG_",
+"1Ahs2QfAZHe1ZfoYkEfsktOb9Rc32KP-V",
+"1AZ1xW_ebqgOGFjuA6Vako8JMrk_xd-Au",
+"1A_0feDRb-0pAc6U-jpWbESdtg0mtv2hQ",
+"1Ai6ijrQLUQU6vI72kRsLX_kNjSPDIuq7",
+"1BidqnAQQh2vcU9ua7on5t7B2rH7Papb3",
+"1BlyOyqO1Yk70dULkVNzZQQvr4OWORHiN",
+"1AmUHnV7LjKWMgBOA6WZYSmTwjAma5Zze",
+"1Am9FkotgOsDZIr3WT-jF_CJ_SdEyj5dl",
+"1AvNnl-h-e7Z6Z-W-1FChLbbr-FhAK3HB",
+"1B16Z1JUyZKRqg6LqyR5Q2M_14vbcLa3w",
+"1Busw53Tcsl0Zm_RtDnjZWA5jlgLe2kG5",
+"1BvOx264a9YuEGaWG77IdfRfL6xCUhShL",
+"1B1i1vdYzcpmaFJm5Tm8jpweB0P7xTpEr",
+"1BxU57c6mKJURKeiI5fVJlTyytroeiWeP",
+"1CB5ee7WpAguLH6nbLV5yTA2JRMlguNG6",
+"1B2NaY7Ch4w5uxqaZxTahNFlIImj9dRJx",
+"1BUQ6fcxfoPzWsHRkSWk8yhz4FNyhxzkn",
+"1BWLvRVfNveSa3V84lN09-qhZpBDjV59Z",
+"1BSjubRAiNSsXan47A0fgCccWpFC6k5GE",
+"1CPDG2jEKyE8L05Yl-3PhGYxu1GWnpd8c",
+"1CBRZAXzBVIalulL3TB9UAgA9Qon_m2Fx",
+"1Bh7F7jFW5ba90K3VNOKG-jNf9gWJQL6A",
+"1BYVtUwSWJ3l3aMLhWwZB_lASls2tev7j",
+]
+
+# Convert file IDs to direct links
+photo_urls = [get_gdrive_directlink(file_id) for file_id in file_ids]
 
 st.title("After Hours")
 # Custom styling for images to ensure they all display the same size
@@ -35,7 +73,7 @@ experiences = {
         'photos/surf/9 DSC_0708.JPG',
         'photos/surf/10 DSC_0805.JPG',
         'photos/surf/10 DSC_0805~2.JPG']],
-    'Photography': [" ", ['photos/photo/21.jpg', 'photos/photo/29.jpg', 'photos/photo/30.mp4']],
+    'Photography': [" ", photo_urls],
 }
 
 # Track the current selected option
@@ -178,40 +216,35 @@ def display_selected_option(selected_option):
         st.image(current_image, use_column_width=True)
 
     
-# Add a check for 'photo_image_index' in session_state and initialize if not present
+# Initialize photo_image_index on first run
 if 'photo_image_index' not in st.session_state:
     st.session_state['photo_image_index'] = 0
 
-# Define the navigation functions for Photography
+# Navigation functions for Photography
 def previous_photo_image():
-    photo_images = experiences['Photography'][1]
-    st.session_state['photo_image_index'] = (st.session_state['photo_image_index'] - 1) % len(photo_images)
+    st.session_state['photo_image_index'] = (st.session_state['photo_image_index'] - 1) % len(photo_urls)
 
 def next_photo_image():
-    photo_images = experiences['Photography'][1]
-    st.session_state['photo_image_index'] = (st.session_state['photo_image_index'] + 1) % len(photo_images)
+    st.session_state['photo_image_index'] = (st.session_state['photo_image_index'] + 1) % len(photo_urls)
 
+# Display function for Photography
+def display_photography_section():
+    photo_description, photo_urls = experiences['Photography']
+    st.markdown(photo_description, unsafe_allow_html=True)
+    col1, col2 = st.columns(2)
+    with col1:
+        if st.button("Previous Photo"):
+            previous_photo_image()
+    with col2:
+        if st.button("Next Photo"):
+            next_photo_image()
+    current_media = photo_urls[st.session_state['photo_image_index']]
+    if '.mp4' in current_media:
+        st.video(current_media)
+    else:
+        st.image(current_media, use_column_width=True)
 
-
+# Main display logic
+selected_option = st.session_state.get('selected_option', None)
 if selected_option == 'Photography':
-        # Use the description and list of images/videos from the experiences dictionary
-        photo_description, photo_images = experiences['Photography']
-
-        # Create buttons for navigating photos
-        col1, col2 = st.columns(2)
-        with col1:
-            if st.button("Previous Photo"):
-                previous_photo_image()
-
-        with col2:
-            if st.button("Next Photo"):
-                next_photo_image()
-
-        # Get the current image or video to display
-        current_media = photo_images[st.session_state['photo_image_index']]
-
-        # Display the image or play the video based on the file extension
-        if current_media.endswith('.mp4'):
-            st.video(current_media)
-        else:
-            st.image(current_media, use_column_width=True)
+    display_photography_section()
