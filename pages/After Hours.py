@@ -1,7 +1,8 @@
 import hmac
 import streamlit as st
 
-
+if 'password' not in st.session_state:
+    st.session_state['password'] = None
 def check_password():
     """Returns `True` if the user had the correct password."""
 
