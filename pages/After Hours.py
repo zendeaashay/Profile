@@ -96,9 +96,10 @@ if selected_option:
         # Display previous arrow
         if st.button("Previous", key="previous"):
             previous_image()
-        
+        if 'image_index' not in st.session_state:
+         st.session_state['image_index'] = 0
         # Display the image
-        st.image(trek_images[st.session_state['image_index']], use_column_width=True)
+         st.image(trek_images[st.session_state['image_index']], use_column_width=True)
         
         # Display next arrow
         if st.button("Next", key="next"):
