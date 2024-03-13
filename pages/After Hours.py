@@ -52,7 +52,7 @@ interests = {
 
 # Define experiences for each interest
 experiences = {
-    'Trekking': ["Your experience description for Trekking...", ['photos/trek/Image.jpeg', 'photos/trek/20220110_095542.png', 'photos/trek/P1380367.JPG', 'photos/trek/P1380563.JPG', 'photos/trek/P1380186.JPG', 'photos/trek/P1370805.JPG']],
+    'Trekking': ["Your experience description for Trekking...", ['photos/trek/Image.jpeg', 'photos/trek/20220110_095542.png', 'photos/trek/P1380367.JPG', 'photos/trek/P1380563.JPG', 'photos/trek/P1380186.JPG', 'photos/trek/P1370805.JPG', 'photos/trek/P1370726.MOV']],
     'Hyperloop Project': "Your experience description for Hyperloop Project...",
     'Surfing': "Your experience description for Surfing...",
     'Photography': "Your experience description for Photography..."
@@ -116,3 +116,12 @@ if selected_option:
 
         # Display the current image
         st.image(trek_images[st.session_state['image_index']], use_column_width=True)
+        
+        # Get the current image or video
+    current_media = trek_images[st.session_state['image_index']]
+
+    # Check if the current media is a video
+    if current_media.endswith('.MOV'):
+        st.video(current_media)
+    else:
+        st.image(current_media, use_column_width=True)
