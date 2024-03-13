@@ -191,12 +191,9 @@ def next_photo_image():
     photo_images = experiences['Photography'][1]
     st.session_state['photo_image_index'] = (st.session_state['photo_image_index'] + 1) % len(photo_images)
 
-# Add the buttons and image display to the main app logic
-selected_option = st.session_state.get('selected_option')
-if selected_option:
-    st.subheader(selected_option)
 
-    if selected_option == 'Photography':
+
+if selected_option == 'Photography':
         # Use the description and list of images/videos from the experiences dictionary
         photo_description, photo_images = experiences['Photography']
         st.markdown(photo_description, unsafe_allow_html=True)
