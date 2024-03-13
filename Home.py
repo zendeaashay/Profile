@@ -41,7 +41,7 @@ For an interactive experience, click on the 'AshGPT' option at the top of the pa
 Embark on this digital narrative and uncover the professional paths I've navigated. Let's connect the dots together. </p>
         </div>
     """, unsafe_allow_html=True)
-    st.image('image.jpeg', caption='Exploring the Himalayas with my furry friends!')
+    st.image('image.jpg', caption='Exploring the Himalayas with my furry friends!')
 
 elif page == "AshGPT":
     st.markdown("""
