@@ -71,9 +71,11 @@ for index, (interest, icon) in enumerate(interests.items()):
         st.image(icon, width=100)
 st.session_state['image_index'] = 0
 def previous_image():
+    # Subtract one from the current index and loop back at the start if necessary
     st.session_state['image_index'] = (st.session_state['image_index'] - 1) % len(trek_images)
 
 def next_image():
+    # Add one to the current index and loop back at the end if necessary
     st.session_state['image_index'] = (st.session_state['image_index'] + 1) % len(trek_images)
 
 # Define your button styles and events
@@ -84,23 +86,27 @@ prev_button = """
 next_button = """
     <button style='font-size: 20px;' onclick='next_image()'>▶</button>
 """
-# Display the content based on the selected option
-selected_option = st.session_state['selected_option']
+# Initialize image_index on first run
+if 'image_index' not in st.session_state:
+    st.session_state['image_index'] = 0
+
+selected_option = st.session_state.get('selected_option')
 if selected_option:
     st.subheader(selected_option)
 
-    # Display the experience description or slideshow if Trekking is selected
     if selected_option == 'Trekking':
         trek_description, trek_images = experiences[selected_option]
         st.markdown(trek_description, unsafe_allow_html=True)
-        
-        # Display previous arrow
-        if st.button("Previous", key="previous"):
-            previous_image()
-        if 'image_index' not in st.session_state:
-        # Display the image
-         st.image(trek_images[st.session_state['image_index']], use_column_width=True)
-        
-        # Display next arrow
-        if st.button("Next", key="next"):
-            next_image()
+
+        # Create Previous and Next buttons
+        col1, col2 = st.columns(2)
+        with col1:
+            if st.button("Previous"):
+                previous_image()
+
+        with col2:
+            if st.button("Next"):
+                next_image()
+
+        # Display the current image
+        st.image(trek_images[st.session_state['image_index']], use_column_width=True)
