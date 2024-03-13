@@ -53,7 +53,7 @@ interests = {
 # Define experiences for each interest
 experiences = {
     'Trekking': ["Your experience description for Trekking...", ['photos/trek/Image.jpeg', 'photos/trek/20220110_095542.png', 'photos/trek/P1380367.JPG', 'photos/trek/P1380563.JPG', 'photos/trek/P1380186.JPG', 'photos/trek/P1370805.JPG', 'photos/trek/P1370726.MOV']],
-    'Hyperloop Project': "Your experience description for Hyperloop Project...",
+    'Hyperloop Project': ["Your experience description for Hyperloop...", ['photos/hyp/1.png', 'photos/hyp/2.png', 'photos/hyp/3.png', 'photos/hyp/4.png']]
     'Surfing': ["Your experience description for Surfing...", ['photos/surf/1 DSC_0055.JPG', 'photos/surf/3 bDSC_0277.JPG', 'photos/surf/4 DSC_0426.JPG', 'photos/surf/5 DSC_0780.JPG',
         'photos/surf/6 DSC_0944.JPG',
         'photos/surf/7 DSC_0183.JPG',
@@ -162,4 +162,37 @@ if selected_option:
 
         # Display the current surfing image
         st.image(surf_images[st.session_state['surf_image_index']], use_column_width=True)        
-       
+
+def previous_hyperloop_image():
+    hyp_images = experiences['Hyperloop Project'][1]
+    st.session_state['hyp_image_index'] = (st.session_state['hyp_image_index'] - 1) % len(hyp_images)
+
+def next_hyperloop_image():
+    hyp_images = experiences['Hyperloop Project'][1]
+    st.session_state['hyp_image_index'] = (st.session_state['hyp_image_index'] + 1) % len(hyp_images)
+
+if 'hyp_image_index' not in st.session_state:
+    st.session_state['hyp_image_index'] = 0  # Initialize it with the first image index
+
+# Then in your app where you are displaying the images:
+
+selected_option = st.session_state.get('selected_option')
+if selected_option:
+    st.subheader(selected_option)
+
+    if selected_option == 'Hyperloop Project':
+        hyp_description, hyp_images = experiences[selected_option]
+        st.markdown(hyp_description, unsafe_allow_html=True)
+
+        # Create Previous and Next buttons for hyperloop project
+        col1, col2 = st.columns(2)
+        with col1:
+            if st.button("Previous"):
+                previous_hyperloop_image()
+
+        with col2:
+            if st.button("Next"):
+                next_hyperloop_image()
+
+        # Display the current hyperloop project image
+        st.image(hyp_images[st.session_state['hyp_image_index']], use_column_width=True)
