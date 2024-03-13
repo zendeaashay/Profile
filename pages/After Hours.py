@@ -70,28 +70,22 @@ for index, (interest, icon) in enumerate(interests.items()):
             st.session_state['image_index'] = 0  # Reset index when a new interest is selected
         st.image(icon, width=100, caption=interest)
 
+# Use the local build of the component
+image_carousel = components.declare_component("image_carousel", path="path_to_your_component_build_directory")
+
 # Display the content based on the selected option
-selected_option = st.session_state['selected_option']
+selected_option = st.session_state.get('selected_option')
 if selected_option:
     st.subheader(selected_option)
     
-    # Display the experience description or slideshow if Trekking is selected
+    # Display the experience description for Trekking
     if selected_option == 'Trekking':
         trek_description, trek_images = experiences[selected_option]
-        st.markdown(f"""
-        <div style="background-color: rgba(0, 0, 0, 0.8); margin: 10px 0; padding: 20px; border-radius: 10px;">
-            <p style="color: white;">{trek_description}</p>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        # Add buttons to navigate through the Trekking images
-        if trek_images:
-            col1, col2, col3 = st.columns([1, 10, 1])
-            with col1:
-                if st.button('Previous'):
-                    st.session_state['image_index'] = (st.session_state['image_index'] - 1) % len(trek_images)
-            with col2:
-                st.image(trek_images[st.session_state['image_index']], use_column_width=True)
-            with col3:
-                if st.button('Next'):
-                    st.session_state['image_index'] = (st.session_state['image_index'] + 1) % len(trek_images)
+        st.markdown(trek_description, unsafe_allow_html=True)
+
+        # Call your image carousel component with the list of image URLs
+        selected_image = image_carousel(image_urls=trek_images)
+
+        # Optionally, display the selected image from the carousel
+        if selected_image:
+            st.image(selected_image, caption="Selected Image from Carousel")
