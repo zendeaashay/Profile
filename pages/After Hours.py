@@ -196,7 +196,6 @@ def next_photo_image():
 if selected_option == 'Photography':
         # Use the description and list of images/videos from the experiences dictionary
         photo_description, photo_images = experiences['Photography']
-        st.markdown(photo_description, unsafe_allow_html=True)
 
         # Create buttons for navigating photos
         col1, col2 = st.columns(2)
