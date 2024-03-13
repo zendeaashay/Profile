@@ -35,7 +35,7 @@ experiences = {
         'photos/surf/9 DSC_0708.JPG',
         'photos/surf/10 DSC_0805.JPG',
         'photos/surf/10 DSC_0805~2.JPG']],
-    'Photography': " "
+    'Photography': [" ", ['photos/photo/21.jpg', 'photos/photo/29.jpg', 'photos/photo/30.mp4']],
 }
 
 # Track the current selected option
@@ -177,8 +177,45 @@ def display_selected_option(selected_option):
         current_image = hyperloop_images[st.session_state['hyperloop_image_index']]
         st.image(current_image, use_column_width=True)
 
-# Main display logic
+    
+# Add a check for 'photo_image_index' in session_state and initialize if not present
+if 'photo_image_index' not in st.session_state:
+    st.session_state['photo_image_index'] = 0
+
+# Define the navigation functions for Photography
+def previous_photo_image():
+    photo_images = experiences['Photography'][1]
+    st.session_state['photo_image_index'] = (st.session_state['photo_image_index'] - 1) % len(photo_images)
+
+def next_photo_image():
+    photo_images = experiences['Photography'][1]
+    st.session_state['photo_image_index'] = (st.session_state['photo_image_index'] + 1) % len(photo_images)
+
+# Add the buttons and image display to the main app logic
 selected_option = st.session_state.get('selected_option')
 if selected_option:
     st.subheader(selected_option)
-    display_selected_option(selected_option)       
+
+    if selected_option == 'Photography':
+        # Use the description and list of images/videos from the experiences dictionary
+        photo_description, photo_images = experiences['Photography']
+        st.markdown(photo_description, unsafe_allow_html=True)
+
+        # Create buttons for navigating photos
+        col1, col2 = st.columns(2)
+        with col1:
+            if st.button("Previous Photo"):
+                previous_photo_image()
+
+        with col2:
+            if st.button("Next Photo"):
+                next_photo_image()
+
+        # Get the current image or video to display
+        current_media = photo_images[st.session_state['photo_image_index']]
+
+        # Display the image or play the video based on the file extension
+        if current_media.endswith('.mp4'):
+            st.video(current_media)
+        else:
+            st.image(current_media, use_column_width=True)
