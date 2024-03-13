@@ -57,28 +57,43 @@ experiences = {
     'Photography': "Your experience description for Photography..."
 }
 
-# Initialize 'selected_option' and 'image_index' if they don't exist in the session state
+# Track the current selected option
 if 'selected_option' not in st.session_state:
     st.session_state['selected_option'] = None
+
+# Create a horizontal line of buttons with the representative icon for each interest
+cols = st.columns(len(interests))
+for index, (interest, icon) in enumerate(interests.items()):
+    with cols[index]:
+        if st.button(interest):
+            st.session_state['selected_option'] = interest
+        # Show only the representative icon here, not the slideshow
+        st.image(icon, width=100)
+
 
 if 'image_index' not in st.session_state:
     st.session_state['image_index'] = 0
 
-# Define the navigation functions
+# Define the navigation functions and bind them to the session state
 def previous_image():
-    # Subtract one from the current index and loop back at the start if necessary
-    st.session_state['image_index'] = (st.session_state['image_index'] - 1) % len(experiences['Trekking'][1])
+    st.session_state['image_index'] = (st.session_state['image_index'] - 1) % len(trek_images)
 
 def next_image():
-    # Add one to the current index and loop back at the end if necessary
-    st.session_state['image_index'] = (st.session_state['image_index'] + 1) % len(experiences['Trekking'][1])
+    st.session_state['image_index'] = (st.session_state['image_index'] + 1) % len(trek_images)
 
-# Bind the navigation functions to the session state
 st.session_state['previous_image'] = previous_image
 st.session_state['next_image'] = next_image
+# Define your button styles and events
+prev_button = """
+    <button style='font-size: 20px;' onclick='previous_image()'>◀</button>
+"""
 
-# Display logic for the selected option and associated images
-selected_option = st.session_state['selected_option']
+next_button = """
+    <button style='font-size: 20px;' onclick='next_image()'>▶</button>
+"""
+
+
+selected_option = st.session_state.get('selected_option')
 if selected_option:
     st.subheader(selected_option)
 
@@ -86,14 +101,15 @@ if selected_option:
         trek_description, trek_images = experiences[selected_option]
         st.markdown(trek_description, unsafe_allow_html=True)
 
-        # Create Previous and Next buttons and show the selected image
-        col1, col2 = st.columns([1, 1])
+        # Create Previous and Next buttons
+        col1, col2 = st.columns(2)
         with col1:
             if st.button("Previous"):
-                st.session_state['previous_image']()
+                previous_image()
 
         with col2:
             if st.button("Next"):
-                st.session_state['next_image']()
+                next_image()
 
+        # Display the current image
         st.image(trek_images[st.session_state['image_index']], use_column_width=True)
