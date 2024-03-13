@@ -91,7 +91,9 @@ prev_button = """
 next_button = """
     <button style='font-size: 20px;' onclick='next_image()'>▶</button>
 """
-
+# Initialize image_index on first run
+if 'image_index' not in st.session_state:
+    st.session_state['image_index'] = 0
 
 selected_option = st.session_state.get('selected_option')
 if selected_option:
