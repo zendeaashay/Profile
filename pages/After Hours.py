@@ -153,11 +153,11 @@ if selected_option:
         # Create Previous and Next buttons for surfing
         col1, col2 = st.columns(2)
         with col1:
-            if st.button("Previous Surf Image"):
+            if st.button("Previous"):
                 previous_surf_image()
 
         with col2:
-            if st.button("Next Surf Image"):
+            if st.button("Next"):
                 next_surf_image()
 
         # Display the current surfing image
