@@ -54,7 +54,14 @@ interests = {
 experiences = {
     'Trekking': ["Your experience description for Trekking...", ['photos/trek/Image.jpeg', 'photos/trek/20220110_095542.png', 'photos/trek/P1380367.JPG', 'photos/trek/P1380563.JPG', 'photos/trek/P1380186.JPG', 'photos/trek/P1370805.JPG', 'photos/trek/P1370726.MOV']],
     'Hyperloop Project': "Your experience description for Hyperloop Project...",
-    'Surfing': "Your experience description for Surfing...",
+    'Surfing': ["Your experience description for Surfing...", ['photos/surf/1 DSC_0055.JPG', 'photos/surf/3 bDSC_0277.JPG', 'photos/surf/4 DSC_0426.JPG', 'photos/surf/5 DSC_0780.JPG',
+        'photos/surf/6 DSC_0944.JPG',
+        'photos/surf/7 DSC_0183.JPG',
+        'photos/surf/8 DSC_0423.JPG',
+        'photos/surf/8 DSC_0423~2.JPG',
+        'photos/surf/9 DSC_0708.JPG',
+        'photos/surf/10 DSC_0805.JPG',
+        'photos/surf/10 DSC_0805~2.JPG']],
     'Photography': "Your experience description for Photography..."
 }
 
@@ -122,5 +129,37 @@ if selected_option:
             st.video(current_media)
         else:
             st.image(current_media, use_column_width=True)
-        
+def previous_surf_image():
+    surf_images = experiences['Surfing'][1]
+    st.session_state['surf_image_index'] = (st.session_state['surf_image_index'] - 1) % len(surf_images)
+
+def next_surf_image():
+    surf_images = experiences['Surfing'][1]
+    st.session_state['surf_image_index'] = (st.session_state['surf_image_index'] + 1) % len(surf_images)
+
+if 'surf_image_index' not in st.session_state:
+    st.session_state['surf_image_index'] = 0  # Initialize it with the first image index
+
+# Then in your app where you are displaying the images:
+
+selected_option = st.session_state.get('selected_option')
+if selected_option:
+    st.subheader(selected_option)
+
+    if selected_option == 'Surfing':
+        surf_description, surf_images = experiences[selected_option]
+        st.markdown(surf_description, unsafe_allow_html=True)
+
+        # Create Previous and Next buttons for surfing
+        col1, col2 = st.columns(2)
+        with col1:
+            if st.button("Previous Surf Image"):
+                previous_surf_image()
+
+        with col2:
+            if st.button("Next Surf Image"):
+                next_surf_image()
+
+        # Display the current surfing image
+        st.image(surf_images[st.session_state['surf_image_index']], use_column_width=True)        
        
