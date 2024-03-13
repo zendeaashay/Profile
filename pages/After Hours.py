@@ -68,7 +68,7 @@ for index, (interest, icon) in enumerate(interests.items()):
         if st.button(interest):
             st.session_state['selected_option'] = interest
         # Show only the representative icon here, not the slideshow
-        st.image(icon, width=100, caption=interest)
+        st.image(icon, width=100)
 
 # Display the content based on the selected option
 selected_option = st.session_state['selected_option']
