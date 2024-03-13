@@ -188,7 +188,7 @@ def display_selected_option(selected_option):
 
     elif selected_option == 'Hyperloop Project':
         hyperloop_description, hyperloop_images = experiences[selected_option]
-        st.markdown('Check out this [Hyperloop Instagram Post](https://www.instagram.com/p/CY8vJVKNu0q/?hl=es-la)', unsafe_allow_html=True)
+        st.markdown('Our design was selected by the European Hyperloop Competition! Check out this [Instagram Post](https://www.instagram.com/p/CY8vJVKNu0q/?hl=es-la)', unsafe_allow_html=True)
 
         # Create Previous and Next buttons for Hyperloop Project
         col1, col2 = st.columns(2)
