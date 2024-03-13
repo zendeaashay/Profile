@@ -83,6 +83,7 @@ prev_button = """
 next_button = """
     <button style='font-size: 20px;' onclick='next_image()'>▶</button>
 """
+st.session_state['image_index'] = 0
 # Display the content based on the selected option
 selected_option = st.session_state['selected_option']
 if selected_option:
@@ -97,7 +98,7 @@ if selected_option:
         if st.button("Previous", key="previous"):
             previous_image()
         if 'image_index' not in st.session_state:
-         st.session_state['image_index'] = 0
+         
         # Display the image
          st.image(trek_images[st.session_state['image_index']], use_column_width=True)
         
