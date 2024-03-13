@@ -69,7 +69,20 @@ for index, (interest, icon) in enumerate(interests.items()):
             st.session_state['selected_option'] = interest
         # Show only the representative icon here, not the slideshow
         st.image(icon, width=100)
+def previous_image():
+    st.session_state['image_index'] = (st.session_state['image_index'] - 1) % len(trek_images)
 
+def next_image():
+    st.session_state['image_index'] = (st.session_state['image_index'] + 1) % len(trek_images)
+
+# Define your button styles and events
+prev_button = """
+    <button style='font-size: 20px;' onclick='previous_image()'>◀</button>
+"""
+
+next_button = """
+    <button style='font-size: 20px;' onclick='next_image()'>▶</button>
+"""
 # Display the content based on the selected option
 selected_option = st.session_state['selected_option']
 if selected_option:
@@ -78,21 +91,15 @@ if selected_option:
     # Display the experience description or slideshow if Trekking is selected
     if selected_option == 'Trekking':
         trek_description, trek_images = experiences[selected_option]
-        st.markdown(f"""
-        <div style="background-color: rgba(0, 0, 0, 0.8); margin: 10px 0; padding: 20px; border-radius: 10px;">
-            <p style="color: white;">{trek_description}</p>
-        </div>
-        """, unsafe_allow_html=True)
+        st.markdown(trek_description, unsafe_allow_html=True)
         
-        # Add a slider to navigate through the Trekking images if any
-        if trek_images:
-            image_index = st.slider('Browse Trekking Photos', 0, len(trek_images) - 1, 0)
-            st.image(trek_images[image_index], use_column_width=True)
-
-    else:
-        # Display the experience description for interests other than Trekking
-        st.markdown(f"""
-        <div style="background-color: rgba(0, 0, 0, 0.8); margin: 10px 0; padding: 20px; border-radius: 10px;">
-            <p style="color: white;">{experiences[selected_option]}</p>
-        </div>
-        """, unsafe_allow_html=True)
+        # Display previous arrow
+        if st.button("Previous", key="previous"):
+            previous_image()
+        
+        # Display the image
+        st.image(trek_images[st.session_state['image_index']], use_column_width=True)
+        
+        # Display next arrow
+        if st.button("Next", key="next"):
+            next_image()
