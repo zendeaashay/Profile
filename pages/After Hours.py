@@ -69,6 +69,7 @@ for index, (interest, icon) in enumerate(interests.items()):
             st.session_state['selected_option'] = interest
         # Show only the representative icon here, not the slideshow
         st.image(icon, width=100)
+st.session_state['image_index'] = 0
 def previous_image():
     st.session_state['image_index'] = (st.session_state['image_index'] - 1) % len(trek_images)
 
@@ -83,7 +84,6 @@ prev_button = """
 next_button = """
     <button style='font-size: 20px;' onclick='next_image()'>▶</button>
 """
-st.session_state['image_index'] = 0
 # Display the content based on the selected option
 selected_option = st.session_state['selected_option']
 if selected_option:
@@ -98,7 +98,6 @@ if selected_option:
         if st.button("Previous", key="previous"):
             previous_image()
         if 'image_index' not in st.session_state:
-         
         # Display the image
          st.image(trek_images[st.session_state['image_index']], use_column_width=True)
         
