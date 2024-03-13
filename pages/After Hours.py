@@ -51,7 +51,7 @@ interests = {
 
 # Define experiences for each interest
 experiences = {
-    'Trekking': ["Your experience description for Trekking...", ['image.jpg', 'photos/trek/20220110_095542.jpg', 'photos/trek/P1380367.jpg', 'photos/trek/P1380563.jpg']],
+    'Trekking': ["Your experience description for Trekking...", ['photos/trek/20220110_095542.jpg', 'photos/trek/P1380367.jpg', 'photos/trek/P1380563.jpg']],
     'Hyperloop Project': "Your experience description for Hyperloop Project...",
     'Surfing': "Your experience description for Surfing...",
     'Photography': "Your experience description for Photography..."
