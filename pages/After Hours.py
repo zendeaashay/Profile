@@ -36,7 +36,7 @@ experiences = {
         'photos/surf/9 DSC_0708.JPG',
         'photos/surf/10 DSC_0805.JPG',
         'photos/surf/10 DSC_0805~2.JPG']],
-    'Photography': "Your experience description for Photography..."
+    'Photography': ["Your experience description for Photography...", ['photo/21.jpg', 'photo/29.jpg', 'photo/30.mp4']],
 }
 
 # Track the current selected option
@@ -183,3 +183,42 @@ selected_option = st.session_state.get('selected_option')
 if selected_option:
     st.subheader(selected_option)
     display_selected_option(selected_option)       
+    
+# Navigation functions for Photography
+def previous_photo_image():
+    photo_images = experiences['Photography'][1]
+    st.session_state['photo_image_index'] = (st.session_state['photo_image_index'] - 1) % len(photo_images)
+
+def next_photo_image():
+    photo_images = experiences['Photography'][1]
+    st.session_state['photo_image_index'] = (st.session_state['photo_image_index'] + 1) % len(photo_images)
+
+if 'photo_image_index' not in st.session_state:
+    st.session_state['photo_image_index'] = 0  # Initialize it with the first image index
+
+# Display function for the selected option, now including the 'Photography' section
+def display_selected_option(selected_option):
+    # ... [existing display logic for other options]
+
+    elif selected_option == 'Photography':
+        photo_description, photo_images = experiences[selected_option]
+        st.markdown(photo_description, unsafe_allow_html=True)
+
+        # Create Previous and Next buttons for Photography
+        col1, col2 = st.columns(2)
+        with col1:
+            if st.button("Previous Photo"):
+                previous_photo_image()
+
+        with col2:
+            if st.button("Next Photo"):
+                next_photo_image()
+
+        # Display the current photo or video
+        current_media = photo_images[st.session_state['photo_image_index']]
+
+        # Check if the current media is a video
+        if current_media.endswith('.mp4'):
+            st.video(current_media)
+        else:
+            st.image(current_media, use_column_width=True)
