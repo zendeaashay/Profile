@@ -71,7 +71,7 @@ for index, (interest, icon) in enumerate(interests.items()):
         st.image(icon, width=100, caption=interest)
 
 # Use the local build of the component
-image_carousel = components.declare_component("image_carousel", path="path_to_your_component_build_directory")
+image_carousel = components.declare_component("image_carousel", path="/Users/aashayzende/Desktop/Profile/frontend/node_modules")
 
 # Display the content based on the selected option
 selected_option = st.session_state.get('selected_option')
