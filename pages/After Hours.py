@@ -114,14 +114,13 @@ if selected_option:
             if st.button("Next"):
                 next_image()
 
-        # Display the current image
-        st.image(trek_images[st.session_state['image_index']], use_column_width=True)
-        
-    # Get the current image or video
-    current_media = trek_images[st.session_state['image_index']]
+        # Get the current image or video
+        current_media = trek_images[st.session_state['image_index']]
 
-    # Check if the current media is a video
-    if current_media.endswith('.MOV'):
-        st.video(current_media)
-    else:
-        st.image(current_media, use_column_width=True)   
+        # Check if the current media is a video
+        if current_media.endswith('.MOV'):
+            st.video(current_media)
+        else:
+            st.image(current_media, use_column_width=True)
+        
+       
