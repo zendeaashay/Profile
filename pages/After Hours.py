@@ -117,11 +117,11 @@ if selected_option:
         # Display the current image
         st.image(trek_images[st.session_state['image_index']], use_column_width=True)
         
-        # Get the current image or video
+    # Get the current image or video
     current_media = trek_images[st.session_state['image_index']]
 
     # Check if the current media is a video
     if current_media.endswith('.MOV'):
         st.video(current_media)
     else:
-        st.image(current_media, use_column_width=True)
+        st.image(current_media, use_column_width=True)   
