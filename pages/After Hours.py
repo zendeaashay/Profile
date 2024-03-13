@@ -162,4 +162,50 @@ if selected_option:
 
         # Display the current surfing image
         st.image(surf_images[st.session_state['surf_image_index']], use_column_width=True)        
-       
+# Navigation functions for Hyperloop Project
+def previous_hyperloop_image():
+    hyperloop_images = experiences['Hyperloop Project'][1]
+    st.session_state['hyperloop_image_index'] = (st.session_state['hyperloop_image_index'] - 1) % len(hyperloop_images)
+
+def next_hyperloop_image():
+    hyperloop_images = experiences['Hyperloop Project'][1]
+    st.session_state['hyperloop_image_index'] = (st.session_state['hyperloop_image_index'] + 1) % len(hyperloop_images)
+
+if 'hyperloop_image_index' not in st.session_state:
+    st.session_state['hyperloop_image_index'] = 0  # Initialize it with the first image index
+
+# Display function for the selected option
+def display_selected_option(selected_option):
+    if selected_option == 'Trekking':
+        trek_description, trek_images = experiences[selected_option]
+        st.markdown(trek_description, unsafe_allow_html=True)
+        # ... (your existing trekking display code)
+
+    elif selected_option == 'Surfing':
+        surf_description, surf_images = experiences[selected_option]
+        st.markdown(surf_description, unsafe_allow_html=True)
+        # ... (your existing surfing display code)
+
+    elif selected_option == 'Hyperloop Project':
+        hyperloop_description, hyperloop_images = experiences[selected_option]
+        st.markdown(hyperloop_description, unsafe_allow_html=True)
+
+        # Create Previous and Next buttons for Hyperloop Project
+        col1, col2 = st.columns(2)
+        with col1:
+            if st.button("Previous Hyperloop", on_click=previous_hyperloop_image):
+                pass
+
+        with col2:
+            if st.button("Next Hyperloop", on_click=next_hyperloop_image):
+                pass
+
+        # Display the current Hyperloop image
+        current_image = hyperloop_images[st.session_state['hyperloop_image_index']]
+        st.image(current_image, use_column_width=True)
+
+# Main display logic
+selected_option = st.session_state.get('selected_option')
+if selected_option:
+    st.subheader(selected_option)
+    display_selected_option(selected_option)       
