@@ -51,7 +51,7 @@ interests = {
 
 # Define experiences for each interest
 experiences = {
-    'Trekking': ["Your experience description for Trekking...", ['photos/trek/Image.jpg', 'photos/trek/20220110_095542.png', 'photos/trek/P1380367.JPG', 'photos/trek/P1380563.JPG']],
+    'Trekking': ["Your experience description for Trekking...", ['photos/trek/Image.jpeg', 'photos/trek/20220110_095542.jpg', 'photos/trek/P1380367.JPG', 'photos/trek/P1380563.JPG']],
     'Hyperloop Project': "Your experience description for Hyperloop Project...",
     'Surfing': "Your experience description for Surfing...",
     'Photography': "Your experience description for Photography..."
@@ -61,20 +61,20 @@ experiences = {
 if 'selected_option' not in st.session_state:
     st.session_state['selected_option'] = None
 
-# Create a horizontal line of buttons with icons
+# Create a horizontal line of buttons with the representative icon for each interest
 cols = st.columns(len(interests))
 for index, (interest, icon) in enumerate(interests.items()):
     with cols[index]:
         if st.button(interest):
             st.session_state['selected_option'] = interest
-            st.session_state['image_index'] = 0  # Reset index when a new interest is selected
+        # Show only the representative icon here, not the slideshow
         st.image(icon, width=100, caption=interest)
 
 # Display the content based on the selected option
 selected_option = st.session_state['selected_option']
 if selected_option:
     st.subheader(selected_option)
-    
+
     # Display the experience description or slideshow if Trekking is selected
     if selected_option == 'Trekking':
         trek_description, trek_images = experiences[selected_option]
@@ -84,14 +84,15 @@ if selected_option:
         </div>
         """, unsafe_allow_html=True)
         
-        # Add buttons to navigate through the Trekking images
+        # Add a slider to navigate through the Trekking images if any
         if trek_images:
-            col1, col2, col3 = st.columns([1, 10, 1])
-            with col1:
-                if st.button('Previous'):
-                    st.session_state['image_index'] = (st.session_state['image_index'] - 1) % len(trek_images)
-            with col2:
-                st.image(trek_images[st.session_state['image_index']], use_column_width=True)
-            with col3:
-                if st.button('Next'):
-                    st.session_state['image_index'] = (st.session_state['image_index'] + 1) % len(trek_images)
+            image_index = st.slider('Browse Trekking Photos', 0, len(trek_images) - 1, 0)
+            st.image(trek_images[image_index], use_column_width=True)
+
+    else:
+        # Display the experience description for interests other than Trekking
+        st.markdown(f"""
+        <div style="background-color: rgba(0, 0, 0, 0.8); margin: 10px 0; padding: 20px; border-radius: 10px;">
+            <p style="color: white;">{experiences[selected_option]}</p>
+        </div>
+        """, unsafe_allow_html=True)
