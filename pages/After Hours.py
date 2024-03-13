@@ -53,7 +53,7 @@ interests = {
 # Define experiences for each interest
 experiences = {
     'Trekking': ["Your experience description for Trekking...", ['photos/trek/Image.jpeg', 'photos/trek/20220110_095542.png', 'photos/trek/P1380367.JPG', 'photos/trek/P1380563.JPG', 'photos/trek/P1380186.JPG', 'photos/trek/P1370805.JPG', 'photos/trek/P1370726.MOV']],
-    'Hyperloop Project': ["Your experience description for Hyperloop Project...", ['photos/hyp/1.png', 'photos/hyp/2.png', 'photos/hyp/3.png']],
+    'Hyperloop Project': ["Your experience description for Hyperloop Project...", ['photos/hyp/1.png', 'photos/hyp/2.png', 'photos/hyp/3.png', 'photos/hyp/4.png']],
     'Surfing': ["Your experience description for Surfing...", ['photos/surf/1 DSC_0055.JPG', 'photos/surf/3 bDSC_0277.JPG', 'photos/surf/4 DSC_0426.JPG', 'photos/surf/5 DSC_0780.JPG',
         'photos/surf/6 DSC_0944.JPG',
         'photos/surf/7 DSC_0183.JPG',
