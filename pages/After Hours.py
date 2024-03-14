@@ -217,3 +217,8 @@ def display_photography():
         else:
             st.image(current_media, use_column_width=True)
 
+# Main display logic
+selected_option = st.session_state.get('selected_option')
+if selected_option:
+    if selected_option == 'Photography':
+        display_photography()
