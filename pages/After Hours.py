@@ -197,10 +197,10 @@ def next_photo_image():
     st.session_state['photo_image_index'] = (st.session_state['photo_image_index'] + 1) % len(photo_media)
 
 def display_photography_section(photo_media, photo_description):
-    if 'photo_image_index' not in st.session_state:
+if 'photo_image_index' not in st.session_state:
         st.session_state['photo_image_index'] = 0
 
-    if photo_media:  # Check if photo_media is not empty
+if photo_media:  # Check if photo_media is not empty
         st.markdown(photo_description, unsafe_allow_html=True)
         
         col1, col2 = st.columns(2)
@@ -214,6 +214,16 @@ def display_photography_section(photo_media, photo_description):
         # Ensure the index is within the correct range
         photo_index = st.session_state['photo_image_index'] % len(photo_media)
         current_media = photo_media[photo_index]
+    
+# Use the index to access the current media file
+current_index = st.session_state.get('photo_image_index', 0)
+current_media = experiences['Photography'][1][current_index]
+
+# Display the current image or video
+if current_media.endswith(('.MOV', '.mp4')):
+    st.video(current_media)
+else:
+    st.image(current_media, use_column_width=True)    
 
         if current_media:  # Check if current_media is not None or empty
             if current_media.endswith(('.MOV', '.mp4')):
