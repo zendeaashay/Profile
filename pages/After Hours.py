@@ -182,10 +182,10 @@ def display_photography():
         
         col1, col2 = st.columns(2)
         with col1:
-            if st.button("Previous Photo"):
+            if st.button("Previous"):
                 previous_photo_image()
         with col2:
-            if st.button("Next Photo"):
+            if st.button("Next"):
                 next_photo_image()
         
         current_media = photo_media[st.session_state['photo_image_index']]
