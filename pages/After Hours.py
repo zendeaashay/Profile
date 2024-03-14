@@ -189,18 +189,22 @@ def display_selected_option(selected_option):
         st.image(current_image, use_column_width=True)
 
     
-# Navigation functions for Photography
+# Check if the 'photo_image_index' is in the session state, otherwise initialize it
+if 'photo_image_index' not in st.session_state:
+    st.session_state['photo_image_index'] = 0
+
+# Define navigation functions for Photography
 def previous_photo_image():
-    st.session_state['photo_image_index'] = (st.session_state['photo_image_index'] - 1) % len(photo_media)
+    st.session_state['photo_image_index'] = (st.session_state['photo_image_index'] - 1) % len(experiences['Photography'][1])
 
 def next_photo_image():
-    st.session_state['photo_image_index'] = (st.session_state['photo_image_index'] + 1) % len(photo_media)
+    st.session_state['photo_image_index'] = (st.session_state['photo_image_index'] + 1) % len(experiences['Photography'][1])
 
-def display_photography_section(photo_media, photo_description):
-if 'photo_image_index' not in st.session_state:
-        st.session_state['photo_image_index'] = 0
-
-if photo_media:  # Check if photo_media is not empty
+# Display function for the Photography section
+def display_photography():
+    selected_option = st.session_state.get('selected_option')
+    if selected_option == 'Photography':
+        photo_description, photo_media = experiences[selected_option]
         st.markdown(photo_description, unsafe_allow_html=True)
         
         col1, col2 = st.columns(2)
@@ -210,25 +214,16 @@ if photo_media:  # Check if photo_media is not empty
         with col2:
             if st.button("Next Photo"):
                 next_photo_image()
-                
-        # Ensure the index is within the correct range
-        photo_index = st.session_state['photo_image_index'] % len(photo_media)
-        current_media = photo_media[photo_index]
-    
-# Use the index to access the current media file
-current_index = st.session_state.get('photo_image_index', 0)
-current_media = experiences['Photography'][1][current_index]
+        
+        current_media = photo_media[st.session_state['photo_image_index']]
+        if current_media.endswith('.MOV') or current_media.endswith('.mp4'):
+            st.video(current_media)
+        else:
+            st.image(current_media, use_column_width=True)
 
-# Display the current image or video
-if current_media.endswith(('.MOV', '.mp4')):
-    st.video(current_media)
-else:
-    st.image(current_media, use_column_width=True)    
-
-        if current_media:  # Check if current_media is not None or empty
-            if current_media.endswith(('.MOV', '.mp4')):
-                st.video(current_media)
-            else:
-                st.image(current_media, use_column_width=True)
-    else:
-        st.error("No media files found.")
+# Main display logic
+selected_option = st.session_state.get('selected_option')
+if selected_option:
+    st.subheader(selected_option)
+    if selected_option == 'Photography':
+        display_photography()
