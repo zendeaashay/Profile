@@ -5,7 +5,11 @@ import streamlit as st
 def get_gdrive_directlink(file_id):
     return f"https://drive.google.com/uc?id={file_id}&export=media"
 
-file_ids = ["1A4bWe6W-KhMRCzN1j67UWFoAvcBtKUph"]
+# List of Google Drive file IDs for your photos and videos
+file_ids = [
+    "1A4bWe6W-KhMRCzN1j67UWFoAvcBtKUph",  # Add the rest of your file IDs here
+    # ... more file IDs
+]
 
 # Convert file IDs to direct links
 photo_urls = [get_gdrive_directlink(file_id) for file_id in file_ids]
@@ -42,7 +46,7 @@ experiences = {
         'photos/surf/9 DSC_0708.JPG',
         'photos/surf/10 DSC_0805.JPG',
         'photos/surf/10 DSC_0805~2.JPG']],
-    'Photography': [" ", photo_urls],
+    'Photography': [" ", [['photos/photo/29.jpg', 'photos/photo/30.mp4', 'photos/photo/P1010768.JPG', 'photos/photo/P1010774.JPG', 'photos/photo/P1010800.JPG', 'photos/photo/P1010825.JPG', 'photos/photo/P1010826.JPG', 'photos/photo/1.jpg', 'photos/photo/01.jpg', 'photos/photo/2.jpg', 'photos/photo/3.jpg', 'photos/photo/5.jpg', 'photos/photo/6.jpg', 'photos/photo/7.jpg', 'photos/photo/15.jpg', 'photos/photo/18.jpg', 'photos/photo/19.MOV', 'photos/photo/21.jpg', 'photos/photo/22.jpg', 'photos/photo/23.jpg', 'photos/photo/24.jpg']]],
 }
 
 # Track the current selected option
@@ -185,35 +189,24 @@ def display_selected_option(selected_option):
         st.image(current_image, use_column_width=True)
 
     
-# Initialize photo_image_index on first run
-if 'photo_image_index' not in st.session_state:
-    st.session_state['photo_image_index'] = 0
-
-# Navigation functions for Photography
-def previous_photo_image():
-    st.session_state['photo_image_index'] = (st.session_state['photo_image_index'] - 1) % len(photo_urls)
-
-def next_photo_image():
-    st.session_state['photo_image_index'] = (st.session_state['photo_image_index'] + 1) % len(photo_urls)
-
-# Display function for Photography
-def display_photography_section():
-    photo_description, photo_urls = experiences['Photography']
-    st.markdown(photo_description, unsafe_allow_html=True)
-    col1, col2 = st.columns(2)
-    with col1:
-        if st.button("Previous Photo"):
-            previous_photo_image()
-    with col2:
-        if st.button("Next Photo"):
-            next_photo_image()
-    current_media = photo_urls[st.session_state['photo_image_index']]
-    if '.mp4' in current_media:
-        st.video(current_media)
+# Function to handle displaying the appropriate media in Streamlit
+def display_media(media_list, index):
+    if media_list[index].endswith(('.MOV', '.mp4')):
+        st.video(media_list[index])
     else:
-        st.image(current_media, use_column_width=True)
+        st.image(media_list[index], use_column_width=True)
 
-# Main display logic
-selected_option = st.session_state.get('selected_option', None)
-if selected_option == 'Photography':
-    display_photography_section()
+
+    # Check if the selected option is Photography
+    if selected_option == 'Photography':
+        photo_description, photo_media = experiences['Photography']
+        st.markdown(photo_description, unsafe_allow_html=True)
+        display_media(photo_media, st.session_state['image_index'])
+        
+        # Navigation buttons
+        if st.button('Previous', key='prev_photo'):
+            # Ensure the index wraps around to the last item
+            st.session_state['image_index'] = (st.session_state['image_index'] - 1) % len(photo_media)
+        if st.button('Next', key='next_photo'):
+            # Ensure the index wraps around to the first item
+            st.session_state['image_index'] = (st.session_state['image_index'] + 1) % len(photo_media)
