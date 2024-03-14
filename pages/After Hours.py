@@ -126,11 +126,7 @@ if 'surf_image_index' not in st.session_state:
 
 # Then in your app where you are displaying the images:
 
-selected_option = st.session_state.get('selected_option')
-if selected_option:
-    st.subheader(selected_option)
-
-    if selected_option == 'Surfing':
+if selected_option == 'Surfing':
         surf_description, surf_images = experiences[selected_option]
         st.markdown(surf_description, unsafe_allow_html=True)
 
