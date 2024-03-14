@@ -189,24 +189,36 @@ def display_selected_option(selected_option):
         st.image(current_image, use_column_width=True)
 
     
-# Function to handle displaying the appropriate media in Streamlit
-def display_media(media_list, index):
-    if media_list[index].endswith(('.MOV', '.mp4')):
-        st.video(media_list[index])
+# Navigation functions for Photography
+def previous_photo_image():
+    st.session_state['photo_image_index'] = (st.session_state['photo_image_index'] - 1) % len(photo_media)
+
+def next_photo_image():
+    st.session_state['photo_image_index'] = (st.session_state['photo_image_index'] + 1) % len(photo_media)
+
+# Display function for Photography
+def display_photography_section(photo_media, photo_description):
+    st.markdown(photo_description, unsafe_allow_html=True)
+    
+    col1, col2 = st.columns(2)
+    with col1:
+        if st.button("Previous Photo"):
+            previous_photo_image()
+    with col2:
+        if st.button("Next Photo"):
+            next_photo_image()
+            
+    current_media = photo_media[st.session_state['photo_image_index']]
+    if current_media.endswith(('.MOV', '.mp4')):
+        st.video(current_media)
     else:
-        st.image(media_list[index], use_column_width=True)
+        st.image(current_media, use_column_width=True)
 
+# Assuming 'selected_option' and 'experiences' are already defined and initialized...
+if 'photo_image_index' not in st.session_state:
+    st.session_state['photo_image_index'] = 0  # Initialize it with the first image index
 
-    # Check if the selected option is Photography
-    if selected_option == 'Photography':
-        photo_description, photo_media = experiences['Photography']
-        st.markdown(photo_description, unsafe_allow_html=True)
-        display_media(photo_media, st.session_state['image_index'])
-        
-        # Navigation buttons
-        if st.button('Previous', key='prev_photo'):
-            # Ensure the index wraps around to the last item
-            st.session_state['image_index'] = (st.session_state['image_index'] - 1) % len(photo_media)
-        if st.button('Next', key='next_photo'):
-            # Ensure the index wraps around to the first item
-            st.session_state['image_index'] = (st.session_state['image_index'] + 1) % len(photo_media)
+selected_option = st.session_state.get('selected_option', None)
+if selected_option == 'Photography':
+    photo_description, photo_media = experiences[selected_option]
+    display_photography_section(photo_media, photo_description)
