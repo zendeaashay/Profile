@@ -2,7 +2,7 @@
 import streamlit as st
 
 
-st.title("After Hours")
+st.title("Take a look at my post work hours")
 # Custom styling for images to ensure they all display the same size
 st.markdown("""
     <style>
@@ -143,17 +143,7 @@ if 'hyperloop_image_index' not in st.session_state:
 
 # Display function for the selected option
 def display_selected_option(selected_option):
-    if selected_option == 'Trekking':
-        trek_description, trek_images = experiences[selected_option]
-        st.markdown(trek_description, unsafe_allow_html=True)
-        # ... (your existing trekking display code)
-
-    elif selected_option == 'Surfing':
-        surf_description, surf_images = experiences[selected_option]
-        st.markdown(surf_description, unsafe_allow_html=True)
-        # ... (your existing surfing display code)
-
-    elif selected_option == 'Hyperloop Project':
+    if selected_option == 'Hyperloop Project':
         hyperloop_description, hyperloop_images = experiences[selected_option]
         st.markdown('Our design was selected by the European Hyperloop Competition! Check out this [Instagram Post](https://www.instagram.com/p/CY8vJVKNu0q/?hl=es-la)', unsafe_allow_html=True)
 
