@@ -196,29 +196,29 @@ def previous_photo_image():
 def next_photo_image():
     st.session_state['photo_image_index'] = (st.session_state['photo_image_index'] + 1) % len(photo_media)
 
-# Display function for Photography
 def display_photography_section(photo_media, photo_description):
-    st.markdown(photo_description, unsafe_allow_html=True)
-    
-    col1, col2 = st.columns(2)
-    with col1:
-        if st.button("Previous Photo"):
-            previous_photo_image()
-    with col2:
-        if st.button("Next Photo"):
-            next_photo_image()
-            
-    current_media = photo_media[st.session_state['photo_image_index']]
-    if current_media.endswith(('.MOV', '.mp4')):
-        st.video(current_media)
+    if 'photo_image_index' not in st.session_state:
+        st.session_state['photo_image_index'] = 0
+
+    if photo_media:  # Check if photo_media is not empty
+        st.markdown(photo_description, unsafe_allow_html=True)
+        
+        col1, col2 = st.columns(2)
+        with col1:
+            if st.button("Previous Photo"):
+                previous_photo_image()
+        with col2:
+            if st.button("Next Photo"):
+                next_photo_image()
+                
+        # Ensure the index is within the correct range
+        photo_index = st.session_state['photo_image_index'] % len(photo_media)
+        current_media = photo_media[photo_index]
+
+        if current_media:  # Check if current_media is not None or empty
+            if current_media.endswith(('.MOV', '.mp4')):
+                st.video(current_media)
+            else:
+                st.image(current_media, use_column_width=True)
     else:
-        st.image(current_media, use_column_width=True)
-
-# Assuming 'selected_option' and 'experiences' are already defined and initialized...
-if 'photo_image_index' not in st.session_state:
-    st.session_state['photo_image_index'] = 0  # Initialize it with the first image index
-
-selected_option = st.session_state.get('selected_option', None)
-if selected_option == 'Photography':
-    photo_description, photo_media = experiences[selected_option]
-    display_photography_section(photo_media, photo_description)
+        st.error("No media files found.")
