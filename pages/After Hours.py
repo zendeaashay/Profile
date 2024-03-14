@@ -1,18 +1,6 @@
 
 import streamlit as st
 
-# Function to convert Google Drive sharing URL to direct link
-def get_gdrive_directlink(file_id):
-    return f"https://drive.google.com/uc?id={file_id}&export=media"
-
-# List of Google Drive file IDs for your photos and videos
-file_ids = [
-    "1A4bWe6W-KhMRCzN1j67UWFoAvcBtKUph",  # Add the rest of your file IDs here
-    # ... more file IDs
-]
-
-# Convert file IDs to direct links
-photo_urls = [get_gdrive_directlink(file_id) for file_id in file_ids]
 
 st.title("After Hours")
 # Custom styling for images to ensure they all display the same size
@@ -40,7 +28,7 @@ experiences = {
 
 Up there, where the air is crisp and the skies a clear blue canvas, the mountains challenge me, the cold invigorates me, and the journey transforms me. Through the camaraderie with fellow hikers and the silent solidarity of shared struggles, I've discovered that the summit is just a bonus. It's the laughter, the grit, and the unexpected detours that truly chart my love for the trek. """, ['photos/trek/Image.jpeg', 'photos/trek/20220110_095542.png', 'photos/trek/P1380367.JPG', 'photos/trek/P1380563.JPG', 'photos/trek/P1380186.JPG', 'photos/trek/P1370805.JPG', 'photos/trek/P1370726.MOV']],
     'Hyperloop Project': [" ", ['photos/hyp/1.png', 'photos/hyp/2.png', 'photos/hyp/3.png', 'photos/hyp/4.png']],
-    'Surfing': [" ", ['photos/surf/1 DSC_0055.JPG', 'photos/surf/3 bDSC_0277.JPG', 'photos/surf/4 DSC_0426.JPG', 'photos/surf/5 DSC_0780.JPG',
+    'Surfing': ["Surfing, for me, is the ultimate freedom. It's just me and the waves, and maybe a few good friends when they decide to wake up early enough. Each swell is a new challenge; no two rides are ever the same, which is kind of like life, I guess. I'm not out there to show off—I'm just chasing that next rush, the moment where everything clicks and I'm gliding across the water like it's second nature. Sure, I wipe out sometimes, but where's the fun without a few salty spills? It's all part of the adventure. ", ['photos/surf/1 DSC_0055.JPG', 'photos/surf/3 bDSC_0277.JPG', 'photos/surf/4 DSC_0426.JPG', 'photos/surf/5 DSC_0780.JPG',
         'photos/surf/6 DSC_0944.JPG',
         'photos/surf/7 DSC_0183.JPG',
         'photos/surf/8 DSC_0423.JPG',
@@ -48,7 +36,7 @@ Up there, where the air is crisp and the skies a clear blue canvas, the mountain
         'photos/surf/9 DSC_0708.JPG',
         'photos/surf/10 DSC_0805.JPG',
         'photos/surf/10 DSC_0805~2.JPG']],
-    'Photography': [" ", ['photos/photo/29.jpg', 'photos/photo/30.mp4', 'photos/photo/P1010768.JPG', 'photos/photo/P1010774.JPG', 'photos/photo/P1010800.JPG', 'photos/photo/P1010825.JPG', 'photos/photo/P1010826.JPG', 'photos/photo/1.jpg', 'photos/photo/01.jpg', 'photos/photo/2.jpg', 'photos/photo/3.jpg', 'photos/photo/5.jpg', 'photos/photo/6.jpg', 'photos/photo/7.jpg', 'photos/photo/15.jpg', 'photos/photo/18.jpg', 'photos/photo/21.jpg', 'photos/photo/22.jpg', 'photos/photo/23.jpg', 'photos/photo/24.jpg']],
+    'Photography': ["I love to take my camera out and just capture what catches my eye. There's something awesome about getting the perfect shot of a wild animal or a really cool view. It's like I get to freeze a piece of that moment and keep it. Whether it’s a tiger lounging around or a beautiful sunset, if it looks cool to me, I’ll snap it. Simple as that. ", ['photos/photo/29.jpg', 'photos/photo/30.mp4', 'photos/photo/P1010768.JPG', 'photos/photo/P1010774.JPG', 'photos/photo/P1010800.JPG', 'photos/photo/P1010825.JPG', 'photos/photo/P1010826.JPG', 'photos/photo/1.jpg', 'photos/photo/01.jpg', 'photos/photo/2.jpg', 'photos/photo/3.jpg', 'photos/photo/5.jpg', 'photos/photo/6.jpg', 'photos/photo/7.jpg', 'photos/photo/15.jpg', 'photos/photo/18.jpg', 'photos/photo/21.jpg', 'photos/photo/22.jpg', 'photos/photo/23.jpg', 'photos/photo/24.jpg']],
 }
 
 # Track the current selected option
