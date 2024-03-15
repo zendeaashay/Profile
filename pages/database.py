@@ -21,3 +21,5 @@ pool = sqlalchemy.create_engine(
     "mysql+pymysql://",
     creator=getconn,
 )
+
+print("00000000",pool)
