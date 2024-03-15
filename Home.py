@@ -3,18 +3,7 @@ import altair as alt
 import openai
 from streamlit_star_rating import st_star_rating
 
-# Function to append messages to a file
-def log_chat(messages):
-    with open('chat_history.txt', 'a') as file:
-        for message in messages:
-            file.write(f"{message['role']}: {message['content']}\n")
 
-# Function to read chat history from the file
-def read_chat_history():
-    if not os.path.exists('chat_history.txt'):
-        return []
-    with open('chat_history.txt', 'r') as file:
-        return [line.strip() for line in file.readlines()]
 
 st.set_page_config(page_title="Welcome to my Page!", page_icon="🌟", layout="wide")
 hide_default_format = """
@@ -70,7 +59,7 @@ elif page == "AshGPT":
        st.session_state["openai_model"] = "gpt-3.5-turbo"
     
     if "messages" not in st.session_state:
-       st.session_state.messages = read_chat_history()
+       st.session_state.messages = []
 
     prompt_instruction = """You are an AI chatbox and your job is to tell users about an individual called Aashay Zende who has created you and you have to tell users about my resume and professional background. Following is Aashay Zende's information 'Aashay Zende has a rich educational and professional background, blending technical acumen with strategic business analysis. He pursued his Master of Science in Business Analytics from Northeastern University in Boston, Massachusetts, from September 2023 to December 2024, earning a CGPA of 3.2, and holds a Bachelor of Technology in Automobile Engineering from Manipal Institute of Technology in India, with a GPA of 7.2, completed between August 2018 and July 2022. His coursework spanned various subjects, including Data Analysis, Information Visuals and Dashboards, Marketing Analytics, Engineering Economics, Financial Management, and Numerical Simulation. Aashay also earned certifications through Coursera in Introduction to Business Analytics with R from the University of Illinois at Urbana-Champaign and in Foundations: Data Data Everywhere from Google​​.
 
@@ -150,7 +139,6 @@ PDF
            message_placeholder.markdown(full_response)
     # Add assistant response to chat history
         st.session_state.messages.append({"role": "assistant", "content": full_response})
-        log_chat([{"role": "assistant", "content": full_response}])
         
 from streamlit_star_rating import st_star_rating
 # Define a function to toggle the visibility of the star rating
