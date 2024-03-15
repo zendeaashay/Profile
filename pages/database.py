@@ -10,9 +10,9 @@ def getconn() -> pymysql.connections.Connection:
     conn: pymysql.connections.Connection = connector.connect(
         "exalted-ability-417323:us-east4:ash247",
         "pymysql",
-        user="my-user",
-        password="my-password",
-        db="my-db-name"
+        user="ash247",
+        password="120304",
+        db="StreamlitChatLogs"
     )
     return conn
 
@@ -23,3 +23,4 @@ pool = sqlalchemy.create_engine(
 )
 
 print("00000000",pool)
+
