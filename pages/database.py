@@ -22,5 +22,11 @@ pool = sqlalchemy.create_engine(
     creator=getconn,
 )
 
-print("00000000",pool)
+# Test the connection
+with pool.connect() as conn:
+    # Execute a simple query to test the connection
+    result = conn.execute("SELECT 1")
+    for row in result:
+        print(row)  # This should print (1,)
 
+print("Connection test completed.")
