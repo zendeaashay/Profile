@@ -1,5 +1,6 @@
 from google.cloud.sql.connector import Connector
 import sqlalchemy
+import pymysql
 
 # initialize Connector object
 connector = Connector()
