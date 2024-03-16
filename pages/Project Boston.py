@@ -46,7 +46,7 @@ def create_res_floor_chart(data):
     
     return fig
 
-ef create_property_value_comparison_chart(data):
+def create_property_value_comparison_chart(data):
     # Prepare the data
     comparison_data = data[['neighborhood', 'FY2000.AV_mean', 'FY2021.AV_mean']].dropna()
     neighborhoods = comparison_data['neighborhood']
