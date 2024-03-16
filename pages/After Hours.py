@@ -17,7 +17,7 @@ st.markdown("""
 # Define the options for your interests and their corresponding images or icons
 interests = {
     'Trekking': 'image.jpg',
-    'Hyperloop Project': 'photos/hyp/3.png',
+    'Hyperloop': 'photos/hyp/3.png',
     'Surfing': 'photos/surf/1 DSC_0055.JPG',
     'Photography': 'photos/photo/21.jpg',
     'Tony Hawk': 'photos/hawk/WSBC0461.JPG'
@@ -28,14 +28,14 @@ experiences = {
     'Trekking': ["""I've found my greatest adventures on the slopes of the Himalayas, trading the comfort of the familiar for the thrill of the ascent. Trekking isn't just a hobby; it's a series of moments where each step reveals a new horizon and a test of my own mettle. From the impromptu snow sculptures—my chilly high-altitude tributes—to the quiet companionship of trail dogs and the cheer of local guides, every trek is a story etched in snow.
 
 Up there, where the air is crisp and the skies a clear blue canvas, the mountains challenge me, the cold invigorates me, and the journey transforms me. Through the camaraderie with fellow hikers and the silent solidarity of shared struggles, I've discovered that the summit is just a bonus. It's the laughter, the grit, and the unexpected detours that truly chart my love for the trek. """, ['photos/trek/Image.jpeg', 'photos/trek/20220110_095542.png', 'photos/trek/P1380367.JPG', 'photos/trek/P1380563.JPG', 'photos/trek/P1380186.JPG', 'photos/trek/P1370805.JPG', 'photos/trek/P1370726.MOV']],
-    'Hyperloop Project': [" ", ['photos/hyp/1.png', 'photos/hyp/2.png', 'photos/hyp/3.png', 'photos/hyp/4.png']],
+    'Hyperloop': [" ", ['photos/hyp/1.png', 'photos/hyp/2.png', 'photos/hyp/3.png', 'photos/hyp/4.png']],
     'Surfing': ["Surfing, for me, is about freedom. It's just me and the waves, and maybe a few good friends when they decide to wake up early enough. Each swell is a new challenge; no two rides are ever the same, which is kind of like life, I guess. I like chasing that sweeping rush, the moment where everything clicks and I'm gliding across the water like it's second nature. Sure, I wipe out sometimes, but where's the fun without a few salty spills? It's all part of the adventure. ", ['photos/surf/5 DSC_0780.JPG', 'photos/surf/8 DSC_0423~2.JPG', 'photos/surf/1 DSC_0055.JPG', 'photos/surf/3 bDSC_0277.JPG', 'photos/surf/4 DSC_0426.JPG', 
         'photos/surf/6 DSC_0944.JPG',
         'photos/surf/7 DSC_0183.JPG',
         'photos/surf/9 DSC_0708.JPG',
         'photos/surf/10 DSC_0805~2.JPG']],
     'Photography': ["I love to take my camera out and just capture what catches my eye. There's something awesome about getting the perfect shot of a wild animal or a really cool view. It's like I get to freeze a piece of that moment and keep it. Whether it’s a tiger lounging around or a beautiful sunset, if it looks cool to me, I’ll snap it. Simple as that. ", ['photos/photo/29.jpg', 'photos/photo/30.mp4', 'photos/photo/P1010768.JPG', 'photos/photo/P1010774.JPG', 'photos/photo/P1010800.JPG', 'photos/photo/P1010825.JPG', 'photos/photo/P1010826.JPG', 'photos/photo/1.jpg', 'photos/photo/01.jpg', 'photos/photo/2.jpg', 'photos/photo/3.jpg', 'photos/photo/5.jpg', 'photos/photo/6.jpg', 'photos/photo/7.jpg', 'photos/photo/15.jpg', 'photos/photo/18.jpg', 'photos/photo/21.jpg', 'photos/photo/22.jpg', 'photos/photo/23.jpg', 'photos/photo/24.jpg']],
-    'Tony Hawk': ["Meet my friend, Tony Hawk! When I was in 11th grade, Tony used to visit our home terrace. That's when I decided to use my camera, remote controlled from my phone, and another device called BirdCam which is essentially a motion-activated camera system. Enjoy Mr Hawk's flights!", ['photos/hawk/WSBC0461.JPG', 'photos/hawk/01.mov', 'photos/hawk/02.mp4', 'photos/hawk/13~2.mov', 'photos/hawk/14~3.mp4', 'photos/hawk/WSBC0094.JPG', 'photos/hawk/WSBC0098.JPG', 'photos/hawk/WSBC0471.JPG', 'photos/hawk/WSBC0556.JPG', 'photos/hawk/WSBC0700.JPG', 'photos/hawk/WSBC0794.JPG']]
+    'Tony Hawk': ["Meet my friend, Tony Hawk! When I was in 11th grade, Tony used to visit our home terrace. That's when I decided to use my camera, remote controlled from my phone, and another device called BirdCam which is essentially a motion-activated camera system. Enjoy Mr Hawk's flights!", ['photos/hawk/WSBC0461.JPG', 'photos/hawk/01.mp4', 'photos/hawk/02.mp4', 'photos/hawk/13~2.mov', 'photos/hawk/14~3.mp4', 'photos/hawk/WSBC0094.JPG', 'photos/hawk/WSBC0098.JPG', 'photos/hawk/WSBC0471.JPG', 'photos/hawk/WSBC0556.JPG', 'photos/hawk/WSBC0700.JPG', 'photos/hawk/WSBC0794.JPG']]
 }
 
 # Track the current selected option
