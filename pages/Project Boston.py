@@ -6,7 +6,7 @@ import folium
 from streamlit_folium import folium_static
 import matplotlib.pyplot as plt
 from matplotlib.ticker import FuncFormatter
-
+import numpy as np
 
 # Function to format the y-axis as millions
 def millions_formatter(x, pos):
