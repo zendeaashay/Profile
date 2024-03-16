@@ -7,6 +7,7 @@ from streamlit_folium import folium_static
 import matplotlib.pyplot as plt
 from matplotlib.ticker import FuncFormatter
 import numpy as np
+import seaborn as sns
 
 # Function to format the y-axis as millions
 def millions_formatter(x, pos):
@@ -82,7 +83,25 @@ def create_property_value_comparison_chart(data):
     plt.tight_layout()
 
     return fig
+def create_floors_value_correlation_chart(data):
+    # Filter data for the columns needed
+    floors_value_data = data[['RES_FLOOR_mean', 'TOTAL_VALUE_mean']].dropna()
 
+    # Using Seaborn to create a line chart
+    fig, ax = plt.subplots(figsize=(10, 6))
+    sns.lineplot(x='RES_FLOOR_mean', y='TOTAL_VALUE_mean', data=floors_value_data, ax=ax, marker='o')
+
+    # Setting title and labels
+    ax.set_title('Impact of Floors on Property Values')
+    ax.set_xlabel('Average Number of Residential Floors')
+    ax.set_ylabel('Average Property Value')
+    ax.yaxis.set_major_formatter(FuncFormatter(millions_formatter))
+
+    # Enhancing the design
+    sns.despine(trim=True)
+    plt.grid(True)
+
+    return fig
 # Calculate crime rates by neighborhood
 # Assuming 'robbery', 'drug', 'assault', and 'SHOOTING' are your columns for crimes, you can create a new column for total crimes
 data['total_crimes'] = data[['robbery', 'drug', 'assault', 'SHOOTING']].sum(axis=1)
@@ -254,6 +273,9 @@ have led to a noticeable decrease in crime rates across the past couple of years
     # Display Residential Floors Chart
     res_floor_chart = create_res_floor_chart(data)
     st.pyplot(res_floor_chart)
+    st.markdown("Impact of Floors on Property Values")
+    floors_value_correlation_chart = create_floors_value_correlation_chart(data)
+    st.pyplot(floors_value_correlation_chart)
 
     # Chapter for Property Value Changes
     st.header("Chapter 5: Property Value Changes")
