@@ -322,7 +322,7 @@ Dive into the data summarized here to discover the stories and trends that Bosto
 # You would display the data frame here
     st.dataframe(survey)
     st.header('Aggregated Data Overview')
-    st.dataframe(merged_gdf.head)
+    st.write(merged_gdf.head())
 
     # Section for downloading the project PDF and PPTX
     st.header('Project Materials')
