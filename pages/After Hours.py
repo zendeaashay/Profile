@@ -33,9 +33,32 @@ Up there, where the air is crisp and the skies a clear blue canvas, the mountain
         'photos/surf/7 DSC_0183.JPG',
         'photos/surf/9 DSC_0708.JPG',
         'photos/surf/10 DSC_0805~2.JPG']],
-    'Photography': ["I love to take my camera out and just capture what catches my eye. There's something awesome about getting the perfect shot of a wild animal or a really cool view. It's like I get to freeze a piece of that moment and keep it. Whether it’s a tiger lounging around or a beautiful sunset, if it looks cool to me, I’ll snap it. Simple as that. ", ['photos/photo/29.jpg', 'photos/photo/30.mp4', 'photos/photo/P1010768.JPG', 'photos/photo/P1010774.JPG', 'photos/photo/P1010800.JPG', 'photos/photo/P1010825.JPG', 'photos/photo/P1010826.JPG', 'photos/photo/1.jpg', 'photos/photo/01.jpg', 'photos/photo/2.jpg', 'photos/photo/3.jpg', 'photos/photo/5.jpg', 'photos/photo/6.jpg', 'photos/photo/7.jpg', 'photos/photo/15.jpg', 'photos/photo/18.jpg', 'photos/photo/21.jpg', 'photos/photo/22.jpg', 'photos/photo/23.jpg', 'photos/photo/24.jpg']],
+    'Photography': [" ", ],
 }
-
+experience = {
+    'Photography': {
+        'Tony Hawk': {
+            'description': "I love to take my camera out and just capture what catches my eye. There's something awesome about getting the perfect shot of a wild animal or a really cool view. It's like I get to freeze a piece of that moment and keep it. Whether it’s a tiger lounging around or a beautiful sunset, if it looks cool to me, I’ll snap it. Simple as that.",
+            'media': [
+                'photos/hawk/WSBC0461.JPG',
+                'photos/hawk/01.mov',
+                'photos/hawk/02.mov',
+                'photos/hawk/13~2.mp4',
+                'photos/hawk/14~3.mp4',
+                'photos/hawk/WSBC0094.JPG',
+                'photos/hawk/WSBC0098.JPG',
+                'photos/hawk/WSBC0471.JPG',
+                'photos/hawk/WSBC0556.JPG',
+                'photos/hawk/WSBC0700.JPG',
+                'photos/hawk/WSBC0794.JPG'
+            ]
+        },
+        'Wild Life': {
+            'description': "The raw beauty of nature, up close and personal.",
+            'media': ['photos/photo/29.jpg', 'photos/photo/30.mp4', 'photos/photo/P1010768.JPG', 'photos/photo/P1010774.JPG', 'photos/photo/P1010800.JPG', 'photos/photo/P1010825.JPG', 'photos/photo/P1010826.JPG', 'photos/photo/1.jpg', 'photos/photo/01.jpg', 'photos/photo/2.jpg', 'photos/photo/3.jpg', 'photos/photo/5.jpg', 'photos/photo/6.jpg', 'photos/photo/7.jpg', 'photos/photo/15.jpg', 'photos/photo/18.jpg', 'photos/photo/21.jpg', 'photos/photo/22.jpg', 'photos/photo/23.jpg', 'photos/photo/24.jpg']
+        }
+    }
+}
 # Track the current selected option
 if 'selected_option' not in st.session_state:
     st.session_state['selected_option'] = None
@@ -163,39 +186,36 @@ def display_selected_option(selected_option):
 
     
 # Check if the 'photo_image_index' is in the session state, otherwise initialize it
-if 'photo_image_index' not in st.session_state:
-    st.session_state['photo_image_index'] = 0
+# Dropdown for selecting between Tony Hawk and Wild Life photography
+selected_category = st.selectbox('Choose a category', list(experience['Photography'].keys()))
 
-# Define navigation functions for Photography
-def previous_photo_image():
-    st.session_state['photo_image_index'] = (st.session_state['photo_image_index'] - 1) % len(experiences['Photography'][1])
+# Initialize photo_index in the session state if it doesn't exist
+if 'photo_index' not in st.session_state:
+    st.session_state['photo_index'] = 0
 
-def next_photo_image():
-    st.session_state['photo_image_index'] = (st.session_state['photo_image_index'] + 1) % len(experiences['Photography'][1])
+# Function to go to the previous photo/video
+def previous_photo():
+    st.session_state['photo_index'] = (st.session_state['photo_index'] - 1) % len(experience['Photography'][selected_category]['media'])
 
-# Display function for the Photography section
-def display_photography():
-    selected_option = st.session_state.get('selected_option')
-    if selected_option == 'Photography':
-        photo_description, photo_media = experiences[selected_option]
-        st.markdown(photo_description, unsafe_allow_html=True)
-        
-        col1, col2 = st.columns(2)
-        with col1:
-            if st.button("Previous"):
-                previous_photo_image()
-        with col2:
-            if st.button("Next"):
-                next_photo_image()
-        
-        current_media = photo_media[st.session_state['photo_image_index']]
-        if current_media.endswith('.MOV') or current_media.endswith('.mp4'):
-            st.video(current_media)
-        else:
-            st.image(current_media, use_column_width=True)
+# Function to go to the next photo/video
+def next_photo():
+    st.session_state['photo_index'] = (st.session_state['photo_index'] + 1) % len(experience['Photography'][selected_category]['media'])
 
-# Main display logic
-selected_option = st.session_state.get('selected_option')
-if selected_option:
-    if selected_option == 'Photography':
-        display_photography()
+# Display the description of the selected category
+st.markdown(experience['Photography'][selected_category]['description'])
+
+# Buttons for previous and next photos/videos
+col1, col2 = st.columns(2)
+with col1:
+    if st.button("Previous"):
+        previous_photo()
+with col2:
+    if st.button("Next"):
+        next_photo()
+
+# Display the current image or video
+current_media = experience['Photography'][selected_category]['media'][st.session_state['photo_index']]
+if current_media.endswith('.MOV') or current_media.endswith('.mp4'):
+    st.video(current_media)
+else:
+    st.image(current_media, use_column_width=True)
