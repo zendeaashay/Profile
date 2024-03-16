@@ -238,3 +238,6 @@ def display_tony_hawk():
 # Main display logic, add Tony Hawk to the existing options
 if selected_option == 'Tony Hawk':
     display_tony_hawk()
+    
+elif selected_option == 'Photography':
+    display_photography()
