@@ -7,10 +7,44 @@ from streamlit_folium import folium_static
 import matplotlib.pyplot as plt
 from matplotlib.ticker import FuncFormatter
 
+
 # Function to format the y-axis as millions
 def millions_formatter(x, pos):
     return f'{int(x / 1e6)}M'
+# Load your data
+data = pd.read_csv('merg_padl.csv')
 
+# Calculate crime rates by neighborhood
+# Assuming 'robbery', 'drug', 'assault', and 'SHOOTING' are your columns for crimes, you can create a new column for total crimes
+data['total_crimes'] = data[['robbery', 'drug', 'assault', 'SHOOTING']].sum(axis=1)
+
+# Filter the data to include only the total crimes and neighborhood name
+crime_data = data[['neighborhood', 'total_crimes']]
+
+# Sort the DataFrame based on the total crimes
+sorted_crime_data = crime_data.sort_values('total_crimes', ascending=False)
+
+# Plotting
+fig, ax = plt.subplots(figsize=(10, 8))
+
+# Color for highlighting Dorchester and Charlestown
+colors = ['#1f77b4' if (x not in ['Dorchester', 'Charlestown']) else '#ff7f0e' for x in sorted_crime_data['neighborhood']]
+
+# Create a bar chart
+ax.bar(sorted_crime_data['neighborhood'], sorted_crime_data['total_crimes'], color=colors)
+
+# Highlight Dorchester and Charlestown by adding a label
+for i, neighborhood in enumerate(sorted_crime_data['neighborhood']):
+    if neighborhood in ['Dorchester', 'Charlestown']:
+        ax.text(i, sorted_crime_data['total_crimes'].iloc[i], neighborhood, ha='center', va='bottom')
+
+# Rotate x-axis labels for better readability
+plt.xticks(rotation=90)
+
+# Set titles and labels
+ax.set_title('Total Crime Rates by Neighborhood')
+ax.set_xlabel('Neighborhood')
+ax.set_ylabel('Total Crimes')
 # Load your data here
 def load_data():
     # Replace these paths with the actual paths of your files
@@ -109,6 +143,8 @@ understand the challenges Boston faces in ensuring the safety and well-being of 
 The juxtaposition of crime rates in Dorchester against those in Charlestown presents a tale of 
 two cities within Boston, where socioeconomic disparities are starkly reflected in crime statistics.
 """)
+    st.pyplot(fig)
+
 # Display map or chart for Insight 3
 # Example placeholder for a map or a chart
     st.write("Map or Chart Placeholder")
