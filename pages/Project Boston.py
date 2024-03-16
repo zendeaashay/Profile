@@ -267,9 +267,9 @@ have led to a noticeable decrease in crime rates across the past couple of years
 
     # Chapter for Residential Floors
     st.header("Chapter 4: Residential Floors")
-    st.subheader("Insight Floor Count's Influence on Boston's Property Values")
+    st.subheader("Insight 5: Floor Count's Influence on Property Values")
     st.markdown("""Impact of Floors on Property Values: 
-The relationship between the average number of residential floors and property values in Boston reveals intriguing patterns. Initially, there is a dramatic increase in property values as the number of floors grows, peaking at around 1.4 floors. This suggests that multi-floored residences are highly valued, perhaps due to their spaciousness or architectural design. However, after this peak, there is a sharp decline in average property value, with a notable exception at exactly 2.0 floors where values again rise. This could imply a preference for properties that strike a balance between the expansive space of multi-story buildings and the accessibility of fewer floors. This graph offers valuable insights for various stakeholders in Boston's real estate landscape, highlighting the importance of floor count in property valuation.
+The relationship between the average number of residential floors and property values in Boston reveals intriguing patterns. Initially, there is a dramatic increase in property values as the number of floors grows from 1 to 1.4, peaking at around 1.35 floors. This suggests that sigle-floored residences are highly valued, perhaps due to their spaciousness or architectural design and location. However, after this peak, there is a sharp decline in average property value, with a notable exception at exactly 2.0 floors where values again rise.This implies that neighborhoods that do not lie in premium locations take use of multiple stories to extract value from the property. The increase after 2 could imply a preference for properties that strike a balance between the expansive space of multi-story buildings and the accessibility of fewer floors and . This graph offers valuable insights for various stakeholders in Boston's real estate landscape, highlighting the importance of floor count in property valuation.
 """)
     floors_value_correlation_chart = create_floors_value_correlation_chart(data)
     st.pyplot(floors_value_correlation_chart)
