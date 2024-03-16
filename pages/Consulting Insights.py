@@ -1,21 +1,18 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Mar 16 13:15:12 2024
-
-@author: aashayzende
-"""
-
 import streamlit as st
-from pandas_profiling import ProfileReport
-from streamlit_pandas_profiling import st_profile_report
-import pandas as pd
+import PyPDF2
+import base64
 
-# Load your DataFrame
-df = pd.read_csv('your_data.csv')
+# Function to read PDF file and convert to base64
+def get_base64_of_pdf_data(pdf_file_path):
+    with open(pdf_file_path, "rb") as f:
+        pdf_data = f.read()
+    return base64.b64encode(pdf_data).decode('utf-8')
 
-# Generate the report
-profile = ProfileReport(df, explorative=True)
+# Embeds the PDF file in the Streamlit app
+def st_display_pdf(pdf_file_path):
+    pdf_base64 = get_base64_of_pdf_data(pdf_file_path)
+    pdf_display = f'<iframe src="data:application/pdf;base64,{pdf_base64}" width="700" height="1000" type="application/pdf"></iframe>'
+    st.markdown(pdf_display, unsafe_allow_html=True)
 
-# Render the report
-st_profile_report(profile)
+# Display the PDF
+st_display_pdf("eComm India.pdf")
