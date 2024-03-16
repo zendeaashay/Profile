@@ -41,46 +41,42 @@ def app():
     st.write("""Overview
 Project Title: Boston Neighborhood Analysis
 
-Team Members: Aashay, Apurv, Umesh, Ariv
 
 Introduction: Our project delves into the evolving landscape of property valuations and characteristics within Boston's diverse neighborhoods. We aimed to uncover the intricate patterns of real estate dynamics, crime statistics, urban planning, and sustainability efforts across the city.
 
+
 Business Problem: We explored how property valuations and characteristics have transformed over the years in different Boston neighborhoods and examined the distribution of crime, urban planning, and sustainability metrics across these areas.
+
 
 Importance: Real estate analytics is crucial for informed decision-making in urban planning and sustainability. Our work provides valuable insights for real estate professionals, policymakers, and individuals interested in Boston's housing market.
 
-Target Audience:
+Target Audience: Real Estate Professionals, Policymakers, Prospective Residents, Businesses, Methodology
 
-Real Estate Professionals
-Policymakers
-Prospective Residents
-Businesses
-Methodology
+
 Data Collection:
-
 Primary Dataset: Survey with 63 rows and 12 columns.
 Secondary Datasets: Property assessments, crime incident reports, Vision Zero fatality records, and Blue Bike station locations from various sources including Harvard Dataverse and Analyze Boston.
-Data Pre-Processing:
 
+
+Data Pre-Processing:
 Data Formatting: We standardized the datasets to a common format, ensuring consistency across various data sources.
 Data Cleaning: Employed ExtraTreesRegressor for imputing missing values and standardized the data for ease of analysis.
-Tools & Techniques:
 
+
+Tools & Techniques:
 Python Packages: Pandas for data manipulation, Plotly and Matplotlib for visualization, Geopandas for map building, and ipywidgets for interactive components.
 Data Imputation: Used LazyRegressor to identify the best model for imputing missing values and opted for ExtraTreesRegressor due to its efficiency and effectiveness.
+
 Results and Analysis
 Data Analysis:
-
 Conducted thorough analysis using feature engineering, regression models for imputation, and created heatmaps for neighborhood-level insights.
 Addressed challenges like data sufficiency and accuracy, and merged data from various sources to create comprehensive neighborhood profiles.
-Visualizations:
 
-Developed interactive visualizations using ipywidgets and created heatmaps using Geopandas and Matplotlib to display property values, crime statistics, and other relevant metrics at the neighborhood level.
-Outcomes
-Our analysis revealed significant insights into the evolution of property valuations, the geographical distribution of various property characteristics, and the correlation with crime rates and urban infrastructure. These findings can guide strategic urban planning and investment decisions in Boston's real estate market.
+Visualizations: Developed interactive visualizations using ipywidgets and created heatmaps using Geopandas and Matplotlib to display property values, crime statistics, and other relevant metrics at the neighborhood level.
 
-Heatmaps of Boston
-Displaying Heatmaps: Below are the heatmaps generated as part of our analysis, showcasing the spatial distribution of key metrics across Boston neighborhoods. These visual representations provide a clear and intuitive understanding of the complex data we've analyzed.
+Outcomes: Our analysis revealed significant insights into the evolution of property valuations, the geographical distribution of various property characteristics, and the correlation with crime rates and urban infrastructure. These findings can guide strategic urban planning and investment decisions in Boston's real estate market.
+
+Heatmaps of Boston: Below are the heatmaps generated as part of our analysis, showcasing the spatial distribution of key metrics across Boston neighborhoods. These visual representations provide a clear and intuitive understanding of the complex data we've analyzed.
 
      """)
 
