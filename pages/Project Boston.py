@@ -140,21 +140,21 @@ understand the challenges Boston faces in ensuring the safety and well-being of 
 # Insight 3: The Tale of Two Cities
     st.subheader("Insight 3: The Tale of Two Cities")
     st.markdown("""
-The juxtaposition of crime rates in Dorchester against those in Charlestown presents a tale of 
+The juxtaposition of crime rates in Dorchester against those in Roxbury presents a tale of 
 two cities within Boston, where socioeconomic disparities are starkly reflected in crime statistics.
 """)
     st.pyplot(fig)
 
 # Display map or chart for Insight 3
 # Example placeholder for a map or a chart
-    st.write("Map or Chart Placeholder")
+
 
 # Insight 4: The Beacon of Hope
     st.subheader("Insight 4: The Beacon of Hope")
     st.markdown("""
 However, it's not all grim. Initiatives like the Boston Police Department's community policing 
 have shown promising results in areas like Roxbury, where engagement and trust-building efforts 
-have led to a noticeable decrease in crime rates.
+have led to a noticeable decrease in crime rates across the past couple of years.
 """)
 # Display map or chart for Insight 4
 # Example placeholder for a map or a chart
