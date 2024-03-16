@@ -34,8 +34,7 @@ Up there, where the air is crisp and the skies a clear blue canvas, the mountain
         'photos/surf/9 DSC_0708.JPG',
         'photos/surf/10 DSC_0805~2.JPG']],
     'Photography': ["I love to take my camera out and just capture what catches my eye. There's something awesome about getting the perfect shot of a wild animal or a really cool view. It's like I get to freeze a piece of that moment and keep it. Whether it’s a tiger lounging around or a beautiful sunset, if it looks cool to me, I’ll snap it. Simple as that. ", ['photos/photo/29.jpg', 'photos/photo/30.mp4', 'photos/photo/P1010768.JPG', 'photos/photo/P1010774.JPG', 'photos/photo/P1010800.JPG', 'photos/photo/P1010825.JPG', 'photos/photo/P1010826.JPG', 'photos/photo/1.jpg', 'photos/photo/01.jpg', 'photos/photo/2.jpg', 'photos/photo/3.jpg', 'photos/photo/5.jpg', 'photos/photo/6.jpg', 'photos/photo/7.jpg', 'photos/photo/15.jpg', 'photos/photo/18.jpg', 'photos/photo/21.jpg', 'photos/photo/22.jpg', 'photos/photo/23.jpg', 'photos/photo/24.jpg']],
-    'Tony Hawk': ["""Meet my friend, Tony Hawk! 
-                  When I was in 11th grade, Tony used to visit our home terrace. That's when I decided to use my camera, remote controlled from my phone, and another device called BirdCam which is essentially a motion-activated camera system. Enjoy Mr Hawk's flights!""", ['photos/hawk/WSBC0461.JPG', 'photos/hawk/01.mov', 'photos/hawk/02.mov', 'photos/hawk/13~2.mp4', 'photos/hawk/14~3.mp4', 'photos/hawk/WSBC0094.JPG', 'photos/hawk/WSBC0098.JPG', 'photos/hawk/WSBC0471.JPG', 'photos/hawk/WSBC0556.JPG', 'photos/hawk/WSBC0700.JPG', 'photos/hawk/WSBC0794.JPG']]
+    'Tony Hawk': ["Meet my friend, Tony Hawk! When I was in 11th grade, Tony used to visit our home terrace. That's when I decided to use my camera, remote controlled from my phone, and another device called BirdCam which is essentially a motion-activated camera system. Enjoy Mr Hawk's flights!", ['photos/hawk/WSBC0461.JPG', 'photos/hawk/01.mov', 'photos/hawk/02.mov', 'photos/hawk/13~2.mp4', 'photos/hawk/14~3.mp4', 'photos/hawk/WSBC0094.JPG', 'photos/hawk/WSBC0098.JPG', 'photos/hawk/WSBC0471.JPG', 'photos/hawk/WSBC0556.JPG', 'photos/hawk/WSBC0700.JPG', 'photos/hawk/WSBC0794.JPG']]
 }
 
 # Track the current selected option
@@ -201,7 +200,9 @@ selected_option = st.session_state.get('selected_option')
 if selected_option:
     if selected_option == 'Photography':
         display_photography()
-        
+        # Check if the 'photo_image_index' is in the session state, otherwise initialize it
+        if 'photo_image_index' not in st.session_state:
+            st.session_state['photo_image_index'] = 0
 # Navigation functions for Tony Hawk
 def previous_tony_hawk_image():
     tony_hawk_images = experiences['Tony Hawk'][1]
