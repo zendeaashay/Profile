@@ -23,5 +23,4 @@ streamlit
 cloud-sql-python-connector[pymysql]
 sqlalchemy
 pymysql
-PyPDF2
-base64
+
