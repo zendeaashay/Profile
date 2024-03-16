@@ -232,7 +232,7 @@ have led to a noticeable decrease in crime rates across the past couple of years
     # Chapter for Living Area Statistics
     st.header("Chapter 3: Living Area Statistics")
     st.markdown("""
-    This chapter explores the living areas within Boston's neighborhoods, highlighting the spatial dynamics of urban housing.
+    Here we explore the living areas of all properties within Boston's neighborhoods, highlighting the spatial dynamics of urban housing.
     """)
     # Display Living Area Chart
     living_area_chart = create_living_area_chart(data)
@@ -241,7 +241,7 @@ have led to a noticeable decrease in crime rates across the past couple of years
     # Chapter for Residential Floors
     st.header("Chapter 4: Residential Floors")
     st.markdown("""
-    This chapter delves into the vertical expansion of Boston's neighborhoods, examining the average number of residential floors.
+    We delve into the vertical expansion of Boston's neighborhoods, examining the average number of residential floors.
     """)
     # Display Residential Floors Chart
     res_floor_chart = create_res_floor_chart(data)
@@ -250,7 +250,7 @@ have led to a noticeable decrease in crime rates across the past couple of years
     # Chapter for Property Value Changes
     st.header("Chapter 5: Property Value Changes")
     st.markdown("""
-    Reflecting on two decades of economic activity, this chapter visualizes the changes in property values from the year 2000 to 2021.
+    Reflecting on two decades of economic activity, we visualize the changes in property values from the year 2000 to 2021.
     """)
     # Display Property Value Change Chart
     property_value_comparison_chart = create_property_value_comparison_chart(data)
