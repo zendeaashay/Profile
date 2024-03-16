@@ -267,18 +267,18 @@ have led to a noticeable decrease in crime rates across the past couple of years
 
     # Chapter for Residential Floors
     st.header("Chapter 4: Residential Floors")
+    st.subheader("Insight Floor Count's Influence on Boston's Property Values")
+    st.markdown("""Impact of Floors on Property Values: 
+The relationship between the average number of residential floors and property values in Boston reveals intriguing patterns. Initially, there is a dramatic increase in property values as the number of floors grows, peaking at around 1.4 floors. This suggests that multi-floored residences are highly valued, perhaps due to their spaciousness or architectural design. However, after this peak, there is a sharp decline in average property value, with a notable exception at exactly 2.0 floors where values again rise. This could imply a preference for properties that strike a balance between the expansive space of multi-story buildings and the accessibility of fewer floors. This graph offers valuable insights for various stakeholders in Boston's real estate landscape, highlighting the importance of floor count in property valuation.
+""")
+    floors_value_correlation_chart = create_floors_value_correlation_chart(data)
+    st.pyplot(floors_value_correlation_chart)
     st.markdown("""
     We delve into the vertical expansion of Boston's neighborhoods, examining the average number of residential floors.
     """)
     # Display Residential Floors Chart
     res_floor_chart = create_res_floor_chart(data)
     st.pyplot(res_floor_chart)
-    st.markdown("""Impact of Floors on Property Values: 
-The relationship between the average number of residential floors and property values in Boston reveals intriguing patterns. Initially, there is a dramatic increase in property values as the number of floors grows, peaking at around 1.4 floors. This suggests that multi-floored residences are highly valued, perhaps due to their spaciousness or architectural design. However, after this peak, there is a sharp decline in average property value, with a notable exception at exactly 2.0 floors where values again rise. This could imply a preference for properties that strike a balance between the expansive space of multi-story buildings and the accessibility of fewer floors. This graph offers valuable insights for various stakeholders in Boston's real estate landscape, highlighting the importance of floor count in property valuation.
-""")
-    floors_value_correlation_chart = create_floors_value_correlation_chart(data)
-    st.pyplot(floors_value_correlation_chart)
-
     # Chapter for Property Value Changes
     st.header("Chapter 5: Property Value Changes")
     st.markdown("""
