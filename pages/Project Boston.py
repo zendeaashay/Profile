@@ -85,7 +85,7 @@ Heatmaps of Boston: Below are the heatmaps generated as part of our analysis, sh
     neighborhoods, survey, merged_gdf = load_data()
     option = st.selectbox(
        'Choose a value to plot on the map:',
-       ('FY2021.AV_mean', 'fatalities', 'bike_stations_count', 'robbery', 'drug', 'assault', 'SHOOTING')
+       ('FY2021.AV_mean', 'DiffAV2021_mean', 'PercChangeAV2021_mean', 'RecoveryDiffAV_mean', 'RecoveryPercChangeAV_mean', 'GROSS_AREA_mean', 'RES_FLOOR_mean', 'LIVING_AREA_mean', 'LAND_VALUE_mean', 'BLDG_VALUE_mean', 'TOTAL_VALUE_mean', 'FY2000.AV_mean', 'GrowthPercChangeAV_mean', 'CrashPercChangeAV_mean', 'NUM_BLDGS_mean', 'LAND_SF_mean', 'YR_BUILT_mean', 'GROSS_TAX_mean', 'Observation_Count', 'fatalities', 'bike_stations_count', 'robbery', 'drug', 'assault', 'SHOOTING')
     )
     folium_map = create_folium_map(merged_gdf, option)
     folium_static(folium_map)
