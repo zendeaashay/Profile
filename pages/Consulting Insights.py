@@ -1,11 +1,25 @@
 import streamlit as st
-from streamlit_pdf_viewer import st_pdf_viewer
+from streamlit_pdf_viewer import pdf_viewer
 
-# Assuming your Streamlit app has multiple pages, use an if statement or a function to control page display
-def show_pdf_viewer_page():
-    # Load the PDF file into the app
-    with open("eComm India.pdf", "rb") as pdf_file:
-        st_pdf_viewer(pdf_file)
+def show_resume():
+    st.title('My Resume')
 
-# Call the function to display the PDF viewer page
-show_pdf_viewer_page()
+    # You can add more content here as needed
+    st.write("Here is my resume showcasing my experience and skills.")
+
+    # Display the resume PDF
+    with open("eComm India.pdf", "rb") as file:
+        pdf_viewer(file, width=850, height=1000)
+
+    # Link to download resume
+    resume_link = 'eComm India.pdf'  # Make sure this is the correct path to your resume PDF
+    with open(resume_link, "rb") as file:
+        st.download_button(
+            label="Download Resume",
+            data=file,
+            file_name="Aashay Zende - Resume.pdf",
+            mime="application/pdf"
+        )
+
+# Execute the function to display the resume
+show_resume()
