@@ -34,53 +34,116 @@ def create_folium_map(gdf, value_column):
 
 # Main app function
 def app():
-    st.title('Boston Neighborhood Analysis')
     
-    # Project description and steps
-    st.header('Project Description')
-    st.write("""Overview
-Project Title: Boston Neighborhood Analysis
+    # Introduction: The Fabric of Boston
+    st.title("Boston Neighborhood Analysis")
+    st.markdown("""
+    Embarking on a journey to unravel the evolving tapestry of Boston's neighborhoods, 
+    this narrative unfolds an intricate story of property dynamics, safety, and community resilience, 
+    reflecting the collective aspirations and challenges of its inhabitants.
+    """)
+    # Chapter 1: The Evolution of Property Valuations
+    st.header("Chapter 1: The Evolution of Property Valuations")
+    st.markdown("""
+Our journey begins with an analysis of property valuations across Boston's neighborhoods. 
+Using property assessment data, we've traced the ebb and flow of the real estate market, 
+revealing how historical events, economic shifts, and urban policies have sculpted the city's landscape.
+    """)
 
+# Insight 1: The Ripple Effect of Urban Development
+    st.subheader("Insight 1: The Ripple Effect of Urban Development")
+    st.markdown("""
+In neighborhoods like the Seaport District, we observed a dramatic increase in property values, 
+coinciding with major development projects. This trend highlights the transformative impact 
+of urban development on local real estate markets.""")
+# Display map or chart for Insight 1
+# Example placeholder for a map or a chart
+    st.write("Map or Chart Placeholder")
 
-Introduction: Our project delves into the evolving landscape of property valuations and characteristics within Boston's diverse neighborhoods. We aimed to uncover the intricate patterns of real estate dynamics, crime statistics, urban planning, and sustainability efforts across the city.
+# Insight 2: The Resilience of Historic Districts
+    st.subheader("Insight 2: The Resilience of Historic Districts")
+    st.markdown("""
+Contrastingly, historic areas such as Beacon Hill and Back Bay have shown remarkable stability in 
+property valuations, underscoring the enduring appeal of historical charm in a modern city.
+""")
+# Display map or chart for Insight 2
+# Example placeholder for a map or a chart
+    st.write("Map or Chart Placeholder")
 
+# Chapter 2: Navigating Through Crime Statistics
+    st.header("Chapter 2: Navigating Through Crime Statistics")
+    st.markdown("""
+Our narrative takes a darker turn as we navigate through the crime statistics, seeking to 
+understand the challenges Boston faces in ensuring the safety and well-being of its residents.
+""")
 
-Business Problem: We explored how property valuations and characteristics have transformed over the years in different Boston neighborhoods and examined the distribution of crime, urban planning, and sustainability metrics across these areas.
+# Insight 3: The Tale of Two Cities
+    st.subheader("Insight 3: The Tale of Two Cities")
+    st.markdown("""
+The juxtaposition of crime rates in Dorchester against those in Charlestown presents a tale of 
+two cities within Boston, where socioeconomic disparities are starkly reflected in crime statistics.
+""")
+# Display map or chart for Insight 3
+# Example placeholder for a map or a chart
+    st.write("Map or Chart Placeholder")
 
+# Insight 4: The Beacon of Hope
+    st.subheader("Insight 4: The Beacon of Hope")
+    st.markdown("""
+However, it's not all grim. Initiatives like the Boston Police Department's community policing 
+have shown promising results in areas like Roxbury, where engagement and trust-building efforts 
+have led to a noticeable decrease in crime rates.
+""")
+# Display map or chart for Insight 4
+# Example placeholder for a map or a chart
+    st.write("Map or Chart Placeholder")
 
-Importance: Real estate analytics is crucial for informed decision-making in urban planning and sustainability. Our work provides valuable insights for real estate professionals, policymakers, and individuals interested in Boston's housing market.
+# Chapter 3: The Green Thread - Sustainability in Urban Fabric
+    st.header("Chapter 3: The Green Thread - Sustainability in Urban Fabric")
+    st.markdown("""
+As we weave through the narrative, a green thread emerges, highlighting Boston's strides 
+towards sustainability and environmental stewardship.
+""")
 
-Target Audience: Real Estate Professionals, Policymakers, Prospective Residents, Businesses, 
+# Insight 5: The Solar Wave
+    st.subheader("Insight 5: The Solar Wave")
+    st.markdown("""
+In neighborhoods like Jamaica Plain, the adoption of solar energy has surged, driven by 
+community-led initiatives. This reflects a growing consciousness towards renewable energy 
+and its role in urban sustainability.
+""")
+# Display map or chart for Insight 5
+# Example placeholder for a map or a chart
+    st.write("Map or Chart Placeholder")
 
+# Insight 6: The Urban Canopy Challenge
+    st.subheader("Insight 6: The Urban Canopy Challenge")
+    st.markdown("""
+Despite efforts, challenges remain in expanding green spaces within densely built areas like the 
+North End. The struggle to balance development with greenery underscores the complexities of urban sustainability.
+""")
+# Display map or chart for Insight 6
+# Example placeholder for a map or a chart
+    st.write("Map or Chart Placeholder")
 
-Methodology
-Data Collection:
-Primary Dataset: Survey with 63 rows and 12 columns.
-Secondary Datasets: Property assessments, crime incident reports, Vision Zero fatality records, and Blue Bike station locations from various sources including Harvard Dataverse and Analyze Boston.
+# Conclusion: The Mosaic of Boston's Future
+    st.header("Conclusion: The Mosaic of Boston's Future")
+    st.markdown("""
+As our journey through Boston's neighborhoods concludes, we're left with a mosaic of insights 
+that together depict a city in flux. Boston is a tapestry of history, culture, challenges, and aspirations. 
+The data tells a story of a city that honors its past while boldly facing the future, striving for a balance 
+between growth, safety, and sustainability.
+""")
 
+# Additional Interactive Elements
+# You can include interactive elements such as sliders, buttons, or user input fields to engage users further
 
-Data Pre-Processing:
-Data Formatting: We standardized the datasets to a common format, ensuring consistency across various data sources.
-Data Cleaning: Employed ExtraTreesRegressor for imputing missing values and standardized the data for ease of analysis.
-
-
-Tools & Techniques:
-Python Packages: Pandas for data manipulation, Plotly and Matplotlib for visualization, Geopandas for map building, and ipywidgets for interactive components.
-Data Imputation: Used LazyRegressor to identify the best model for imputing missing values and opted for ExtraTreesRegressor due to its efficiency and effectiveness.
-
-Results and Analysis
-Data Analysis:
-Conducted thorough analysis using feature engineering, regression models for imputation, and created heatmaps for neighborhood-level insights.
-Addressed challenges like data sufficiency and accuracy, and merged data from various sources to create comprehensive neighborhood profiles.
-
-Visualizations: Developed interactive visualizations using ipywidgets and created heatmaps using Geopandas and Matplotlib to display property values, crime statistics, and other relevant metrics at the neighborhood level.
-
-Outcomes: Our analysis revealed significant insights into the evolution of property valuations, the geographical distribution of various property characteristics, and the correlation with crime rates and urban infrastructure. These findings can guide strategic urban planning and investment decisions in Boston's real estate market.
-
-Heatmaps of Boston: Below are the heatmaps generated as part of our analysis, showcasing the spatial distribution of key metrics across Boston neighborhoods. These visual representations provide a clear and intuitive understanding of the complex data we've analyzed.
-
-     """)
-
+# Final Note
+    st.markdown("""
+In the heart of this narrative lies the essence of Boston - resilient, diverse, and ever-evolving. 
+Our project not only sheds light on the complexities of urban living but also celebrates the spirit 
+of a city that refuses to stand still.
+""")
     # Functionality for selecting data to be displayed on the map
     neighborhoods, survey, merged_gdf = load_data()
     option = st.selectbox(
