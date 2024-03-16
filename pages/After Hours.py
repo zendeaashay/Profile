@@ -235,9 +235,9 @@ def display_tony_hawk():
         else:
             st.image(current_media, use_column_width=True)
 
-# Main display logic, add Tony Hawk to the existing options
-if selected_option == 'Tony Hawk':
-    display_tony_hawk()
+# Main display logic
+selected_option = st.session_state.get('selected_option')
+if selected_option:
+    if selected_option == 'Tony Hawk':
+         display_tony_hawk()
     
-elif selected_option == 'Photography':
-    display_photography()
