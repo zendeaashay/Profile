@@ -19,7 +19,8 @@ interests = {
     'Trekking': 'image.jpg',
     'Hyperloop Project': 'photos/hyp/3.png',
     'Surfing': 'photos/surf/1 DSC_0055.JPG',
-    'Photography': 'photos/photo/21.jpg'
+    'Photography': 'photos/photo/21.jpg',
+    'Tony Hawk': 'photos/hawk/WSBC0461.JPG'
 }
 
 # Define experiences for each interest
@@ -200,9 +201,9 @@ selected_option = st.session_state.get('selected_option')
 if selected_option:
     if selected_option == 'Photography':
         display_photography()
-        # Check if the 'photo_image_index' is in the session state, otherwise initialize it
-        if 'photo_image_index' not in st.session_state:
-            st.session_state['photo_image_index'] = 0
+# Check if the 'photo_image_index' is in the session state, otherwise initialize it
+if 'photo_image_index' not in st.session_state:
+    st.session_state['photo_image_index'] = 0        
 # Navigation functions for Tony Hawk
 def previous_tony_hawk_image():
     tony_hawk_images = experiences['Tony Hawk'][1]
