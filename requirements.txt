@@ -23,4 +23,6 @@ streamlit
 cloud-sql-python-connector[pymysql]
 sqlalchemy
 pymysql
-PyMuPDF
+pandas-profiling
+streamlit-pandas-profiling
+pandas
