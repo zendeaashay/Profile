@@ -50,9 +50,10 @@ Business Problem: We explored how property valuations and characteristics have t
 
 Importance: Real estate analytics is crucial for informed decision-making in urban planning and sustainability. Our work provides valuable insights for real estate professionals, policymakers, and individuals interested in Boston's housing market.
 
-Target Audience: Real Estate Professionals, Policymakers, Prospective Residents, Businesses, Methodology
+Target Audience: Real Estate Professionals, Policymakers, Prospective Residents, Businesses, 
 
 
+Methodology
 Data Collection:
 Primary Dataset: Survey with 63 rows and 12 columns.
 Secondary Datasets: Property assessments, crime incident reports, Vision Zero fatality records, and Blue Bike station locations from various sources including Harvard Dataverse and Analyze Boston.
