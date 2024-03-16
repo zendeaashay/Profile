@@ -46,22 +46,41 @@ def create_res_floor_chart(data):
     
     return fig
 
-def create_property_value_change_chart(data):
-    # Assuming 'FY2000.AV_mean' and 'FY2021.AV_mean' are columns in your data
-    value_change_data = data[['neighborhood', 'FY2000.AV_mean', 'FY2021.AV_mean']].dropna()
-    value_change_data.set_index('neighborhood', inplace=True)
-    value_change_data['Value_Change'] = value_change_data['FY2021.AV_mean'] - value_change_data['FY2000.AV_mean']
+ef create_property_value_comparison_chart(data):
+    # Prepare the data
+    comparison_data = data[['neighborhood', 'FY2000.AV_mean', 'FY2021.AV_mean']].dropna()
+    neighborhoods = comparison_data['neighborhood']
+    values_2000 = comparison_data['FY2000.AV_mean']
+    values_2021 = comparison_data['FY2021.AV_mean']
 
-    # Creating the bar chart
-    fig, ax = plt.subplots(figsize=(10, 8))
-    value_change_data['Value_Change'].plot(kind='bar', ax=ax)
-    ax.set_title('Property Value Change from 2000 to 2021 by Neighborhood')
+    # Calculate the number of neighborhoods and create a range for them
+    n = len(neighborhoods)
+    index = np.arange(n)
+
+    # Define the width of the bars
+    bar_width = 0.35
+
+    # Start plotting
+    fig, ax = plt.subplots(figsize=(15, 10))
+
+    # Create bars for 2000 and 2021
+    bars_2000 = ax.bar(index, values_2000, bar_width, label='2000', color='b')
+    bars_2021 = ax.bar(index + bar_width, values_2021, bar_width, label='2021', color='r')
+
+    # Add labels and title
     ax.set_xlabel('Neighborhood')
-    ax.set_ylabel('Change in Property Value')
-    plt.xticks(rotation=45, ha='right')
-    plt.tight_layout()
+    ax.set_ylabel('Property Value')
+    ax.set_title('Property Value Comparison 2000 vs 2021 by Neighborhood')
+    ax.set_xticks(index + bar_width / 2)
+    ax.set_xticklabels(neighborhoods, rotation=90)
+    ax.legend()
+
+    # Format the y-axis as millions
     ax.yaxis.set_major_formatter(FuncFormatter(millions_formatter))
-    
+
+    # Show the figure with a tight layout
+    plt.tight_layout()
+
     return fig
 
 # Calculate crime rates by neighborhood
@@ -234,8 +253,8 @@ have led to a noticeable decrease in crime rates across the past couple of years
     Reflecting on two decades of economic activity, this chapter visualizes the changes in property values from the year 2000 to 2021.
     """)
     # Display Property Value Change Chart
-    property_value_change_chart = create_property_value_change_chart(data)
-    st.pyplot(property_value_change_chart)
+    property_value_comparison_chart = create_property_value_comparison_chart(data)
+    st.pyplot(property_value_comparison_chart)
 
 # Conclusion: The Mosaic of Boston's Future
     st.header("Conclusion: The Mosaic of Boston's Future")
