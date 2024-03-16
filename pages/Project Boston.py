@@ -85,7 +85,7 @@ Heatmaps of Boston: Below are the heatmaps generated as part of our analysis, sh
     neighborhoods, survey, merged_gdf = load_data()
     option = st.selectbox(
        'Choose a value to plot on the map:',
-       ('fatalities', 'bike_stations_count', 'robbery', 'drug', 'assault', 'SHOOTING')
+       ('FY2021.AV_mean', 'fatalities', 'bike_stations_count', 'robbery', 'drug', 'assault', 'SHOOTING')
     )
     folium_map = create_folium_map(merged_gdf, option)
     folium_static(folium_map)
