@@ -28,14 +28,14 @@ sorted_crime_data = crime_data.sort_values('total_crimes', ascending=False)
 fig, ax = plt.subplots(figsize=(10, 8))
 
 # Color for highlighting Dorchester and Charlestown
-colors = ['#1f77b4' if (x not in ['Dorchester', 'Charlestown']) else '#ff7f0e' for x in sorted_crime_data['neighborhood']]
+colors = ['#1f77b4' if (x not in ['Dorchester', 'Roxbury']) else '#ff7f0e' for x in sorted_crime_data['neighborhood']]
 
 # Create a bar chart
 ax.bar(sorted_crime_data['neighborhood'], sorted_crime_data['total_crimes'], color=colors)
 
 # Highlight Dorchester and Charlestown by adding a label
 for i, neighborhood in enumerate(sorted_crime_data['neighborhood']):
-    if neighborhood in ['Dorchester', 'Charlestown']:
+    if neighborhood in ['Dorchester', 'Roxbury']:
         ax.text(i, sorted_crime_data['total_crimes'].iloc[i], neighborhood, ha='center', va='bottom')
 
 # Rotate x-axis labels for better readability
