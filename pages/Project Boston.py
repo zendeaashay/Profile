@@ -310,7 +310,17 @@ of a city that refuses to stand still.
 
     # Display other data overview if needed
     st.header('Survey Responses Overview')
-    st.write(survey.head())
+    st.markdown("""
+## Survey Responses Overview
+
+In this section, we present an overview of community feedback that reveals the residents' perspectives on Boston's urban development. The survey responses collected are pivotal in understanding the communal pulse—highlighting the experiences, concerns, and aspirations that Bostonians have regarding their neighborhoods.
+
+These insights allow us to evaluate the sentiment surrounding property value changes, urban planning, and overall city livability. They are central to our analytical framework, ensuring that the resulting narrative and recommendations resonate with the residents' voices.
+
+Dive into the data summarized here to discover the stories and trends that Bostonians share, informing our project's direction and outcomes.
+""")
+# You would display the data frame here
+    st.dataframe(survey)
     st.header('Aggregated Data Overview')
     st.write(merged_gdf.head())
 
