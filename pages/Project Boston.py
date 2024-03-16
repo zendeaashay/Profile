@@ -167,6 +167,14 @@ def app():
     this narrative unfolds an intricate story of property dynamics, safety, and community resilience, 
     reflecting the collective aspirations and challenges of its inhabitants.
     """)
+    # Functionality for selecting data to be displayed on the map
+    neighborhoods, survey, merged_gdf = load_data()
+    option = st.selectbox(
+       """Unlock a comprehensive view of Boston's urban landscape through our interactive map. Each option represents a unique dimension of neighborhood life, from the nuanced shifts in property values over time to the tapestry of community safety and accessibility. Delve into metrics such as average property valuations, changes in land and building values, or community features like bike station availability and public safety indicators, including crime rates and traffic incidents. Choose a metric to visualize and interpret the rich, multifaceted narratives of Boston's neighborhoods, providing clarity for residents, investors, and policymakers alike. Each selection offers a window into the factors shaping the city's development, resilience, and quality of life, making complex data accessible and actionable.""",
+       ('FY2021.AV_mean', 'DiffAV2021_mean', 'PercChangeAV2021_mean', 'RecoveryDiffAV_mean', 'RecoveryPercChangeAV_mean', 'GROSS_AREA_mean', 'RES_FLOOR_mean', 'LIVING_AREA_mean', 'LAND_VALUE_mean', 'BLDG_VALUE_mean', 'TOTAL_VALUE_mean', 'FY2000.AV_mean', 'GrowthPercChangeAV_mean', 'CrashPercChangeAV_mean', 'NUM_BLDGS_mean', 'LAND_SF_mean', 'YR_BUILT_mean', 'GROSS_TAX_mean', 'Observation_Count', 'fatalities', 'bike_stations_count', 'robbery', 'drug', 'assault', 'SHOOTING')
+    )
+    folium_map = create_folium_map(merged_gdf, option)
+    folium_static(folium_map)
     # Chapter 1: The Evolution of Property Valuations
     st.header("Chapter 1: The Evolution of Property Valuations")
     st.markdown("""
@@ -274,14 +282,7 @@ In the heart of this narrative lies the essence of Boston - resilient, diverse, 
 Our project not only sheds light on the complexities of urban living but also celebrates the spirit 
 of a city that refuses to stand still.
 """)
-    # Functionality for selecting data to be displayed on the map
-    neighborhoods, survey, merged_gdf = load_data()
-    option = st.selectbox(
-       'Choose a value to plot on the map:',
-       ('FY2021.AV_mean', 'DiffAV2021_mean', 'PercChangeAV2021_mean', 'RecoveryDiffAV_mean', 'RecoveryPercChangeAV_mean', 'GROSS_AREA_mean', 'RES_FLOOR_mean', 'LIVING_AREA_mean', 'LAND_VALUE_mean', 'BLDG_VALUE_mean', 'TOTAL_VALUE_mean', 'FY2000.AV_mean', 'GrowthPercChangeAV_mean', 'CrashPercChangeAV_mean', 'NUM_BLDGS_mean', 'LAND_SF_mean', 'YR_BUILT_mean', 'GROSS_TAX_mean', 'Observation_Count', 'fatalities', 'bike_stations_count', 'robbery', 'drug', 'assault', 'SHOOTING')
-    )
-    folium_map = create_folium_map(merged_gdf, option)
-    folium_static(folium_map)
+    
 
     # Display other data overview if needed
     st.header('Survey Responses Overview')
