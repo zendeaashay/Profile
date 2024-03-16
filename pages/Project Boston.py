@@ -13,6 +13,56 @@ def millions_formatter(x, pos):
     return f'{int(x / 1e6)}M'
 # Load your data
 data = pd.read_csv('merg_padl.csv')
+# Additional functions to create charts for new chapters
+def create_living_area_chart(data):
+    # Assuming 'LIVING_AREA_mean' is a column in your data
+    living_area_data = data[['neighborhood', 'LIVING_AREA_mean']].dropna()
+    living_area_data = living_area_data.groupby('neighborhood').mean().sort_values('LIVING_AREA_mean', ascending=False)
+
+    # Creating the bar chart
+    fig, ax = plt.subplots(figsize=(10, 8))
+    living_area_data['LIVING_AREA_mean'].plot(kind='bar', ax=ax)
+    ax.set_title('Average Living Area by Neighborhood')
+    ax.set_xlabel('Neighborhood')
+    ax.set_ylabel('Average Living Area (sq ft)')
+    plt.xticks(rotation=45, ha='right')
+    plt.tight_layout()
+    
+    return fig
+
+def create_res_floor_chart(data):
+    # Assuming 'RES_FLOOR_mean' is a column in your data
+    res_floor_data = data[['neighborhood', 'RES_FLOOR_mean']].dropna()
+    res_floor_data = res_floor_data.groupby('neighborhood').mean().sort_values('RES_FLOOR_mean', ascending=False)
+
+    # Creating the bar chart
+    fig, ax = plt.subplots(figsize=(10, 8))
+    res_floor_data['RES_FLOOR_mean'].plot(kind='bar', ax=ax)
+    ax.set_title('Average Residential Floors by Neighborhood')
+    ax.set_xlabel('Neighborhood')
+    ax.set_ylabel('Average Residential Floors')
+    plt.xticks(rotation=45, ha='right')
+    plt.tight_layout()
+    
+    return fig
+
+def create_property_value_change_chart(data):
+    # Assuming 'FY2000.AV_mean' and 'FY2021.AV_mean' are columns in your data
+    value_change_data = data[['neighborhood', 'FY2000.AV_mean', 'FY2021.AV_mean']].dropna()
+    value_change_data.set_index('neighborhood', inplace=True)
+    value_change_data['Value_Change'] = value_change_data['FY2021.AV_mean'] - value_change_data['FY2000.AV_mean']
+
+    # Creating the bar chart
+    fig, ax = plt.subplots(figsize=(10, 8))
+    value_change_data['Value_Change'].plot(kind='bar', ax=ax)
+    ax.set_title('Property Value Change from 2000 to 2021 by Neighborhood')
+    ax.set_xlabel('Neighborhood')
+    ax.set_ylabel('Change in Property Value')
+    plt.xticks(rotation=45, ha='right')
+    plt.tight_layout()
+    ax.yaxis.set_major_formatter(FuncFormatter(millions_formatter))
+    
+    return fig
 
 # Calculate crime rates by neighborhood
 # Assuming 'robbery', 'drug', 'assault', and 'SHOOTING' are your columns for crimes, you can create a new column for total crimes
@@ -158,35 +208,34 @@ have led to a noticeable decrease in crime rates across the past couple of years
 """)
 # Display map or chart for Insight 4
 # Example placeholder for a map or a chart
-    st.write("Map or Chart Placeholder")
 
-# Chapter 3: The Green Thread - Sustainability in Urban Fabric
-    st.header("Chapter 3: The Green Thread - Sustainability in Urban Fabric")
-    st.markdown("""
-As we weave through the narrative, a green thread emerges, highlighting Boston's strides 
-towards sustainability and environmental stewardship.
-""")
 
-# Insight 5: The Solar Wave
-    st.subheader("Insight 5: The Solar Wave")
+    # Chapter for Living Area Statistics
+    st.header("Chapter 3: Living Area Statistics")
     st.markdown("""
-In neighborhoods like Jamaica Plain, the adoption of solar energy has surged, driven by 
-community-led initiatives. This reflects a growing consciousness towards renewable energy 
-and its role in urban sustainability.
-""")
-# Display map or chart for Insight 5
-# Example placeholder for a map or a chart
-    st.write("Map or Chart Placeholder")
+    This chapter explores the living areas within Boston's neighborhoods, highlighting the spatial dynamics of urban housing.
+    """)
+    # Display Living Area Chart
+    living_area_chart = create_living_area_chart(data)
+    st.pyplot(living_area_chart)
 
-# Insight 6: The Urban Canopy Challenge
-    st.subheader("Insight 6: The Urban Canopy Challenge")
+    # Chapter for Residential Floors
+    st.header("Chapter 4: Residential Floors")
     st.markdown("""
-Despite efforts, challenges remain in expanding green spaces within densely built areas like the 
-North End. The struggle to balance development with greenery underscores the complexities of urban sustainability.
-""")
-# Display map or chart for Insight 6
-# Example placeholder for a map or a chart
-    st.write("Map or Chart Placeholder")
+    This chapter delves into the vertical expansion of Boston's neighborhoods, examining the average number of residential floors.
+    """)
+    # Display Residential Floors Chart
+    res_floor_chart = create_res_floor_chart(data)
+    st.pyplot(res_floor_chart)
+
+    # Chapter for Property Value Changes
+    st.header("Chapter 5: Property Value Changes")
+    st.markdown("""
+    Reflecting on two decades of economic activity, this chapter visualizes the changes in property values from the year 2000 to 2021.
+    """)
+    # Display Property Value Change Chart
+    property_value_change_chart = create_property_value_change_chart(data)
+    st.pyplot(property_value_change_chart)
 
 # Conclusion: The Mosaic of Boston's Future
     st.header("Conclusion: The Mosaic of Boston's Future")
