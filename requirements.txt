@@ -24,3 +24,4 @@ cloud-sql-python-connector[pymysql]
 sqlalchemy
 pymysql
 numpy
+seaborn
