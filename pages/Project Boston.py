@@ -5,7 +5,11 @@ from shapely import wkt
 import folium
 from streamlit_folium import folium_static
 import matplotlib.pyplot as plt
+from matplotlib.ticker import FuncFormatter
 
+# Function to format the y-axis as millions
+def millions_formatter(x, pos):
+    return f'{int(x / 1e6)}M'
 
 # Load your data here
 def load_data():
@@ -47,6 +51,7 @@ def create_valuation_comparison_chart(merged_gdf):
     ax.set_ylabel('Average Valuation')
     plt.xticks(rotation=45, ha='right')
     plt.tight_layout()
+    ax.yaxis.set_major_formatter(FuncFormatter(millions_formatter))
     
     return fig
 # Main app function
