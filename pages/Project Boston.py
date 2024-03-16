@@ -84,7 +84,7 @@ coinciding with major development projects. This trend highlights the transforma
 of urban development on local real estate markets.""")
 # Display map or chart for Insight 1
 # Example placeholder for a map or a chart
-    st.write("Map or Chart Placeholder")
+    
 
 # Insight 2: The Resilience of Historic Districts
     st.subheader("Insight 2: The Resilience of Historic Districts")
@@ -94,7 +94,7 @@ property valuations, underscoring the enduring appeal of historical charm in a m
 """)
 # Display map or chart for Insight 2
 # Example placeholder for a map or a chart
-    st.write("Map or Chart Placeholder")
+    
 
 # Chapter 2: Navigating Through Crime Statistics
     st.header("Chapter 2: Navigating Through Crime Statistics")
