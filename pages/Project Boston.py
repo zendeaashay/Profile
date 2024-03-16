@@ -4,6 +4,8 @@ import pandas as pd
 from shapely import wkt
 import folium
 from streamlit_folium import folium_static
+import matplotlib.pyplot as plt
+
 
 # Load your data here
 def load_data():
@@ -31,7 +33,22 @@ def create_folium_map(gdf, value_column):
     ).add_to(m)
     folium.LayerControl().add_to(m)
     return m
+def create_valuation_comparison_chart(merged_gdf):
+    # Assuming 'neighborhood' and 'TOTAL_VALUE_mean' are columns in your GeoDataFrame
+    # You can change 'TOTAL_VALUE_mean' to the actual valuation column you have
+    valuation_data = merged_gdf[['neighborhood', 'TOTAL_VALUE_mean']].dropna()
+    valuation_data = valuation_data.groupby('neighborhood').mean().sort_values('TOTAL_VALUE_mean', ascending=False)
 
+    # Creating the bar chart
+    fig, ax = plt.subplots(figsize=(10, 8))
+    valuation_data['TOTAL_VALUE_mean'].plot(kind='bar', ax=ax)
+    ax.set_title('Average Property Valuation by Neighborhood')
+    ax.set_xlabel('Neighborhood')
+    ax.set_ylabel('Average Valuation')
+    plt.xticks(rotation=45, ha='right')
+    plt.tight_layout()
+    
+    return fig
 # Main app function
 def app():
     
@@ -49,6 +66,10 @@ Our journey begins with an analysis of property valuations across Boston's neigh
 Using property assessment data, we've traced the ebb and flow of the real estate market, 
 revealing how historical events, economic shifts, and urban policies have sculpted the city's landscape.
     """)
+    # Display graph for Chapter 1
+    neighborhoods, survey, merged_gdf = load_data()  # Ensure this line is uncommented to load your data
+    chart = create_valuation_comparison_chart(merged_gdf)
+    st.pyplot(chart)
 
 # Insight 1: The Ripple Effect of Urban Development
     st.subheader("Insight 1: The Ripple Effect of Urban Development")
