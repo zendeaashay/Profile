@@ -21,7 +21,8 @@ interests = {
     'Surfing': 'photos/surf/1 DSC_0055.JPG',
     'Photography': 'photos/photo/21.jpg',
     'Tony Hawk': 'photos/hawk/WSBC0461.JPG',
-    'Fireflies': 'photos/fire/P1280437.JPG'
+    'Fireflies': 'photos/fire/P1280437.JPG',
+    'Terrace': 'photos/terr/P1360084.JPG'
 }
 
 
@@ -38,7 +39,14 @@ Up there, where the air is crisp and the skies a clear blue canvas, the mountain
         'photos/surf/10 DSC_0805~2.JPG']],
     'Photography': ["I love to take my camera out and just capture what catches my eye. There's something awesome about getting the perfect shot of a wild animal or a really cool view. It's like I get to freeze a piece of that moment and keep it. Whether it’s a tiger lounging around or a beautiful sunset, if it looks cool to me, I’ll snap it. Simple as that. ", ['photos/photo/29.jpg', 'photos/photo/30.mp4', 'photos/photo/P1010768.JPG', 'photos/photo/P1010774.JPG', 'photos/photo/P1010800.JPG', 'photos/photo/P1010825.JPG', 'photos/photo/P1010826.JPG', 'photos/photo/1.jpg', 'photos/photo/01.jpg', 'photos/photo/2.jpg', 'photos/photo/3.jpg', 'photos/photo/5.jpg', 'photos/photo/6.jpg', 'photos/photo/7.jpg', 'photos/photo/15.jpg', 'photos/photo/18.jpg', 'photos/photo/21.jpg', 'photos/photo/22.jpg', 'photos/photo/23.jpg', 'photos/photo/24.jpg']],
     'Tony Hawk': ["Meet my friend, Tony Hawk! When I was in 11th grade, Tony used to visit our home terrace. That's when I decided to use my camera, remote controlled from my phone, and another device called BirdCam which is essentially a motion-activated camera system. Enjoy Mr Hawk's flights!", ['photos/hawk/WSBC0461.JPG', 'photos/hawk/01.mp4', 'photos/hawk/02.mp4', 'photos/hawk/13~2.mp4', 'photos/hawk/14~3.mp4', 'photos/hawk/WSBC0094.JPG', 'photos/hawk/WSBC0098.JPG', 'photos/hawk/WSBC0471.JPG', 'photos/hawk/WSBC0556.JPG', 'photos/hawk/WSBC0700.JPG', 'photos/hawk/WSBC0794.JPG']],
-    'Fireflies': ["A couple of years ago, me and my my friends embarked on an adventure to venture 6 hours deep into the jungles of Maharashtra, India to find Hotaru-Tai (Japanese for 'a troop of fireflies'). It quickly turned into a spooky experience when we found all kindsof dangerous insects, snakes and the most scary of them all, Scorpians! But we were soon rewarded for our perseverance when we found  what we were looking for...  ", ['photos/fire/P1280412.JPG', 'photos/fire/P1280417.JPG', 'photos/fire/P1280421.JPG', 'photos/fire/P1280427.JPG', 'photos/fire/P1280455.JPG', 'photos/fire/1.JPG', 'photos/fire/2.JPG', 'photos/fire/3.JPG', 'photos/fire/4.jpeg']]
+    'Fireflies': ["A couple of years ago, me and my my friends embarked on an adventure to venture 6 hours deep into the jungles of Maharashtra, India to find Hotaru-Tai (Japanese for 'a troop of fireflies'). It quickly turned into a spooky experience when we found all kindsof dangerous insects, snakes and the most scary of them all, Scorpians! But we were soon rewarded for our perseverance when we found  what we were looking for...  ", ['photos/fire/P1280412.JPG', 'photos/fire/P1280417.JPG', 'photos/fire/P1280421.JPG', 'photos/fire/P1280427.JPG', 'photos/fire/P1280455.JPG', 'photos/fire/1.JPG', 'photos/fire/2.JPG', 'photos/fire/3.JPG', 'photos/fire/4.jpeg']],
+    'Terrace': [""" My balcony terrace serves as a humble sanctuary in the midst of urban hustle, a sliver of solace where nature greets me in its most unassuming forms. It's here, amidst potted plants and the open sky, that I've witnessed the quiet ballet of day turning to night, of seasons weaving through their cycles.
+
+This little oasis has played host to a variety of visitors - from the fleeting flutter of butterflies to the diligent bees, from the vibrant blossoms of spring to the muted tones of autumn. Each creature, each petal tells a story, a whisper of the world's seamless tapestry right at my doorstep.
+
+Through the lens of my camera, I've tried to capture these unsung moments: the dew on a spider's web, the dance of light and shadow, the symmetry in leaves, and the fleeting expressions of my non-human guests. Each photograph is a chapter, a pause in time, celebrating the ordinary's hidden beauty.
+
+Welcome to my terrace - a place where nature's simplicity meets the complexity of life, a reminder to look, to see, to pause.""", ['photos/terr/P1360084.JPG', 'photos/terr/P1360099.JPG', 'photos/terr/P1360139.JPG', 'photos/terr/P1360200.JPG', 'photos/terr/P1360201.JPG', 'photos/terr/P1360241.JPG', 'photos/terr/P1360246.JPG', 'photos/terr/P1360257.JPG', 'photos/terr/P1360263.JPG', 'photos/terr/P1360270.JPG', 'photos/terr/P1360290.JPG', 'photos/terr/P1360291.JPG', 'photos/terr/P1360293.JPG']]
 }
 
 # Track the current selected option
@@ -280,3 +288,38 @@ selected_option = st.session_state.get('selected_option')
 if selected_option:
     if selected_option == 'Fireflies':
          display_fireflies()
+         
+# Navigation functions for Terrace
+def previous_terrace_image():
+    terrace_images = experiences['Terrace'][1]
+    st.session_state['terrace_image_index'] = (st.session_state['terrace_image_index'] - 1) % len(terrace_images)
+
+def next_terrace_image():
+    terrace_images = experiences['Terrace'][1]
+    st.session_state['terrace_image_index'] = (st.session_state['terrace_image_index'] + 1) % len(terrace_images)
+
+if 'terrace_image_index' not in st.session_state:
+    st.session_state['terrace_image_index'] = 0  # Initialize with the first image index
+
+# Display function for Terrace
+def display_terrace():
+    terrace_description, terrace_images = experiences['Terrace']
+    st.markdown(terrace_description, unsafe_allow_html=True)
+
+    # Create Previous and Next buttons
+    col1, col2 = st.columns(2)
+    with col1:
+        if st.button("Previous", on_click=previous_terrace_image):
+            pass
+    with col2:
+        if st.button("Next", on_click=next_terrace_image):
+            pass
+
+    # Display the current Terrace image
+    st.image(terrace_images[st.session_state['terrace_image_index']], use_column_width=True)
+
+# Main display logic updated to include Terrace
+selected_option = st.session_state.get('selected_option')
+if selected_option:
+    if selected_option == 'Terrace':
+        display_terrace()
