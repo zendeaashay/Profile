@@ -44,8 +44,7 @@ Up there, where the air is crisp and the skies a clear blue canvas, the mountain
     'photos/fire/P1280421.JPG',
     'photos/fire/P1280427.JPG',
     'photos/fire/P1280455.JPG',
-    'photos/fire/P1280456.JPG',
-    'photos/fire/P1280457.JPG']]
+    ]]
 }
 
 # Track the current selected option
