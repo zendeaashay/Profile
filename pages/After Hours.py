@@ -41,13 +41,8 @@ Up there, where the air is crisp and the skies a clear blue canvas, the mountain
     'Fireflies': ["Your descriptive text about your experience with fireflies.", [
     'photos/fire/P1280412.JPG',
     'photos/fire/P1280417.JPG',
-    'photos/fire/P1280418.JPG',
     'photos/fire/P1280421.JPG',
-    'photos/fire/P1280423.JPG',
     'photos/fire/P1280427.JPG',
-    'photos/fire/P1280428.JPG',
-    'photos/fire/P1280437.JPG',
-    'photos/fire/P1280441.JPG',
     'photos/fire/P1280448.JPG',
     'photos/fire/P1280455.JPG',
     'photos/fire/P1280456.JPG',
