@@ -6,7 +6,19 @@ Created on Sun Mar 17 23:26:54 2024
 @author: aashayzende
 """
 import streamlit as st
+import altair as alt
 st.set_page_config(page_title="Introduction to Carvana Case Study:", page_icon="🌟", layout="wide")
+hide_default_format = """
+       <style>
+       #MainMenu {visibility: hidden; }
+       footer {visibility: hidden;}
+       </style>
+       """
+with open('homestyle.css') as f:
+    st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+st.markdown(hide_default_format, unsafe_allow_html=True)
+# Enable Altair dark theme for charts
+alt.themes.enable("dark")
 
 st.markdown(""" <div class="bio">
     <h4>Introduction to Carvana Case Study: </h4>
