@@ -309,7 +309,7 @@ of a city that refuses to stand still.
     
 
     # Display other data overview if needed
-    st.header('Survey Responses Overview')
+    
     st.markdown("""
 ## Survey Responses Overview
 

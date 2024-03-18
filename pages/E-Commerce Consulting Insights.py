@@ -2,7 +2,7 @@ import streamlit as st
 from streamlit_pdf_viewer import pdf_viewer
 
 def show_pdf():
-    st.title('Consulting Analysis and Insigths on the Indian E-Tailing Market')
+    st.title('Consulting Analysis and Insights on the Indian E-Tailing Market')
     st.markdown("""
     <div class="bio">
         <p>Welcome to my in-depth exploration of India's e-commerce landscape, a pivotal area reshaping how consumers engage with retail in the digital age. My presentation, "eComm India: Navigating Growth in the Digital Marketplace," offers a comprehensive analysis of trends, challenges, and opportunities within India's booming online retail sector.
