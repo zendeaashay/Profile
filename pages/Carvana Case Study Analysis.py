@@ -32,4 +32,4 @@ Moreover, the correlation analysis and regression modeling delve deeper into the
 Ultimately, armed with these analytical findings, we aim to offer actionable recommendations for Carvana, facilitating informed decision-making in identifying and mitigating potential risks associated with vehicle purchases. By leveraging the power of data-driven insights and visual tools, we endeavor to provide a roadmap for optimizing Carvana's operations and enhancing customer satisfaction in the ever-evolving automotive landscape. </p>
         </div>
     """, unsafe_allow_html=True)
-pdf_viewer("A3 Carvana Aashay Zende.pdf", width=700, height=487)
+pdf_viewer("A3 Carvana Aashay Zende.pdf", width=800, height=487)
