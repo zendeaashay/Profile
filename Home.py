@@ -29,7 +29,7 @@ if page == "Welcome!":
     st.title("Aashay Zende")
     st.markdown("""
     <div class="bio">
-        <h4>Data Analyst | Soccer Player and ManUtd Supporter | Formula 1 Fanatic | Photographer | Surfer</h4>
+        <h4>Data Analyst | Soccer Player and ManUtd Supporter | Painter | Formula 1 Fanatic | Photographer | Surfer</h4>
         <p>Hello, I'm Aashay Zende, a passionate Data and Business Analyst, avid soccer enthusiast cheering for ManUtd, Formula 1 fanatic, dedicated photographer, and surfer riding the waves of innovation and creativity.
 
 Grounded in my rigorous education from Northeastern University, where I'm pursuing a Master of Science in Business Analytics, and my foundational Bachelor's from Manipal Institute of Technology in Automobile Engineering, I bring a unique blend of analytical prowess and strategic insight to the table. My journey in data analytics is marked by a keen eye for detail and a relentless pursuit of excellence, evident from my roles at prestigious organizations like Redseer Strategy Management Consulting, where I've left a significant mark by enhancing operational efficiencies and influencing pivotal business decisions.
@@ -40,7 +40,7 @@ My portfolio is a testament to my multifaceted skills, from developing strategic
 
 I'm more than just numbers and data models; my spirit of adventure leads me to explore new horizons, pushing the boundaries of what's possible both professionally and personally.
 
-For recruiters looking to harness my blend of analytical rigor, strategic thinking, and dynamic leadership in the realms of business analysis, strategy consulting, marketing, supply chain management, and beyond, feel free to reach out. You can contact me at zende.a@northeastern.edu, (857) 397-2290, or connect with me on LinkedIn.
+For recruiters looking to harness my blend of analytical rigor, strategic thinking, and dynamic leadership in the realms of business analysis, strategy consulting, marketing, supply chain management, and beyond, feel free to reach out. You can contact me at zende.a@northeastern.edu, or connect with me on LinkedIn.
 
 Let's navigate the data-driven landscapes together and turn complex challenges into strategic opportunities. </p>
         </div>
