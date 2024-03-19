@@ -167,8 +167,6 @@ def display_hyperloop():
 # Main display logic updated to include specific display functions
 selected_option = st.session_state.get('selected_option')
 if selected_option:
-    st.subheader(selected_option)
-
     if selected_option == 'Hyperloop':
         display_hyperloop()
         
