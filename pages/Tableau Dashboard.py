@@ -1,20 +1,20 @@
 import streamlit as st
+import base64
 
-# Set page config
-st.set_page_config(page_title='Tableau Dashboard', layout='wide')
+# Function to convert PDF file to base64
+def get_base64_of_pdf(pdf_file):
+    with open(pdf_file, "rb") as f:
+        return base64.b64encode(f.read()).decode()
 
-# Choice of dashboard
-dashboard_choice = st.selectbox('Choose a Tableau Dashboard:',
-                                ('Dashboard 1', 'Dashboard 2'))
+# Embedding the PDF in an iframe
+def show_pdf(file_path):
+    base64_pdf = get_base64_of_pdf(file_path)
+    pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf"></iframe>'
+    st.markdown(pdf_display, unsafe_allow_html=True)
 
-# Tableau dashboards embed links
-dashboards = {
-    'Dashboard 1': 'https://public.tableau.com/views/Amazon_17097002192610/Dashboard1?:language=en-US&:display_count=n&:origin=viz_share_link',
-    'Dashboard 2': 'https://public.tableau.com/views/Amazon_17097002192610/Dashboard2?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link'
-}
+st.title("Amazon Analysis Dashboard")
 
-# Generate the iframe HTML for the selected dashboard
-iframe_html = f'<iframe src="{dashboards[dashboard_choice]}" width="1000" height="800"></iframe>'
+# Path to your PDF file
+pdf_file_path = 'dashb/Amazon.pdf'
 
-# Render the selected Tableau dashboard
-st.markdown(iframe_html, unsafe_allow_html=True)
+show_pdf(pdf_file_path)
