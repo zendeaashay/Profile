@@ -30,18 +30,19 @@ if page == "Welcome!":
     st.markdown("""
     <div class="bio">
         <h4>Data Analyst | Soccer Player and ManUtd Supporter | Formula 1 Fanatic | Photographer | Surfer</h4>
-        <p>Welcome to my digital portfolio, a curated showcase of my professional journey and the milestones I've achieved along the way. My name is Aashay Zende, and I am a seasoned Data and Business Analyst with a penchant for transforming complex data into strategic insights.
+        <p>Hello, I'm Aashay Zende, a passionate Data and Business Analyst, avid soccer enthusiast cheering for ManUtd, Formula 1 fanatic, dedicated photographer, and surfer riding the waves of innovation and creativity.
 
-With a robust educational foundation in Business Analytics and a track record of impactful roles in the analytics field, I have honed my ability to sift through data noise and identify patterns that drive business decisions. My career has been characterized by a consistent pursuit of excellence, leading cross-functional teams in data-driven initiatives, and delivering solutions that enhance operational effectiveness. This has involved not only rigorous business analysis but also strategic involvement in areas pertinent to investment firms, financial planning, supply chain optimization, and marketing strategies.
+Grounded in my rigorous education from Northeastern University, where I'm pursuing a Master of Science in Business Analytics, and my foundational Bachelor's from Manipal Institute of Technology in Automobile Engineering, I bring a unique blend of analytical prowess and strategic insight to the table. My journey in data analytics is marked by a keen eye for detail and a relentless pursuit of excellence, evident from my roles at prestigious organizations like Redseer Strategy Management Consulting, where I've left a significant mark by enhancing operational efficiencies and influencing pivotal business decisions.
 
+With a toolkit enriched by statistical techniques, and proficiency in tools such as Tableau, PowerBI, Python, and SQL, I navigate the complex terrain of data to uncover actionable insights. My contributions extend beyond the workplace, into academia and competitive realms like the SpaceX Hyperloop competition, where I led my team to design an innovative transportation concept.
 
-On this page, you will discover the essence of my professional philosophy: a blend of analytical rigor and inventive strategy. My experience spans various facets of analytics and management, underscoring my adaptability and commitment to excellence. From developing comprehensive business analyses to strategizing marketing campaigns, my approach integrates quantitative precision with a nuanced understanding of business dynamics.
+My portfolio is a testament to my multifaceted skills, from developing strategic marketing campaigns and investment portfolio optimization to spearheading groundbreaking projects like the transformative PowerBI dashboard that revolutionized data visualization and decision-making processes.
 
-Beyond the spreadsheets and data models, I embody a spirit of adventure that propels me to explore new horizons, both professionally and personally. This site is not only a testament to my professional pursuits but also a gateway to the diverse interests that enrich my analytical expertise.
+I'm more than just numbers and data models; my spirit of adventure leads me to explore new horizons, pushing the boundaries of what's possible both professionally and personally.
 
-For an interactive experience, click on the 'AshGPT' option at the top of the page. Engage with the chatbot I've created to answer your queries—whether you're interested in discussing potential collaborations, delving into my project portfolio, or simply wish to have a conversation about any topic you want.
+For recruiters looking to harness my blend of analytical rigor, strategic thinking, and dynamic leadership in the realms of business analysis, strategy consulting, marketing, supply chain management, and beyond, feel free to reach out. You can contact me at zende.a@northeastern.edu, (857) 397-2290, or connect with me on LinkedIn.
 
-Embark on this digital narrative and uncover the professional paths I've navigated. Let's connect the dots together. </p>
+Let's navigate the data-driven landscapes together and turn complex challenges into strategic opportunities. </p>
         </div>
     """, unsafe_allow_html=True)
     st.image('image.jpg', caption='Exploring the Himalayas with my furry friends!')
