@@ -15,6 +15,6 @@ def show_pdf(file_path):
 st.title("Amazon Analysis Dashboard")
 
 # Path to your PDF file
-pdf_file_path = 'dashb/Amazon.pdf'
+pdf_file_path = 'Amazon.pdf'
 
 show_pdf(pdf_file_path)
