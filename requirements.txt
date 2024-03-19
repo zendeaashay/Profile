@@ -1,4 +1,4 @@
-﻿
+
 pandas
 altair
 streamlit_pdf_viewer
@@ -25,3 +25,4 @@ sqlalchemy
 pymysql
 numpy
 seaborn
+pygwalker
