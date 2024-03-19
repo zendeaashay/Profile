@@ -22,7 +22,8 @@ interests = {
     'Snaps': 'photos/photo/21.jpg',
     'Tony Hawk': 'photos/hawk/WSBC0461.JPG',
     'Fireflies': 'photos/fire/P1280437.JPG',
-    'Terrace': 'photos/terr/P1360084.JPG'
+    'Terrace': 'photos/terr/P1360084.JPG',
+    'Paintings': 'photos/Paint/6.jpg'
 }
 
 
@@ -65,7 +66,8 @@ This little oasis has played host to a variety of visitors - from the fleeting f
 
 Through the lens of my camera, I've tried to capture these unsung moments: the dew on a spider's web, the dance of light and shadow, the symmetry in leaves, and the fleeting expressions of my non-human guests. Each photograph is a chapter, a pause in time, celebrating the ordinary's hidden beauty.
 
-Welcome to my terrace - a place where nature's simplicity meets the complexity of life, a reminder to look, to see, to pause.""", ['photos/terr/P1360084.JPG', 'photos/terr/P1360099.JPG', 'photos/terr/P1360139.JPG', 'photos/terr/P1360200.JPG', 'photos/terr/P1360201.JPG', 'photos/terr/P1360241.JPG', 'photos/terr/P1360246.JPG', 'photos/terr/P1360257.JPG', 'photos/terr/P1360263.JPG', 'photos/terr/P1360270.JPG', 'photos/terr/P1360290.JPG', 'photos/terr/P1360291.JPG', 'photos/terr/P1360293.JPG']]
+Welcome to my terrace - a place where nature's simplicity meets the complexity of life, a reminder to look, to see, to pause.""", ['photos/terr/P1360084.JPG', 'photos/terr/P1360099.JPG', 'photos/terr/P1360139.JPG', 'photos/terr/P1360200.JPG', 'photos/terr/P1360201.JPG', 'photos/terr/P1360241.JPG', 'photos/terr/P1360246.JPG', 'photos/terr/P1360257.JPG', 'photos/terr/P1360263.JPG', 'photos/terr/P1360270.JPG', 'photos/terr/P1360290.JPG', 'photos/terr/P1360291.JPG', 'photos/terr/P1360293.JPG']],
+     'Paintings': ["When I cannot explain things or feelings in words, I paint...", ["photos/Paint/1.mp4", "photos/Paint/2.jpg", "photos/Paint/3.jpg", "photos/Paint/4.jpg", "photos/Paint/5.jpg", "photos/Paint/6.jpg"]]
 }
 
 # Track the current selected option
@@ -161,16 +163,26 @@ if selected_option == 'Surfing':
 
         # Display the current surfing image
         st.image(surf_images[st.session_state['surf_image_index']], use_column_width=True)        
+
 def previous_hyperloop_image():
+    if 'hyperloop_image_index' not in st.session_state:
+        st.session_state['hyperloop_image_index'] = 0
+    
     hyperloop_images = experiences['loopMIT'][1]
     st.session_state['hyperloop_image_index'] = max(st.session_state['hyperloop_image_index'] - 1, 0)
 
 def next_hyperloop_image():
+    # Ensure 'hyperloop_image_index' is initialized
+    if 'hyperloop_image_index' not in st.session_state:
+       st.session_state['hyperloop_image_index'] = 0
+    
     hyperloop_images = experiences['loopMIT'][1]
     st.session_state['hyperloop_image_index'] = min(st.session_state['hyperloop_image_index'] + 1, len(hyperloop_images) - 1)
 
 # Display function for Hyperloop
 def display_hyperloop():
+    if 'hyperloop_image_index' not in st.session_state:
+        st.session_state['hyperloop_image_index'] = 0
     hyperloop_description, hyperloop_images = experiences['loopMIT']
     st.markdown(hyperloop_description, unsafe_allow_html=True)
 
