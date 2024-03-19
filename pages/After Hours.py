@@ -142,39 +142,36 @@ if selected_option == 'Surfing':
 
         # Display the current surfing image
         st.image(surf_images[st.session_state['surf_image_index']], use_column_width=True)        
-# Navigation functions for Hyperloop Project
 def previous_hyperloop_image():
-    hyperloop_images = experiences['Hyperloop Project'][1]
-    st.session_state['hyperloop_image_index'] = (st.session_state['hyperloop_image_index'] - 1) % len(hyperloop_images)
+    hyperloop_images = experiences['Hyperloop'][1]
+    st.session_state['hyperloop_image_index'] = max(st.session_state['hyperloop_image_index'] - 1, 0)
 
 def next_hyperloop_image():
-    hyperloop_images = experiences['Hyperloop Project'][1]
-    st.session_state['hyperloop_image_index'] = (st.session_state['hyperloop_image_index'] + 1) % len(hyperloop_images)
+    hyperloop_images = experiences['Hyperloop'][1]
+    st.session_state['hyperloop_image_index'] = min(st.session_state['hyperloop_image_index'] + 1, len(hyperloop_images) - 1)
 
-if 'hyperloop_image_index' not in st.session_state:
-    st.session_state['hyperloop_image_index'] = 0  # Initialize it with the first image index
+# Display function for Hyperloop
+def display_hyperloop():
+    hyperloop_description, hyperloop_images = experiences['Hyperloop']
+    st.markdown(hyperloop_description, unsafe_allow_html=True)
 
-# Display function for the selected option
-def display_selected_option(selected_option):
-    if selected_option == 'Hyperloop Project':
-        hyperloop_description, hyperloop_images = experiences[selected_option]
-        st.markdown('Our design was selected by the European Hyperloop Competition! Check out this [Instagram Post](https://www.instagram.com/p/CY8vJVKNu0q/?hl=es-la)', unsafe_allow_html=True)
+    col1, col2 = st.columns(2)
+    with col1:
+        st.button("Previous", key="prev_hyperloop", on_click=previous_hyperloop_image)
+    with col2:
+        st.button("Next", key="next_hyperloop", on_click=next_hyperloop_image)
 
-        # Create Previous and Next buttons for Hyperloop Project
-        col1, col2 = st.columns(2)
-        with col1:
-            if st.button("Previous", on_click=previous_hyperloop_image):
-                pass
+    current_image = hyperloop_images[st.session_state['hyperloop_image_index']]
+    st.image(current_image, use_column_width=True)
 
-        with col2:
-            if st.button("Next", on_click=next_hyperloop_image):
-                pass
+# Main display logic updated to include specific display functions
+selected_option = st.session_state.get('selected_option')
+if selected_option:
+    st.subheader(selected_option)
 
-        # Display the current Hyperloop image
-        current_image = hyperloop_images[st.session_state['hyperloop_image_index']]
-        st.image(current_image, use_column_width=True)
-
-    
+    if selected_option == 'Hyperloop':
+        display_hyperloop()
+        
 # Check if the 'photo_image_index' is in the session state, otherwise initialize it
 if 'photo_image_index' not in st.session_state:
     st.session_state['photo_image_index'] = 0
