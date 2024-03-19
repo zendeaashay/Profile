@@ -17,7 +17,7 @@ st.markdown("""
 # Define the options for your interests and their corresponding images or icons
 interests = {
     'Trekking': 'image.jpg',
-    'Hyperloop': 'photos/hyp/3.png',
+    'loopMIT': 'photos/hyp/3.png',
     'Surfing': 'photos/surf/1 DSC_0055.JPG',
     'Snaps': 'photos/photo/21.jpg',
     'Tony Hawk': 'photos/hawk/WSBC0461.JPG',
@@ -31,7 +31,7 @@ experiences = {
     'Trekking': ["""I've found my greatest adventures on the slopes of the Himalayas, trading the comfort of the familiar for the thrill of the ascent. Trekking isn't just a hobby; it's a series of moments where each step reveals a new horizon and a test of my own mettle. From the impromptu snow sculptures—my chilly high-altitude tributes—to the quiet companionship of trail dogs and the cheer of local guides, every trek is a story etched in snow.
 
 Up there, where the air is crisp and the skies a clear blue canvas, the mountains challenge me, the cold invigorates me, and the journey transforms me. Through the camaraderie with fellow hikers and the silent solidarity of shared struggles, I've discovered that the summit is just a bonus. It's the laughter, the grit, and the unexpected detours that truly chart my love for the trek. """, ['photos/trek/Image.jpeg', 'photos/trek/1.JPEG', 'photos/trek/2.JPG', 'photos/trek/3.JPG', 'photos/trek/4.JPG', 'photos/trek/5.JPG', 'photos/trek/6.JPG', 'photos/trek/20220110_095542.png', 'photos/trek/P1380367.JPG', 'photos/trek/P1380563.JPG', 'photos/trek/P1380186.JPG', 'photos/trek/P1370805.JPG', 'photos/trek/P1370726.MOV']],
-    'Hyperloop': ["""Diving into the vanguard of transport innovation, my tenure with the Hyperloop project represented a foray into the pulsating heart of high-speed, sustainable mobility. At the confluence of visionary innovation and grounded pragmatism, the endeavor was a vibrant testament to the boundless reaches of human creativity, relentlessly challenging the conventional confines of possibility.
+    'loopMIT': ["""Diving into the vanguard of transport innovation, my tenure with the Hyperloop project represented a foray into the pulsating heart of high-speed, sustainable mobility. At the confluence of visionary innovation and grounded pragmatism, the endeavor was a vibrant testament to the boundless reaches of human creativity, relentlessly challenging the conventional confines of possibility.
 
 During my journey with LoopMIT at the Manipal Institute of Technology, spanning from February 2019 to July 2021, I was privileged to co-lead the Vehicle Dynamics Department. Within this cadre of 20 adept students, we partiicipated in SpaceX's prestigious Hyperloop competition.
 
@@ -162,16 +162,16 @@ if selected_option == 'Surfing':
         # Display the current surfing image
         st.image(surf_images[st.session_state['surf_image_index']], use_column_width=True)        
 def previous_hyperloop_image():
-    hyperloop_images = experiences['Hyperloop'][1]
+    hyperloop_images = experiences['loopMIT'][1]
     st.session_state['hyperloop_image_index'] = max(st.session_state['hyperloop_image_index'] - 1, 0)
 
 def next_hyperloop_image():
-    hyperloop_images = experiences['Hyperloop'][1]
+    hyperloop_images = experiences['loopMIT'][1]
     st.session_state['hyperloop_image_index'] = min(st.session_state['hyperloop_image_index'] + 1, len(hyperloop_images) - 1)
 
 # Display function for Hyperloop
 def display_hyperloop():
-    hyperloop_description, hyperloop_images = experiences['Hyperloop']
+    hyperloop_description, hyperloop_images = experiences['loopMIT']
     st.markdown(hyperloop_description, unsafe_allow_html=True)
 
     col1, col2 = st.columns(2)
@@ -186,7 +186,7 @@ def display_hyperloop():
 # Main display logic updated to include specific display functions
 selected_option = st.session_state.get('selected_option')
 if selected_option:
-    if selected_option == 'Hyperloop':
+    if selected_option == 'loopMIT':
         display_hyperloop()
         
 # Check if the 'photo_image_index' is in the session state, otherwise initialize it
