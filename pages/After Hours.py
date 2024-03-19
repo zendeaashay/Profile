@@ -349,3 +349,40 @@ selected_option = st.session_state.get('selected_option')
 if selected_option:
     if selected_option == 'Terrace':
         display_terrace()
+        
+# Initialize 'paintings_image_index' in session state if not already present
+if 'paintings_image_index' not in st.session_state:
+    st.session_state['paintings_image_index'] = 0
+
+# Navigation functions for Paintings
+def previous_painting_image():
+    painting_images = experiences['Paintings'][1]
+    st.session_state['paintings_image_index'] = max(st.session_state['paintings_image_index'] - 1, 0)
+
+def next_painting_image():
+    painting_images = experiences['Paintings'][1]
+    st.session_state['paintings_image_index'] = min(st.session_state['paintings_image_index'] + 1, len(painting_images) - 1)
+
+# Display function for Paintings
+def display_paintings():
+    painting_description, painting_images = experiences['Paintings']
+    st.markdown(painting_description, unsafe_allow_html=True)
+
+    col1, col2 = st.columns(2)
+    with col1:
+        st.button("Previous", key="prev_paintings", on_click=previous_painting_image)
+    with col2:
+        st.button("Next", key="next_paintings", on_click=next_painting_image)
+
+    # Handle different media types (images and videos)
+    current_media = painting_images[st.session_state['paintings_image_index']]
+    if current_media.endswith('.MOV') or current_media.endswith('.mp4'):
+        st.video(current_media)
+    else:
+        st.image(current_media, use_column_width=True)
+
+# Update your main display logic to include Paintings
+selected_option = st.session_state.get('selected_option')
+if selected_option:
+    if selected_option == 'Paintings':
+        display_paintings()
