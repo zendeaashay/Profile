@@ -31,7 +31,32 @@ experiences = {
     'Trekking': ["""I've found my greatest adventures on the slopes of the Himalayas, trading the comfort of the familiar for the thrill of the ascent. Trekking isn't just a hobby; it's a series of moments where each step reveals a new horizon and a test of my own mettle. From the impromptu snow sculptures—my chilly high-altitude tributes—to the quiet companionship of trail dogs and the cheer of local guides, every trek is a story etched in snow.
 
 Up there, where the air is crisp and the skies a clear blue canvas, the mountains challenge me, the cold invigorates me, and the journey transforms me. Through the camaraderie with fellow hikers and the silent solidarity of shared struggles, I've discovered that the summit is just a bonus. It's the laughter, the grit, and the unexpected detours that truly chart my love for the trek. """, ['photos/trek/Image.jpeg', 'photos/trek/1.JPEG', 'photos/trek/2.JPG', 'photos/trek/3.JPG', 'photos/trek/4.JPG', 'photos/trek/5.JPG', 'photos/trek/6.JPG', 'photos/trek/20220110_095542.png', 'photos/trek/P1380367.JPG', 'photos/trek/P1380563.JPG', 'photos/trek/P1380186.JPG', 'photos/trek/P1370805.JPG', 'photos/trek/P1370726.MOV']],
-    'Hyperloop': ["Diving into the future of transportation, my engagement with the Hyperloop project was nothing short of revolutionary. It was a journey into the realms of high-speed, sustainable travel, where innovation meets practicality. The project was a testament to human ingenuity, pushing the boundaries of what we perceive as possible. Here's a glimpse into the work that could very well define the next era of transit.", ['photos/hyp/1.png', 'photos/hyp/2.png', 'photos/hyp/3.png', 'photos/hyp/4.png']],
+    'Hyperloop': ["""Diving into the vanguard of transport innovation, my tenure with the Hyperloop project represented a foray into the pulsating heart of high-speed, sustainable mobility. At the confluence of visionary innovation and grounded pragmatism, the endeavor was a vibrant testament to the boundless reaches of human creativity, relentlessly challenging the conventional confines of possibility.
+
+During my journey with LoopMIT at the Manipal Institute of Technology, spanning from February 2019 to July 2021, I was privileged to co-lead the Vehicle Dynamics Department. Within this cadre of 20 adept students, we carved our niche in the annals of SpaceX's prestigious Hyperloop competition, showcasing our pioneering transit concepts before an assembly of industry vanguards in Hawthorne, California.
+
+My contributions were multifaceted and profound:
+
+Innovation in Motion: I was instrumental in the ingenious design and precision engineering of our Hyperloop pod's suspension system and chassis. Employing magnetic levitation technology, we minimized drag and friction within a vacuum tunnel, propelling our design into the competition's final echelon.
+
+Mentorship and Leadership: I spearheaded the creation of an exhaustive mentoring program for novices, meticulously designed to bolster their competencies in research methodologies and analysis simulations. This initiative not only fostered a culture of continuous learning but also entailed the adept management of the department's fiscal resources and the diligent documentation of our team's evolutionary trajectory.
+
+Technological Mastery: My proficiency with advanced engineering tools such as Autodesk Fusion360 and SolidWorks was pivotal. Through these platforms, I executed intricate designs of the Hyperloop pod and conducted comprehensive motion analyses, thereby enhancing the design's efficiency and ensuring operational integrity.
+
+Aerodynamic Excellence: I guided the exploration and application of sophisticated computational fluid dynamics and aerodynamic simulations, culminating in a significant 16% decrement in aerodynamic drag. This optimization was instrumental in augmenting the pod's velocity, a critical factor in our competitive arsenal.
+
+Collaborative Synergy: I orchestrated the harmonious integration of the pod's mechanical, electrical, and software subsystems, leading a cross-functional team to surpass the competition's benchmarks with a prototype that epitomized seamless functionality.
+
+Fiscal Acumen: My strategic foresight in fundraising was demonstrated by securing $5,000 in sponsorships and procuring state-of-the-art components from tech conglomerates, thereby fueling the advanced development of our Hyperloop prototype.
+
+In essence, my odyssey with the Hyperloop project was a confluence of engineering brilliance, collaborative synergy, and visionary leadership, collectively steering us toward what could be the dawn of a new era in transportation.
+
+
+
+
+
+
+ """, ['photos/hyp/1.png', 'photos/hyp/2.png', 'photos/hyp/3.png', 'photos/hyp/4.png']],
     'Surfing': ["Surfing, for me, is about freedom. It's just me and the waves, and maybe a few good friends when they decide to wake up early enough. Each swell is a new challenge; no two rides are ever the same, which is kind of like life, I guess. I like chasing that sweeping rush, the moment where everything clicks and I'm gliding across the water like it's second nature. Sure, I wipe out sometimes, but where's the fun without a few salty spills? It's all part of the adventure. ", ['photos/surf/5 DSC_0780.JPG', 'photos/surf/8 DSC_0423~2.JPG', 'photos/surf/1 DSC_0055.JPG', 'photos/surf/3 bDSC_0277.JPG', 'photos/surf/4 DSC_0426.JPG', 
         'photos/surf/6 DSC_0944.JPG',
         'photos/surf/7 DSC_0183.JPG',
