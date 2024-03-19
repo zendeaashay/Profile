@@ -1,20 +1,35 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Mar 17 23:26:54 2024
+
+@author: aashayzende
+"""
 import streamlit as st
-import base64
+import altair as alt
+from streamlit_pdf_viewer import pdf_viewer
+st.set_page_config(page_title="Amazon GMV Dashboard", page_icon="🌟", layout="wide")
+hide_default_format = """
+       <style>
+       #MainMenu {visibility: hidden; }
+       footer {visibility: hidden;}
+       </style>
+       """
+with open('homestyle.css') as f:
+    st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+st.markdown(hide_default_format, unsafe_allow_html=True)
+# Enable Altair dark theme for charts
+alt.themes.enable("dark")
 
-# Function to convert PDF file to base64
-def get_base64_of_pdf(pdf_file):
-    with open(pdf_file, "rb") as f:
-        return base64.b64encode(f.read()).decode()
+st.markdown(""" <div class="bio">
+    <h4>Introduction to Carvana Case Study: </h4>
+    <p> In the realm of automotive retail, Carvana stands as a disruptive force, reshaping the traditional car-buying experience through innovative online platforms and streamlined processes. This case study delves into a comprehensive analysis of Carvana's dataset, aiming to uncover insights into key factors influencing the quality of vehicle purchases.
 
-# Embedding the PDF in an iframe
-def show_pdf(file_path):
-    base64_pdf = get_base64_of_pdf(file_path)
-    pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf"></iframe>'
-    st.markdown(pdf_display, unsafe_allow_html=True)
+Through a series of analytical methodologies, ranging from exploratory data analysis to regression modeling, this study endeavors to unearth patterns, correlations, and predictive indicators associated with Carvana's 'IsBadBuy' variable. By examining various facets of the dataset, including car counts, popular makes, common sizes, average age, mileage, and geographical origins, we seek to provide a holistic understanding of the factors contributing to the quality of car purchases.
 
-st.title("Amazon Analysis Dashboard")
+Moreover, the correlation analysis and regression modeling delve deeper into the relationships between 'IsBadBuy' and other continuous measures, shedding light on significant correlations and predictive insights. Through visualization techniques, we aim to elucidate the dynamic interplay between 'IsBadBuy' and multiple variables, exploring how these relationships evolve under different conditions, such as vehicle age and make.
 
-# Path to your PDF file
-pdf_file_path = 'Amazon.pdf'
-
-show_pdf(pdf_file_path)
+Ultimately, armed with these analytical findings, we aim to offer actionable recommendations for Carvana, facilitating informed decision-making in identifying and mitigating potential risks associated with vehicle purchases. By leveraging the power of data-driven insights and visual tools, we endeavor to provide a roadmap for optimizing Carvana's operations and enhancing customer satisfaction in the ever-evolving automotive landscape. </p>
+        </div>
+    """, unsafe_allow_html=True)
+pdf_viewer("A3 Carvana Aashay Zende.pdf", width=800, height=1000)
