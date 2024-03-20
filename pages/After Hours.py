@@ -70,17 +70,31 @@ Welcome to my terrace - a place where nature's simplicity meets the complexity o
      'Paintings': ["When I cannot explain things or feelings in words, I paint...", ["photos/Paint/11.mp4", "photos/Paint/1.mp4", "photos/Paint/2.jpg", "photos/Paint/3.jpg", "photos/Paint/4.jpg", "photos/Paint/5.jpg", "photos/Paint/6.jpg"]]
 }
 
+# Splitting the interests into two groups for two rows
+first_row_interests = {k: interests[k] for k in list(interests)[:4]}
+second_row_interests = {k: interests[k] for k in list(interests)[4:]}
+
 # Track the current selected option
 if 'selected_option' not in st.session_state:
     st.session_state['selected_option'] = None
 
-# Create a horizontal line of buttons with the representative icon for each interest
-cols = st.columns(len(interests))
-for index, (interest, icon) in enumerate(interests.items()):
+# Create the first row of buttons for the first group of interests
+cols = st.columns(len(first_row_interests))
+for index, (interest, icon) in enumerate(first_row_interests.items()):
     with cols[index]:
         if st.button(interest):
             st.session_state['selected_option'] = interest
-        # Show only the representative icon here, not the slideshow
+        st.image(icon, width=100)
+
+# Insert a new line here for the break
+st.write("")
+
+# Create the second row of buttons for the second group of interests
+cols = st.columns(len(second_row_interests))
+for index, (interest, icon) in enumerate(second_row_interests.items()):
+    with cols[index]:
+        if st.button(interest):
+            st.session_state['selected_option'] = interest
         st.image(icon, width=100)
 
 
