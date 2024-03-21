@@ -19,7 +19,7 @@ interests = {
     'Trekking': 'image.jpg',
     'loopMIT': 'photos/hyp/3.png',
     'Surfing': 'photos/surf/1 DSC_0055.JPG',
-    'Snaps': 'photos/photo/21.jpg',
+    'Photography': 'photos/photo/21.jpg',
     'Tony Hawk': 'photos/hawk/WSBC0461.JPG',
     'Fireflies': 'photos/fire/P1280437.JPG',
     'Terrace': 'photos/terr/P1360084.JPG',
@@ -57,7 +57,7 @@ In essence, my odyssey with the Hyperloop project was a confluence of engineerin
         'photos/surf/7 DSC_0183.JPG',
         'photos/surf/9 DSC_0708.JPG',
         'photos/surf/10 DSC_0805~2.JPG']],
-    'Snaps': ["I love to take my camera out and just capture what catches my eye. There's something awesome about getting the perfect shot of a wild animal or a really cool view. It's like I get to freeze a piece of that moment and keep it. Whether it’s a tiger lounging around or a beautiful sunset, if it looks cool to me, I’ll snap it. Simple as that. ", ['photos/photo/29.jpg', 'photos/photo/30.mp4', 'photos/photo/P1010768.JPG', 'photos/photo/P1010774.JPG', 'photos/photo/P1010800.JPG', 'photos/photo/P1010825.JPG', 'photos/photo/P1010826.JPG', 'photos/photo/1.jpg', 'photos/photo/01.jpg', 'photos/photo/2.jpg', 'photos/photo/3.jpg', 'photos/photo/5.jpg', 'photos/photo/6.jpg', 'photos/photo/7.jpg', 'photos/photo/15.jpg', 'photos/photo/18.jpg', 'photos/photo/21.jpg', 'photos/photo/22.jpg', 'photos/photo/23.jpg', 'photos/photo/24.jpg']],
+    'Photography': ["I love to take my camera out and just capture what catches my eye. There's something awesome about getting the perfect shot of a wild animal or a really cool view. It's like I get to freeze a piece of that moment and keep it. Whether it’s a tiger lounging around or a beautiful sunset, if it looks cool to me, I’ll snap it. Simple as that. ", ['photos/photo/29.jpg', 'photos/photo/30.mp4', 'photos/photo/P1010768.JPG', 'photos/photo/P1010774.JPG', 'photos/photo/P1010800.JPG', 'photos/photo/P1010825.JPG', 'photos/photo/P1010826.JPG', 'photos/photo/1.jpg', 'photos/photo/01.jpg', 'photos/photo/2.jpg', 'photos/photo/3.jpg', 'photos/photo/5.jpg', 'photos/photo/6.jpg', 'photos/photo/7.jpg', 'photos/photo/15.jpg', 'photos/photo/18.jpg', 'photos/photo/21.jpg', 'photos/photo/22.jpg', 'photos/photo/23.jpg', 'photos/photo/24.jpg']],
     'Tony Hawk': ["Meet my friend, Tony Hawk! When I was in 11th grade, Tony used to visit our home terrace. That's when I decided to use my camera, remote controlled from my phone, and another device called BirdCam which is essentially a motion-activated camera system. Enjoy Mr Hawk's flights!", ['photos/hawk/WSBC0461.JPG', 'photos/hawk/01.mp4', 'photos/hawk/02.mp4', 'photos/hawk/13~2.mp4', 'photos/hawk/14~3.mp4', 'photos/hawk/WSBC0094.JPG', 'photos/hawk/WSBC0098.JPG', 'photos/hawk/WSBC0471.JPG', 'photos/hawk/WSBC0556.JPG', 'photos/hawk/WSBC0700.JPG', 'photos/hawk/WSBC0794.JPG']],
     'Fireflies': ["A couple of years ago, me and my my friends embarked on an adventure to venture 6 hours deep into the jungles of Maharashtra, India to find Hotaru-Tai (Japanese for 'a troop of fireflies'). It quickly turned into a spooky experience when we found all kinds of dangerous insects, snakes and the scariest of them all, scorpians! But we were soon rewarded for our perseverance when we found  what we were looking for...  ", ['photos/fire/P1280412.JPG', 'photos/fire/P1280417.JPG', 'photos/fire/P1280421.JPG', 'photos/fire/P1280427.JPG', 'photos/fire/P1280455.JPG', 'photos/fire/1.JPG', 'photos/fire/2.jpeg', 'photos/fire/3.JPG', 'photos/fire/4.jpeg']],
     'Terrace': [""" My balcony terrace serves as a humble sanctuary in the midst of urban hustle, a sliver of solace where nature greets me in its most unassuming forms. It's here, amidst potted plants and the open sky, that I've witnessed the quiet ballet of day turning to night, of seasons weaving through their cycles.
@@ -221,15 +221,15 @@ if 'photo_image_index' not in st.session_state:
 
 # Define navigation functions for Photography
 def previous_photo_image():
-    st.session_state['photo_image_index'] = (st.session_state['photo_image_index'] - 1) % len(experiences['Snaps'][1])
+    st.session_state['photo_image_index'] = (st.session_state['photo_image_index'] - 1) % len(experiences['Photography'][1])
 
 def next_photo_image():
-    st.session_state['photo_image_index'] = (st.session_state['photo_image_index'] + 1) % len(experiences['Snaps'][1])
+    st.session_state['photo_image_index'] = (st.session_state['photo_image_index'] + 1) % len(experiences['Photography'][1])
 
 # Display function for the Photography section
 def display_photography():
     selected_option = st.session_state.get('selected_option')
-    if selected_option == 'Snaps':
+    if selected_option == 'Photography':
         photo_description, photo_media = experiences[selected_option]
         st.markdown(photo_description, unsafe_allow_html=True)
         
@@ -250,7 +250,7 @@ def display_photography():
 # Main display logic
 selected_option = st.session_state.get('selected_option')
 if selected_option:
-    if selected_option == 'Snaps':
+    if selected_option == 'Photography':
         display_photography()
 # Check if the 'photo_image_index' is in the session state, otherwise initialize it
 if 'photo_image_index' not in st.session_state:
