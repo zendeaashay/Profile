@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "chathis-417923",
+  "private_key_id": "cfbdbe6dadd700824d7cf85d2103bcb93ce9a7ae",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCqIz18yDkXDKpa\nPrBOfOlXJx3goEJbguP/P8hs+MiBrK725fUkXE3c/eh1I808L8bJ+F8i6N6bdPYy\nUoRIldNwlw72rDyLKJcFQf8ne+RnYjF+8Z3gIV143FK2J1exsbOQx4NbJDRQ+uXP\nysP33nJKFpP+KMrO563nv2JAVZQUYl7Udzw2s/8CpaeQwWUHbLDU4isCBHkgaBc4\nm3n1iOxVBoE87UVUPYsL0pBRXCMfQsLEAS5ZIgpd7+XO2vjZaAkA7VFa+to/uMYw\nIvdH34TbPytHckvpLdHbnJLkxsuqxwpgcCKYs/VhRSTJrBKkSb1Qn8HtX3x41ZrM\np/iYPFZJAgMBAAECggEAB2dpMZj1Aw/GCg9YVNISxXwqTLAssxbLHTyFWFirQRlm\ns8/mDyMFMGzMROy97bSWjguE+Fvx9Anu/NmicBY1EV1BhXKRX+zwRYZNuEYn9mfL\nh560JCDPlIbiApNLuavmCJLmIH0+2ZdRkO1eAddoWdkJr7HOwZpLcx5dBDe1Lf3X\nwFVUI0nsK5xgzZ7GBSA5L41K3RuPudsZb63V62dlInzbMo922g/63WvLXeQZEtIy\naL4m7DFIyQUS5HQFJNe+yScHgJwPqJh9LRj9Ank8Ww3gmywrDVoDHlHCjoz0YbBO\nHV0WcFac8TjJ6OJ+andA9lr1BExmbkTPluuXg4kpQQKBgQDSuD2QF3UqUma2oBv8\n/oPePUiEl+KYgfDlQpsdw497uXCxmGsI/Wpc7wEKAAIAUkw19jFU8/wL7uJpAzlx\nIJgZSUss4jjnITe9TdVuZ9ZMiDZr+h8jCEF0rJy6eGqSdto1KfqK+9fMz046Z4Dm\n/bwLcp/YOTLeJZGRBX/vsKrtFQKBgQDOspGYrZoTvjMOM9Nlh897XTZWIb8Qmp8c\n4wmNRfaE54Y4iVdh5uhH1pDTXIfT6FDrVAt7HVIRnY/URAJUTQS/4jJrmGSS1fak\nkVK7MJ6wOEOpTlUdQLFwLuupAFTHgcbKpo2qg6HgxpbE5HdZ4aVxdBaW1LhmyuVx\nNRkYa/7ZZQKBgQCp1zRPqoiWVxpQwpYsgZwaCb0kmiNalwlqUBgkklZY++u4SUik\nU1VimIV24PC7/5lLuSaj+Y/CsoWs7Jtk8keFwgyknaYNrTl3DIAl3+3be8KZn11v\naB0SBHrC1YHYkZFpXm+BjGGww7qi2oAMLqFdfMMXjWrRoOhGQm+O6w+pzQKBgGa/\neYTN92ONDtAmjxVPd6I5acNTLylP03yGl770YmEavivoidmO8TSUwpVuz85VE7SH\nqNVgc+Vxz4eS7x1807mW9b1qmcQsPFj+LIQE3T14GppU6BaMjCfaCyeNlJdAOdOP\nC6kRmiykS1pAv9ucQaOuM3Ry9d+TSI8H+Budw6fJAoGAUKN3fuZ4W1TPnEfxkfdM\nG+nuho42N85sPXUI0aUpaEN0h9JCo9KJeY1+IcRKBBpykrDvVBnkbw6BYISMga7d\npms6qh6j3QhivWOjZAd3+oHD09vxCsf0KDT/T0LBhIR/sMoffS6ci9a8D3Gymg6w\npO+9DMHhZwDAOrd5mqMBNwM=\n-----END PRIVATE KEY-----\n",
+  "client_email": "gsheets-history@chathis-417923.iam.gserviceaccount.com",
+  "client_id": "111268336967619579033",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/gsheets-history%40chathis-417923.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
