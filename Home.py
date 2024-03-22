@@ -2,7 +2,9 @@ import streamlit as st
 import altair as alt
 import openai
 from streamlit_star_rating import st_star_rating
-from streamlit_gsheets import GSheetsConnection
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+
 
 
 st.set_page_config(page_title="Welcome to my Page!", page_icon="🌟", layout="wide")
@@ -20,8 +22,26 @@ alt.themes.enable("dark")
 with open('homestyle.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
     
-conn = st.experimental_connection("gsheets", type=GSheetsConnection)
+def authenticate_gsheets(json_keyfile_path):
+    scope = [
+        'https://spreadsheets.google.com/feeds',
+        'https://www.googleapis.com/auth/drive'
+    ]
+    credentials = ServiceAccountCredentials.from_json_keyfile_name(json_keyfile_path, scope)
+    gc = gspread.authorize(credentials)
+    return gc
 
+# Authenticate and get the Google Sheets client
+gc = authenticate_gsheets('chathis-417923-cfbdbe6dadd7.json')
+
+# Load the worksheet
+worksheet = gc.open_by_url("https://docs.google.com/spreadsheets/d/1TIFx9gutkR0ajy8KO2KrYdObckWIdxG-avKK6yryt8Y/edit#gid=0").worksheet("Sheet1")
+
+# Function to append a row to the sheet
+def append_to_gsheet(worksheet, row_values):
+    worksheet.append_row(row_values)
+    
+   
 
 # Toggle between 'About Me' and 'AshGPT'
 page = st.radio("Explore my very own AshGPT next!", ("Welcome!", "AshGPT"), horizontal=True)
@@ -63,7 +83,6 @@ elif page == "AshGPT":
     
     if "messages" not in st.session_state:
        st.session_state.messages = []
-
     prompt_instruction = """You are an AI chatbox and your job is to tell users about an individual called Aashay Zende who has created you and you have to tell users about my resume and professional background. Following is Aashay Zende's information 'Aashay Zende has a rich educational and professional background, blending technical acumen with strategic business analysis. He pursued his Master of Science in Business Analytics from Northeastern University in Boston, Massachusetts, from September 2023 to December 2024, earning a CGPA of 3.2, and holds a Bachelor of Technology in Automobile Engineering from Manipal Institute of Technology in India, with a GPA of 7.2, completed between August 2018 and July 2022. His coursework spanned various subjects, including Data Analysis, Information Visuals and Dashboards, Marketing Analytics, Engineering Economics, Financial Management, and Numerical Simulation. Aashay also earned certifications through Coursera in Introduction to Business Analytics with R from the University of Illinois at Urbana-Champaign and in Foundations: Data Data Everywhere from Google​​.
 
 Aashay's skill set is extensive, encompassing statistical techniques like SVM, regression models, decision tree, KNN, cluster analysis, NLP, K-means, and Naive Bayes. He is proficient in database programming and various tools, including Tableau, PowerBI, Python, SQL, R, MySQL, Google Analytics, and Microsoft Excel functions​​.
@@ -110,37 +129,42 @@ Aashay Zende - Resume.pdf
 PDF
 '."""
 
-    user_prompt = st.chat_input("What is up?")
-    if user_prompt:
-    # Always define full_prompt, even if there's no user input
-     full_prompt = f"{prompt_instruction} {user_prompt}"
-     st.session_state.messages.append({"role": "user", "content": user_prompt})
+    for message in st.session_state.messages:
+        with st.chat_message(message["role"]):
+           st.markdown(message["content"])
 
-    # Generate the response from OpenAI's model
-     full_response = ""
-     for response in openai.ChatCompletion.create(
-        model=st.session_state["openai_model"],
-        messages=[
-            {"role": "user", "content": full_prompt},
-            {"role": "assistant", "content": full_response}
-        ],
-        stream=True,
-     ):
-        full_response += response.choices[0].delta.get("content", "")
+    if prompt := st.chat_input("What is up?"):
+    # Prepend the prompt instruction to the user's input
+        full_prompt = f"{prompt_instruction} {prompt}"
+    
+        st.session_state.messages.append({"role": "user", "content": prompt})
+    # Display user message in chat message container
+        with st.chat_message("user"):
+           st.markdown(prompt)
+    # Display assistant message in chat message container
+        with st.chat_message("assistant"):
+           message_placeholder = st.empty()
+           full_response = ""
+        # Simulate stream of response with milliseconds delay
+           for response in openai.ChatCompletion.create(
+              model=st.session_state["openai_model"],
+              messages=[
+                 {"role": "user", "content": full_prompt},  # Use full_prompt here
+                 {"role": "assistant", "content": full_response}
+              ],
+              stream=True,
+           ):
+            # Get content in response
+               full_response += response.choices[0].delta.get("content", "")
+            # Add a blinking cursor to simulate typing
+               message_placeholder.markdown(full_response + "▌")
+           message_placeholder.markdown(full_response)
+    # Add assistant response to chat history
+        st.session_state.messages.append({"role": "assistant", "content": full_response})
+        append_to_gsheet(worksheet, [prompt, full_response])
 
-    # Display the response
-     with st.chat_message("assistant"):
-        st.markdown(full_response)
-
-    # Add the response to the session state
-     st.session_state.messages.append({"role": "assistant", "content": full_response})
-
-    # Append the conversation to Google Sheets
-     conn.append(
-        worksheet="Sheet1",
-        values=[[user_prompt, full_response]]
-     )
         
+from streamlit_star_rating import st_star_rating
 # Define a function to toggle the visibility of the star rating
 def toggle_rating():
     st.session_state.show_rating = not st.session_state.show_rating
