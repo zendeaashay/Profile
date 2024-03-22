@@ -20,7 +20,7 @@ alt.themes.enable("dark")
 with open('homestyle.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
     
-conn = st.connection("gsheets", type=GSheetsConnection)
+conn = st.experimental_connection("gsheets", type=GSheetsConnection)
 
 
 # Toggle between 'About Me' and 'AshGPT'
