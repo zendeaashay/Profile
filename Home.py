@@ -4,6 +4,7 @@ import openai
 from streamlit_star_rating import st_star_rating
 from streamlit_gsheets import GSheetsConnection
 
+conn = st.experimental_connection("gsheets", type=GSheetsConnection)
 
 st.set_page_config(page_title="Welcome to my Page!", page_icon="🌟", layout="wide")
 hide_default_format = """
@@ -112,7 +113,6 @@ PDF
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
            st.markdown(message["content"])
-    conn = st.experimental_connection("gsheets", type=GSheetsConnection)
     if prompt := st.chat_input("What is up?"):
     # Prepend the prompt instruction to the user's input
         full_prompt = f"{prompt_instruction} {prompt}"
