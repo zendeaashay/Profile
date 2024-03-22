@@ -2,7 +2,7 @@ import streamlit as st
 import altair as alt
 import openai
 from streamlit_star_rating import st_star_rating
-
+from streamlit_gsheets import GSheetsConnection
 
 
 st.set_page_config(page_title="Welcome to my Page!", page_icon="🌟", layout="wide")
@@ -29,9 +29,10 @@ if page == "Welcome!":
     st.title("Aashay Zende")
     st.markdown("""
     <div class="bio">
-        <h4>Data Analyst | Soccer Player and ManUtd Supporter | Painter | Formula 1 Fanatic | Photographer | Surfer</h4>
-        <p>Hello, I'm Aashay Zende, a passionate Data and Business Analyst, avid soccer enthusiast cheering for ManUtd, Formula 1 fanatic, dedicated photographer, and surfer riding the waves of innovation and creativity.
+        <h4>Data Analyst | Soccer Player | Painter | Formula 1 Fanatic | Photographer | Surfer</h4>
+        <p>Hello, I am a passionate Data and Business Analyst, currently advancing my skills and knowledge at Northeastern University, pursuing a Master of Science in Business Analytics.
 
+I carved a niche for myself in the Indian E-Commerce landscape, as a  Business Analyst at Redseer Strategy Management Consulting, India's biggest homegrown consulting firm, enhancing operational efficiencies and driving key business decisions and strategies for all the biggest players in the market. You can find my analyses and work on the 'E-Commerce Consulting Insights' in the sidebar.
 Grounded in my rigorous education from Northeastern University, where I'm pursuing a Master of Science in Business Analytics, and my foundational Bachelor's from Manipal Institute of Technology in Automobile Engineering, I bring a unique blend of analytical prowess and strategic insight to the table. My journey in data analytics is marked by a keen eye for detail and a relentless pursuit of excellence, evident from my roles at prestigious organizations like Redseer Strategy Management Consulting, where I've left a significant mark by enhancing operational efficiencies and influencing pivotal business decisions.
 
 With a toolkit enriched by statistical techniques, and proficiency in tools such as Tableau, PowerBI, Python, and SQL, I navigate the complex terrain of data to uncover actionable insights. My contributions extend beyond the workplace, into academia and competitive realms like the SpaceX Hyperloop competition, where I led my team to design an innovative transportation concept.
@@ -111,7 +112,7 @@ PDF
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
            st.markdown(message["content"])
-
+    conn = st.experimental_connection("gsheets", type=GSheetsConnection)
     if prompt := st.chat_input("What is up?"):
     # Prepend the prompt instruction to the user's input
         full_prompt = f"{prompt_instruction} {prompt}"
@@ -120,28 +121,29 @@ PDF
     # Display user message in chat message container
         with st.chat_message("user"):
            st.markdown(prompt)
+    # Generate the response
+    full_response = ""
+    for response in openai.ChatCompletion.create(
+        model=st.session_state["openai_model"],
+        messages=[{"role": "user", "content": full_prompt},
+                  {"role": "assistant", "content": full_response}],
+        stream=True,
+    ):
+        full_response += response.choices[0].delta.get("content", "")
+
     # Display assistant message in chat message container
-        with st.chat_message("assistant"):
-           message_placeholder = st.empty()
-           full_response = ""
-        # Simulate stream of response with milliseconds delay
-           for response in openai.ChatCompletion.create(
-              model=st.session_state["openai_model"],
-              messages=[
-                 {"role": "user", "content": full_prompt},  # Use full_prompt here
-                 {"role": "assistant", "content": full_response}
-              ],
-              stream=True,
-           ):
-            # Get content in response
-               full_response += response.choices[0].delta.get("content", "")
-            # Add a blinking cursor to simulate typing
-               message_placeholder.markdown(full_response + "▌")
-           message_placeholder.markdown(full_response)
+    with st.chat_message("assistant"):
+        st.markdown(full_response)
+
     # Add assistant response to chat history
-        st.session_state.messages.append({"role": "assistant", "content": full_response})
+    st.session_state.messages.append({"role": "assistant", "content": full_response})
+
+    # Append the conversation to Google Sheets
+    conn.append(
+        worksheet="Sheet1",
+        values=[[prompt, full_response]]
+    )
         
-from streamlit_star_rating import st_star_rating
 # Define a function to toggle the visibility of the star rating
 def toggle_rating():
     st.session_state.show_rating = not st.session_state.show_rating
