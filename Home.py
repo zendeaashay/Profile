@@ -110,39 +110,36 @@ Aashay Zende - Resume.pdf
 PDF
 '."""
 
-    for message in st.session_state.messages:
-        with st.chat_message(message["role"]):
-           st.markdown(message["content"])
-    if prompt := st.chat_input("What is up?"):
-    # Prepend the prompt instruction to the user's input
-        full_prompt = f"{prompt_instruction} {prompt}"
-    
-        st.session_state.messages.append({"role": "user", "content": prompt})
-    # Display user message in chat message container
-        with st.chat_message("user"):
-           st.markdown(prompt)
-    # Generate the response
-    full_response = ""
-    for response in openai.ChatCompletion.create(
+    user_prompt = st.chat_input("What is up?")
+    if user_prompt:
+    # Always define full_prompt, even if there's no user input
+     full_prompt = f"{prompt_instruction} {user_prompt}"
+     st.session_state.messages.append({"role": "user", "content": user_prompt})
+
+    # Generate the response from OpenAI's model
+     full_response = ""
+     for response in openai.ChatCompletion.create(
         model=st.session_state["openai_model"],
-        messages=[{"role": "user", "content": full_prompt},
-                  {"role": "assistant", "content": full_response}],
+        messages=[
+            {"role": "user", "content": full_prompt},
+            {"role": "assistant", "content": full_response}
+        ],
         stream=True,
-    ):
+     ):
         full_response += response.choices[0].delta.get("content", "")
 
-    # Display assistant message in chat message container
-    with st.chat_message("assistant"):
+    # Display the response
+     with st.chat_message("assistant"):
         st.markdown(full_response)
 
-    # Add assistant response to chat history
-    st.session_state.messages.append({"role": "assistant", "content": full_response})
+    # Add the response to the session state
+     st.session_state.messages.append({"role": "assistant", "content": full_response})
 
     # Append the conversation to Google Sheets
-    conn.append(
+     conn.append(
         worksheet="Sheet1",
-        values=[[prompt, full_response]]
-    )
+        values=[[user_prompt, full_response]]
+     )
         
 # Define a function to toggle the visibility of the star rating
 def toggle_rating():
