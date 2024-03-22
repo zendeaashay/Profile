@@ -4,7 +4,6 @@ import openai
 from streamlit_star_rating import st_star_rating
 from streamlit_gsheets import GSheetsConnection
 
-conn = st.experimental_connection("gsheets", type=GSheetsConnection)
 
 st.set_page_config(page_title="Welcome to my Page!", page_icon="🌟", layout="wide")
 hide_default_format = """
@@ -21,6 +20,7 @@ alt.themes.enable("dark")
 with open('homestyle.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
     
+conn = st.experimental_connection("gsheets", type=GSheetsConnection)
 
 
 # Toggle between 'About Me' and 'AshGPT'
