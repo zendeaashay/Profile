@@ -25,4 +25,4 @@ sqlalchemy
 pymysql
 numpy
 seaborn
-streamlit-gsheets-connection
+git+https://github.com/streamlit/gsheets-connection
