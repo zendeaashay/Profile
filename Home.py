@@ -66,15 +66,6 @@ if page == "Welcome!":
         <h4>Data Analyst | Soccer Player | Painter | Formula 1 Fanatic | Photographer | Surfer</h4>
         <p>I am a passionate Data and Business Analyst, currently advancing my skills and knowledge at Northeastern University by pursuing a Master of Science in Business Analytics. I am actively seeking opportunities in business or data analytics where I can leverage my advanced skills in PowerBI and Tableau for impactful dashboard creation and data visualization, as well as my background in database management. My goal is to contribute to strategic consulting, marketing, and supply chain management projects, utilizing my analytical prowess to drive data-informed decision-making and strategic initiatives.
 
-I carved a niche for myself in the Indian E-Commerce landscape, as a  Business Analyst at Redseer Strategy Management Consulting, India's biggest homegrown consulting firm, enhancing operational efficiencies and driving key business decisions and strategies for all the biggest players in the market. You can find my analyses and work on the 'E-Commerce Consulting Insights' in the sidebar.
-Grounded in my rigorous education from Northeastern University, where I'm pursuing a Master of Science in Business Analytics, and my foundational Bachelor's from Manipal Institute of Technology in Automobile Engineering, I bring a unique blend of analytical prowess and strategic insight to the table. My journey in data analytics is marked by a keen eye for detail and a relentless pursuit of excellence, evident from my roles at prestigious organizations like Redseer Strategy Management Consulting, where I've left a significant mark by enhancing operational efficiencies and influencing pivotal business decisions.
-
-With a toolkit enriched by statistical techniques, and proficiency in tools such as Tableau, PowerBI, Python, and SQL, I navigate the complex terrain of data to uncover actionable insights. My contributions extend beyond the workplace, into academia and competitive realms like the SpaceX Hyperloop competition, where I led my team to design an innovative transportation concept.
-
-My portfolio is a testament to my multifaceted skills, from developing strategic marketing campaigns and investment portfolio optimization to spearheading groundbreaking projects like the transformative PowerBI dashboard that revolutionized data visualization and decision-making processes.
-
-I'm more than just numbers and data models; my spirit of adventure leads me to explore new horizons, pushing the boundaries of what's possible both professionally and personally.
-
 For recruiters looking to harness my blend of analytical rigor, strategic thinking, and dynamic leadership in the realms of business analysis, strategy consulting, marketing, supply chain management, and beyond, feel free to reach out. You can contact me at zende.a@northeastern.edu, or connect with me on LinkedIn.
 
 Let's navigate the data-driven landscapes together and turn complex challenges into strategic opportunities. </p>
@@ -88,7 +79,22 @@ Let's navigate the data-driven landscapes together and turn complex challenges i
 
     # Execute the function to display the resume
     show_resume()
+    st.markdown("""
+    <div class="bio">
+        <p>I am a passionate Data and Business Analyst, currently advancing my skills and knowledge at Northeastern University by pursuing a Master of Science in Business Analytics. I am actively seeking opportunities in business or data analytics where I can leverage my advanced skills in PowerBI and Tableau for impactful dashboard creation and data visualization, as well as my background in database management. My goal is to contribute to strategic consulting, marketing, and supply chain management projects, utilizing my analytical prowess to drive data-informed decision-making and strategic initiatives.
 
+I carved a niche for myself in the Indian E-Commerce landscape, as a  Business Analyst at Redseer Strategy Management Consulting, India's biggest homegrown consulting firm, enhancing operational efficiencies and driving key business decisions and strategies for all the biggest players in the market. You can find my analyses and work on the 'E-Commerce Consulting Insights' in the sidebar.
+Grounded in my rigorous education from Northeastern University, where I'm pursuing a Master of Science in Business Analytics, and my foundational Bachelor's from Manipal Institute of Technology in Automobile Engineering, I bring a unique blend of analytical prowess and strategic insight to the table. My journey in data analytics is marked by a keen eye for detail and a relentless pursuit of excellence, evident from my roles at prestigious organizations like Redseer Strategy Management Consulting, where I've left a significant mark by enhancing operational efficiencies and influencing pivotal business decisions.
+
+With a toolkit enriched by statistical techniques, and proficiency in tools such as Tableau, PowerBI, Python, and SQL, I navigate the complex terrain of data to uncover actionable insights. My contributions extend beyond the workplace, into academia and competitive realms like the SpaceX Hyperloop competition, where I led my team to design an innovative transportation concept.
+
+My portfolio is a testament to my multifaceted skills, from developing strategic marketing campaigns and investment portfolio optimization to spearheading groundbreaking projects like the transformative PowerBI dashboard that revolutionized data visualization and decision-making processes.
+
+I'm more than just numbers and data models; my spirit of adventure leads me to explore new horizons, pushing the boundaries of what's possible both professionally and personally.
+</p>
+        </div>
+    """, unsafe_allow_html=True)
+    
     import json
     from streamlit_timeline import timeline
 
