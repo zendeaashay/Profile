@@ -30,7 +30,24 @@ def authenticate_gsheets(json_keyfile_path):
     credentials = ServiceAccountCredentials.from_json_keyfile_name(json_keyfile_path, scope)
     gc = gspread.authorize(credentials)
     return gc
+def show_resume():
+     st.title('My Resume')
 
+     # You can add more content here as needed
+     st.write("Here is my resume showcasing my experience and skills.")
+
+     # Display the resume PDF
+     pdf_viewer("ResumeWOnumber.pdf", width=850, height=1000)
+
+     # Link to download resume
+     resume_link = 'Aashay Zende - Resume.pdf'
+     with open(resume_link, "rb") as file:
+         st.download_button(
+             label="Download Resume",
+             data=file,
+             file_name="Aashay Zende - Resume.pdf",
+             mime="application/pdf"
+         )
 # Authenticate and get the Google Sheets client
 gc = authenticate_gsheets('chathis-417923-cfbdbe6dadd7.json')
 
@@ -71,27 +88,10 @@ Let's navigate the data-driven landscapes together and turn complex challenges i
     
     from streamlit_pdf_viewer import pdf_viewer
 
-    def show_resume():
-        st.title('My Resume')
-
-        # You can add more content here as needed
-        st.write("Here is my resume showcasing my experience and skills.")
-
-        # Display the resume PDF
-        pdf_viewer("ResumeWOnumber.pdf", width=850, height=1000)
-
-        # Link to download resume
-        resume_link = 'Aashay Zende - Resume.pdf'
-        with open(resume_link, "rb") as file:
-            st.download_button(
-                label="Download Resume",
-                data=file,
-                file_name="Aashay Zende - Resume.pdf",
-                mime="application/pdf"
-            )
+   
 
     # Execute the function to display the resume
-        show_resume()
+     show_resume()
 
         import json
         from streamlit_timeline import timeline
