@@ -65,9 +65,8 @@ if page == "Welcome!":
     <div class="bio">
         <h4>Data Analyst | Soccer Player | Painter | Formula 1 Fanatic | Photographer | Surfer</h4>
         <p>I am a passionate Data and Business Analyst, currently advancing my skills and knowledge at Northeastern University by pursuing a Master of Science in Business Analytics. I am actively seeking opportunities in business or data analytics where I can leverage my advanced skills in Data Analytics, Python, SQL, R, PowerBI, Tableau for impactful dashboard creation and data visualization, as well as my background in strategic consulting, marketing, and supply chain management projects, utilizing my analytical prowess to drive data-informed decision-making and strategic initiatives.
-
-For recruiters looking to harness my blend of analytical rigor, strategic thinking, and dynamic leadership in the realms of business analysis, strategy consulting, marketing, supply chain management, and beyond, feel free to reach out. You can contact me at zende.a@northeastern.edu, or connect with me on LinkedIn.
 My portfolio is a testament to my multifaceted skills, from developing strategic marketing campaigns and investment portfolio optimization to spearheading groundbreaking projects like the transformative PowerBI dashboard that revolutionized data visualization and decision-making processes.
+For recruiters looking to harness my blend of analytical rigor, strategic thinking, and dynamic leadership in the realms of business analysis, strategy consulting, marketing, supply chain management, and beyond, feel free to reach out. You can contact me at zende.a@northeastern.edu, or connect with me on LinkedIn.
 Let's navigate the data-driven landscapes together and turn complex challenges into strategic opportunities. </p>
         </div>
     """, unsafe_allow_html=True)
