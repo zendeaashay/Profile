@@ -20,9 +20,6 @@ streamlit_lottie
 openai==0.28
 Mac
 streamlit
-cloud-sql-python-connector[pymysql]
-sqlalchemy
-pymysql
 numpy
 seaborn
 gspread
