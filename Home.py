@@ -17,7 +17,6 @@ hide_default_format = """
 st.markdown(hide_default_format, unsafe_allow_html=True)
 # Enable Altair dark theme for charts
 alt.themes.enable("dark")
-user_ip = st.request.headers.get("X-Forwarded-For", "").split(",")[0]
     
 # Custom CSS
 with open('homestyle.css') as f:
