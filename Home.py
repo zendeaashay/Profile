@@ -17,6 +17,7 @@ hide_default_format = """
 st.markdown(hide_default_format, unsafe_allow_html=True)
 # Enable Altair dark theme for charts
 alt.themes.enable("dark")
+user_ip = st.request.headers.get("X-Forwarded-For", "").split(",")[0]
     
 # Custom CSS
 with open('homestyle.css') as f:
@@ -241,6 +242,9 @@ Co-Head, Vehicle Dynamics Department
     # Add assistant response to chat history
         st.session_state.messages.append({"role": "assistant", "content": full_response})
         append_to_gsheet(worksheet, [prompt, full_response])
+        def append_to_gsheet(worksheet, row_values, user_ip):
+         row_values.append(user_ip)  # Append the IP address to the row values
+         worksheet.append_row(row_values)
 
         
 from streamlit_star_rating import st_star_rating
