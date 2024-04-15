@@ -34,14 +34,14 @@ def show_resume():
     st.title('My Resume')
     st.write("Here is my resume showcasing my experience and skills.")
     # Display the resume PDF
-    pdf_viewer("Aashay Zende - Resume.pdf", width=850, height=1000)
+    pdf_viewer("ResumeWOnumber.pdf", width=850, height=1000)
     # Link to download resume
-    resume_link = 'Aashay Zende - Resume.pdf'
+    resume_link = 'ResumeWOnumber.pdf'
     with open(resume_link, "rb") as file:
         st.download_button(
             label="Download Resume",
             data=file,
-            file_name="Aashay Zende - Resume.pdf",
+            file_name="ResumeWOnumber.pdf",
             mime="application/pdf"
         )
 # Authenticate and get the Google Sheets client
