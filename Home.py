@@ -34,7 +34,7 @@ def show_resume():
     st.title('My Resume')
     st.write("Here is my resume showcasing my experience and skills.")
     # Display the resume PDF
-    pdf_viewer("ResumeWOnumber.pdf", width=850, height=1000)
+    pdf_viewer("ResumeWOnumber.pdf", width=700, height=1000)
     # Link to download resume
     resume_link = 'ResumeWOnumber.pdf'
     with open(resume_link, "rb") as file:
