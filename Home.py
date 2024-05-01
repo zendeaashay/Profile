@@ -63,7 +63,7 @@ if page == "Welcome!":
     st.title("Aashay Zende")
     st.markdown("""
     <div class="bio">
-        <h4>Data Analyst | Business Analyst | Datacamp SQL Associate Certified | PowerBI and Tableau Specialist | Portfolio Management | Strategy Consulting E-Commerce </h4>
+        <h4>Data Analyst | Business Analyst | Datacamp SQL Associate Certified | PowerBI and Tableau Specialist | Portfolio Management | Strategy Consulting </h4>
         <p>I am a passionate Data and Business Analyst, pursuing a Master of Science in Business Analytics at Northeastern University. I am actively seeking opportunities in business or data analytics, where I can leverage my advanced skills in Data Analytics, Python, SQL, R, PowerBI, Tableau, MS Office, Management and more, in strategic consulting, marketing, and supply chain management projects, utilizing my analytical prowess to drive data-informed decision-making and strategic initiatives.
         
 My portfolio is a testament to my multifaceted skills, from developing strategic marketing campaigns and investment portfolio optimization to spearheading groundbreaking projects like the transformative PowerBI dashboard that revolutionized data visualization and decision-making processes.
