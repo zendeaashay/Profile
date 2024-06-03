@@ -2,8 +2,8 @@ import streamlit as st
 import altair as alt
 import openai
 from streamlit_star_rating import st_star_rating
-import gspread
-from oauth2client.service_account import ServiceAccountCredentials
+
+
 
 
 
@@ -22,14 +22,7 @@ alt.themes.enable("dark")
 with open('homestyle.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
     
-def authenticate_gsheets(json_keyfile_path):
-    scope = [
-        'https://spreadsheets.google.com/feeds',
-        'https://www.googleapis.com/auth/drive'
-    ]
-    credentials = ServiceAccountCredentials.from_json_keyfile_name(json_keyfile_path, scope)
-    gc = gspread.authorize(credentials)
-    return gc
+
 def show_resume():
     st.title('My Resume')
     st.write("Here is my resume showcasing my experience and skills.")
@@ -43,18 +36,7 @@ def show_resume():
             data=file,
             file_name="ResumeWOnumber.pdf",
             mime="application/pdf"
-        )
-# Authenticate and get the Google Sheets client
-gc = authenticate_gsheets('chathis-417923-cfbdbe6dadd7.json')
-
-# Load the worksheet
-worksheet = gc.open_by_url("https://docs.google.com/spreadsheets/d/1TIFx9gutkR0ajy8KO2KrYdObckWIdxG-avKK6yryt8Y/edit#gid=0").worksheet("Sheet1")
-
-# Function to append a row to the sheet
-def append_to_gsheet(worksheet, row_values):
-    worksheet.append_row(row_values)
-    
-   
+        )   
 
 # Toggle between 'About Me' and 'AshGPT'
 page = st.radio("Explore my very own AshGPT next!", ("Welcome!", "AshGPT"), horizontal=True)
@@ -238,9 +220,7 @@ Co-Head, Vehicle Dynamics Department
             # Add a blinking cursor to simulate typing
                message_placeholder.markdown(full_response + "▌")
            message_placeholder.markdown(full_response)
-    # Add assistant response to chat history
-        st.session_state.messages.append({"role": "assistant", "content": full_response})
-        append_to_gsheet(worksheet, [prompt, full_response])
+
         
 
         
