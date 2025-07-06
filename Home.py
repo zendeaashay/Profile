@@ -52,15 +52,15 @@ For recruiters looking to harness my blend of analytical rigor, strategic thinki
 Let's navigate the data-driven landscapes together and turn complex challenges into strategic opportunities. </p>
         </div>
     """, unsafe_allow_html=True)
-    st.image('image.jpg', caption='Exploring the Himalayas with my furry friends!')
+st.image('image.jpg', caption='Exploring the Himalayas with my furry friends!')
     
 from streamlit_pdf_viewer import pdf_viewer
 
    
 
     # Execute the function to display the resume
-    show_resume()
-    st.markdown("""
+show_resume()
+st.markdown("""
     <div class="bio">
         <p> I carved a niche for myself in the Indian E-Commerce landscape, as a  Business Analyst at Redseer Strategy Management Consulting, India's biggest homegrown consulting firm, enhancing operational efficiencies and driving key business decisions and strategies for all the biggest players in the market. You can find my analyses and work on the 'E-Commerce Consulting Insights' in the sidebar.
 
